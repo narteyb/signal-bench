@@ -1,0 +1,264 @@
+{
+  "action": "A19",
+  "anomalous_cells": [
+    {
+      "delta_mw_implied": -5.749965913214199,
+      "delta_wh_per_1000": -0.00017009935607300262,
+      "run_id": "019e5d8a-b23b-7c12-a163-1a0d0496eaa9",
+      "target": "esp32s3",
+      "task": "kws"
+    },
+    {
+      "delta_mw_implied": -4.843304595202833,
+      "delta_wh_per_1000": -0.000741381178140807,
+      "run_id": "019e5d8c-b9d7-76c1-ad1d-320a29516ca4",
+      "target": "esp32s3",
+      "task": "ic"
+    },
+    {
+      "delta_mw_implied": -5.361766219533028,
+      "delta_wh_per_1000": -1.7457913057977335e-05,
+      "run_id": "019e5d8e-c5c3-7fa0-b798-93347e4afa0f",
+      "target": "esp32s3",
+      "task": "ad"
+    },
+    {
+      "delta_mw_implied": -2.6817916160434234,
+      "delta_wh_per_1000": -0.00016702597311851926,
+      "run_id": "019e5da7-ef3e-7830-94a8-2ef6f6845b8e",
+      "target": "nano33",
+      "task": "kws"
+    },
+    {
+      "delta_mw_implied": -2.972043355742497,
+      "delta_wh_per_1000": -0.001017719543715257,
+      "run_id": "019e5daa-6c50-77d2-a24c-6ff624d22cc5",
+      "target": "nano33",
+      "task": "ic"
+    },
+    {
+      "delta_mw_implied": -3.7744686963102465,
+      "delta_wh_per_1000": -1.302401951021559e-05,
+      "run_id": "019e5dac-d497-7a52-b3a9-ba11b3f2185f",
+      "target": "nano33",
+      "task": "ad"
+    },
+    {
+      "delta_mw_implied": -3.337639042610062,
+      "delta_wh_per_1000": -0.00014734786041720963,
+      "run_id": "019e5db3-0d4d-72e1-8033-380875e45cf3",
+      "target": "f401re",
+      "task": "kws"
+    },
+    {
+      "delta_mw_implied": -3.4815447953940213,
+      "delta_wh_per_1000": -0.0007305354769014949,
+      "run_id": "019e5db4-e375-7942-9182-e4fef42ce9c7",
+      "target": "f401re",
+      "task": "ic"
+    },
+    {
+      "delta_mw_implied": -5.336495831628832,
+      "delta_wh_per_1000": -1.206160643186564e-05,
+      "run_id": "019e5dc5-11f9-7a41-8fd5-543d80de7eaa",
+      "target": "f401re",
+      "task": "ad"
+    }
+  ],
+  "authoritative_meter_by_tier": {
+    "cloud": "nvml_or_powermetrics",
+    "mcu": "ina219",
+    "sbc": "fnb58"
+  },
+  "cells": [
+    {
+      "anomalous": true,
+      "anomaly_note": "FNB58 lower than INA219; not averaged into devkit-overhead summary.",
+      "authoritative_meter": "ina219",
+      "authoritative_rationale": "INA219 is authoritative for MCU tier; FNB58 is a window-level cross-check only.",
+      "delta_mw_implied": -5.749965913214199,
+      "delta_wh_per_1000": -0.00017009935607300262,
+      "inference_count": 657,
+      "latency_mean_ms": 106.49761948249619,
+      "run_id": "019e5d8a-b23b-7c12-a163-1a0d0496eaa9",
+      "sample_counts": {
+        "fnb58": 282,
+        "ina219": 487
+      },
+      "target": "esp32s3",
+      "task": "kws",
+      "telemetry_partial": false,
+      "wh_per_1000_fnb58": 0.01305133647768313,
+      "wh_per_1000_ina219": 0.013221435833756132
+    },
+    {
+      "anomalous": true,
+      "anomaly_note": "FNB58 lower than INA219; not averaged into devkit-overhead summary.",
+      "authoritative_meter": "ina219",
+      "authoritative_rationale": "INA219 is authoritative for MCU tier; FNB58 is a window-level cross-check only.",
+      "delta_mw_implied": -4.843304595202833,
+      "delta_wh_per_1000": -0.000741381178140807,
+      "inference_count": 128,
+      "latency_mean_ms": 551.064296875,
+      "run_id": "019e5d8c-b9d7-76c1-ad1d-320a29516ca4",
+      "sample_counts": {
+        "fnb58": 284,
+        "ina219": 489
+      },
+      "target": "esp32s3",
+      "task": "ic",
+      "telemetry_partial": false,
+      "wh_per_1000_fnb58": 0.06689003594208491,
+      "wh_per_1000_ina219": 0.06763141712022572
+    },
+    {
+      "anomalous": true,
+      "anomaly_note": "FNB58 lower than INA219; not averaged into devkit-overhead summary.",
+      "authoritative_meter": "ina219",
+      "authoritative_rationale": "INA219 is authoritative for MCU tier; FNB58 is a window-level cross-check only.",
+      "delta_mw_implied": -5.361766219533028,
+      "delta_wh_per_1000": -1.7457913057977335e-05,
+      "inference_count": 5965,
+      "latency_mean_ms": 11.721601508801342,
+      "run_id": "019e5d8e-c5c3-7fa0-b798-93347e4afa0f",
+      "sample_counts": {
+        "fnb58": 292,
+        "ina219": 499
+      },
+      "target": "esp32s3",
+      "task": "ad",
+      "telemetry_partial": false,
+      "wh_per_1000_fnb58": 0.0014225552767529572,
+      "wh_per_1000_ina219": 0.0014400131898109345
+    },
+    {
+      "anomalous": true,
+      "anomaly_note": "FNB58 lower than INA219; not averaged into devkit-overhead summary.",
+      "authoritative_meter": "ina219",
+      "authoritative_rationale": "INA219 is authoritative for MCU tier; FNB58 is a window-level cross-check only.",
+      "delta_mw_implied": -2.6817916160434234,
+      "delta_wh_per_1000": -0.00016702597311851926,
+      "inference_count": 313,
+      "latency_mean_ms": 224.21335782747605,
+      "run_id": "019e5da7-ef3e-7830-94a8-2ef6f6845b8e",
+      "sample_counts": {
+        "fnb58": 284,
+        "ina219": 490
+      },
+      "target": "nano33",
+      "task": "kws",
+      "telemetry_partial": false,
+      "wh_per_1000_fnb58": 0.0021959087925896795,
+      "wh_per_1000_ina219": 0.002362934765708199
+    },
+    {
+      "anomalous": true,
+      "anomaly_note": "FNB58 lower than INA219; not averaged into devkit-overhead summary.",
+      "authoritative_meter": "ina219",
+      "authoritative_rationale": "INA219 is authoritative for MCU tier; FNB58 is a window-level cross-check only.",
+      "delta_mw_implied": -2.972043355742497,
+      "delta_wh_per_1000": -0.001017719543715257,
+      "inference_count": 57,
+      "latency_mean_ms": 1232.7513157894737,
+      "run_id": "019e5daa-6c50-77d2-a24c-6ff624d22cc5",
+      "sample_counts": {
+        "fnb58": 282,
+        "ina219": 488
+      },
+      "target": "nano33",
+      "task": "ic",
+      "telemetry_partial": false,
+      "wh_per_1000_fnb58": 0.012680615812035213,
+      "wh_per_1000_ina219": 0.01369833535575047
+    },
+    {
+      "anomalous": true,
+      "anomaly_note": "FNB58 lower than INA219; not averaged into devkit-overhead summary.",
+      "authoritative_meter": "ina219",
+      "authoritative_rationale": "INA219 is authoritative for MCU tier; FNB58 is a window-level cross-check only.",
+      "delta_mw_implied": -3.7744686963102465,
+      "delta_wh_per_1000": -1.302401951021559e-05,
+      "inference_count": 5636,
+      "latency_mean_ms": 12.422005322924061,
+      "run_id": "019e5dac-d497-7a52-b3a9-ba11b3f2185f",
+      "sample_counts": {
+        "fnb58": 415,
+        "ina219": 708
+      },
+      "target": "nano33",
+      "task": "ad",
+      "telemetry_partial": false,
+      "wh_per_1000_fnb58": 0.0001759145933752036,
+      "wh_per_1000_ina219": 0.00018893861288541919
+    },
+    {
+      "anomalous": true,
+      "anomaly_note": "FNB58 lower than INA219; not averaged into devkit-overhead summary.",
+      "authoritative_meter": "ina219",
+      "authoritative_rationale": "INA219 is authoritative for MCU tier; FNB58 is a window-level cross-check only.",
+      "delta_mw_implied": -3.337639042610062,
+      "delta_wh_per_1000": -0.00014734786041720963,
+      "inference_count": 441,
+      "latency_mean_ms": 158.9303968253968,
+      "run_id": "019e5db3-0d4d-72e1-8033-380875e45cf3",
+      "sample_counts": {
+        "fnb58": 287,
+        "ina219": 495
+      },
+      "target": "f401re",
+      "task": "kws",
+      "telemetry_partial": false,
+      "wh_per_1000_fnb58": 0.0030928389599405607,
+      "wh_per_1000_ina219": 0.0032401868203577704
+    },
+    {
+      "anomalous": true,
+      "anomaly_note": "FNB58 lower than INA219; not averaged into devkit-overhead summary.",
+      "authoritative_meter": "ina219",
+      "authoritative_rationale": "INA219 is authoritative for MCU tier; FNB58 is a window-level cross-check only.",
+      "delta_mw_implied": -3.4815447953940213,
+      "delta_wh_per_1000": -0.0007305354769014949,
+      "inference_count": 93,
+      "latency_mean_ms": 755.3910322580645,
+      "run_id": "019e5db4-e375-7942-9182-e4fef42ce9c7",
+      "sample_counts": {
+        "fnb58": 282,
+        "ina219": 485
+      },
+      "target": "f401re",
+      "task": "ic",
+      "telemetry_partial": false,
+      "wh_per_1000_fnb58": 0.014071421909597898,
+      "wh_per_1000_ina219": 0.014801957386499393
+    },
+    {
+      "anomalous": true,
+      "anomaly_note": "FNB58 lower than INA219; not averaged into devkit-overhead summary.",
+      "authoritative_meter": "ina219",
+      "authoritative_rationale": "INA219 is authoritative for MCU tier; FNB58 is a window-level cross-check only.",
+      "delta_mw_implied": -5.336495831628832,
+      "delta_wh_per_1000": -1.206160643186564e-05,
+      "inference_count": 8000,
+      "latency_mean_ms": 8.1367595,
+      "run_id": "019e5dc5-11f9-7a41-8fd5-543d80de7eaa",
+      "sample_counts": {
+        "fnb58": 390,
+        "ina219": 674
+      },
+      "target": "f401re",
+      "task": "ad",
+      "telemetry_partial": false,
+      "wh_per_1000_fnb58": 0.00012963588513063422,
+      "wh_per_1000_ina219": 0.00014169749156249986
+    }
+  ],
+  "db_path": "data/p3_mcu_matrix.db",
+  "generated": "2026-05-26T09:19:59.999179Z",
+  "interpretation": "delta = FNB58(USB input) - INA219(rail). Positive deltas would estimate upstream/devkit overhead; negative deltas are flagged anomalous and excluded from averages.",
+  "summary": {
+    "anomalous_cell_count": 9,
+    "devkit_overhead_mw_mean_positive_only": null,
+    "devkit_overhead_note": "No positive FNB58-minus-INA219 MCU deltas were observed in accepted P3 rows; no overhead average is published from this dataset.",
+    "positive_delta_cell_count": 0
+  }
+}

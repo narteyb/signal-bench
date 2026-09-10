@@ -1,0 +1,172 @@
+[
+  {
+    "accuracy_proxy": {
+      "delta": 0.012299999999999978,
+      "eval_count": 100,
+      "lineage": 0.8577,
+      "metric": "top1",
+      "pass": true,
+      "value": 0.87
+    },
+    "energy": {
+      "avg_power_w": 6.801916579728709,
+      "duration_s": 33.606877999999995,
+      "source": "jetson_ina3221",
+      "wh_per_1000_inferences": 0.0016825000048660422
+    },
+    "latency_ms": {
+      "count": 37740,
+      "mean": 0.8748094133015368,
+      "p50": 0.8717945,
+      "p99": 0.94986191
+    },
+    "metadata": {
+      "active_providers": [
+        "CUDAExecutionProvider",
+        "CPUExecutionProvider"
+      ],
+      "batch_size": 1,
+      "execution_provider": "CUDAExecutionProvider",
+      "input_count": 100,
+      "input_name": "serving_default_input_1:0",
+      "input_shape": [
+        32,
+        32,
+        3
+      ],
+      "jetpack_l4t": "# R36 (release), REVISION: 4.7, GCID: 42132812, BOARD: generic, EABI: aarch64, DATE: Thu Sep 18 22:54:44 UTC 2025\n# KERNEL_VARIANT: oot\nTARGET_USERSPACE_LIB_DIR=nvidia\nTARGET_USERSPACE_LIB_DIR_PATH=usr/lib/aarch64-linux-gnu/nvidia",
+      "kernel": "5.15.148-tegra",
+      "machine": "aarch64",
+      "output_name": "StatefulPartitionedCall:0",
+      "platform": "Linux-5.15.148-tegra-aarch64-with-glibc2.35",
+      "power_boundary": "whole-board (INA3221 VDD_IN)",
+      "python": "3.10.12",
+      "runtime_name": "onnxruntime-gpu",
+      "runtime_version": "1.23.0"
+    },
+    "no_throttle": true,
+    "run_id": "019e6323-bdd8-7b61-ac44-3d13c3e020ad",
+    "status": "pass",
+    "task": "ic",
+    "telemetry": {
+      "partial": false,
+      "sources": {
+        "jetson_ina3221": 15,
+        "jetson_thermal": 15
+      }
+    }
+  },
+  {
+    "accuracy_proxy": {
+      "delta": -0.01717832310838452,
+      "eval_count": 4890,
+      "lineage": 0.8818,
+      "metric": "top1",
+      "pass": true,
+      "value": 0.8646216768916155
+    },
+    "energy": {
+      "avg_power_w": 6.691747945881034,
+      "duration_s": 33.605595,
+      "source": "jetson_ina3221",
+      "wh_per_1000_inferences": 0.0013656016057791477
+    },
+    "latency_ms": {
+      "count": 45743,
+      "mean": 0.7148184983494742,
+      "p50": 0.70942,
+      "p99": 0.7912356800000001
+    },
+    "metadata": {
+      "active_providers": [
+        "CUDAExecutionProvider",
+        "CPUExecutionProvider"
+      ],
+      "batch_size": 1,
+      "execution_provider": "CUDAExecutionProvider",
+      "input_count": 4890,
+      "input_name": "serving_default_input_1:0",
+      "input_shape": [
+        49,
+        10,
+        1
+      ],
+      "jetpack_l4t": "# R36 (release), REVISION: 4.7, GCID: 42132812, BOARD: generic, EABI: aarch64, DATE: Thu Sep 18 22:54:44 UTC 2025\n# KERNEL_VARIANT: oot\nTARGET_USERSPACE_LIB_DIR=nvidia\nTARGET_USERSPACE_LIB_DIR_PATH=usr/lib/aarch64-linux-gnu/nvidia",
+      "kernel": "5.15.148-tegra",
+      "machine": "aarch64",
+      "output_name": "StatefulPartitionedCall:0",
+      "platform": "Linux-5.15.148-tegra-aarch64-with-glibc2.35",
+      "power_boundary": "whole-board (INA3221 VDD_IN)",
+      "python": "3.10.12",
+      "runtime_name": "onnxruntime-gpu",
+      "runtime_version": "1.23.0"
+    },
+    "no_throttle": true,
+    "run_id": "019e6324-983c-7711-87fd-19dc62dbe280",
+    "status": "pass",
+    "task": "kws",
+    "telemetry": {
+      "partial": false,
+      "sources": {
+        "jetson_ina3221": 15,
+        "jetson_thermal": 15
+      }
+    }
+  },
+  {
+    "accuracy_proxy": {
+      "delta": 0.014337500000000003,
+      "eval_count": 31360,
+      "groups": 160,
+      "lineage": 0.8391,
+      "metric": "clip_auroc",
+      "pass": true,
+      "value": 0.8534375
+    },
+    "energy": {
+      "avg_power_w": 6.4334975540760855,
+      "duration_s": 33.604383000000006,
+      "source": "jetson_ina3221",
+      "wh_per_1000_inferences": 0.0010802210662058656
+    },
+    "latency_ms": {
+      "count": 55594,
+      "mean": 0.5268716368493003,
+      "p50": 0.524391,
+      "p99": 0.59412
+    },
+    "metadata": {
+      "active_providers": [
+        "CUDAExecutionProvider",
+        "CPUExecutionProvider"
+      ],
+      "batch_size": 1,
+      "execution_provider": "CUDAExecutionProvider",
+      "input_count": 31360,
+      "input_name": "serving_default_input_2:0",
+      "input_shape": [
+        640
+      ],
+      "jetpack_l4t": "# R36 (release), REVISION: 4.7, GCID: 42132812, BOARD: generic, EABI: aarch64, DATE: Thu Sep 18 22:54:44 UTC 2025\n# KERNEL_VARIANT: oot\nTARGET_USERSPACE_LIB_DIR=nvidia\nTARGET_USERSPACE_LIB_DIR_PATH=usr/lib/aarch64-linux-gnu/nvidia",
+      "kernel": "5.15.148-tegra",
+      "machine": "aarch64",
+      "output_name": "StatefulPartitionedCall:0",
+      "platform": "Linux-5.15.148-tegra-aarch64-with-glibc2.35",
+      "power_boundary": "whole-board (INA3221 VDD_IN)",
+      "python": "3.10.12",
+      "runtime_name": "onnxruntime-gpu",
+      "runtime_version": "1.23.0"
+    },
+    "no_throttle": true,
+    "run_id": "019e6325-a08b-7353-8151-d498d44f99b7",
+    "status": "pass",
+    "task": "ad",
+    "telemetry": {
+      "partial": false,
+      "sources": {
+        "jetson_ina3221": 15,
+        "jetson_thermal": 15
+      }
+    }
+  }
+]

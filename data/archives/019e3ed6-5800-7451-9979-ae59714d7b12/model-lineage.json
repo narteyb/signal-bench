@@ -1,0 +1,22 @@
+{
+  "derived_from": "tinyml-ic-resnet-ref-v1",
+  "prep_method": "magnitude-pruning",
+  "prep_params": {
+    "sparsity_target": 0.4,
+    "sparsity": 0.41,
+    "pruning_schedule": "polynomial-decay-0-to-40",
+    "iterative_cycles": 5,
+    "epochs_per_cycle": 5,
+    "learning_rate_start": 0.001,
+    "storage": "dense-zeroed-weights",
+    "random_seed": 41041
+  },
+  "accuracy_retention": {
+    "metric": "top1",
+    "canonical": 0.87,
+    "variant": 0.858,
+    "delta_pp": -1.2,
+    "sparsity_achieved": 0.41
+  },
+  "prep_pipeline_uri": "variant-pipeline://model-prep/ic-resnet-prune-40"
+}

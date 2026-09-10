@@ -1,0 +1,79 @@
+schema_version: 1
+dataset: narteybrown/signal-bench-p4-curve-v1
+destination: https://huggingface.co/datasets/narteybrown/signal-bench-p4-curve-v1
+visibility: private
+remote_revision: f3e23763630cc80609350d7b4658ed6aa023a5c0
+uploaded_at: 2026-09-10T05:02:45Z
+verified_at: 2026-09-10T05:04:40Z
+deleted_locally_at: 2026-09-10T05:04:40Z
+checksum_file: docs/data-offload/p4-curve-checksums.sha256
+checksum_commit: ee760d5
+copy_position: >-
+  After local deletion, Hugging Face holds the only verified copy of these
+  files. Dan accepted this single-copy position. The published, scratch, and
+  launch-tier databases were not included and remain local.
+files:
+  - original_path: data/curve_fanout_briefA_idle.db
+    remote_path: data/curve_fanout_briefA_idle.db
+    size_bytes: 630784
+    sha256: 8ed47b5e9936bd792cebe569e078da3e5fd751b810d98e46487398e3e53f9a40
+  - original_path: data/curve_fanout_briefA_powercheck.db
+    remote_path: data/curve_fanout_briefA_powercheck.db
+    size_bytes: 368640
+    sha256: 6d4fde4afc10d48b5002b7eba249436a8f1ef429f359b09d93ccb63cc004200e
+  - original_path: data/curve_fanout_briefA_powercheck2.db
+    remote_path: data/curve_fanout_briefA_powercheck2.db
+    size_bytes: 372736
+    sha256: 63f2d928d57ac69b2fd9a323f1aded2c97a3b4e70cc8f80554119afc90ef4a1e
+  - original_path: data/curve_fanout_briefB.db
+    remote_path: data/curve_fanout_briefB.db
+    size_bytes: 64278528
+    sha256: 3c529e92c1dcb1b68eac741e955aba90e3851bf501c17e1b5bb42e1312033236
+  - original_path: data/p4_hailo_first_light.db
+    remote_path: data/p4_hailo_first_light.db
+    size_bytes: 6901760
+    sha256: 6d12cf8332824c9e9fa1dadd28fa806fff12df309660f94d8b14a81d69bfb2b1
+  - original_path: data/p4_hailo_powercheck_aligned.db
+    remote_path: data/p4_hailo_powercheck_aligned.db
+    size_bytes: 376832
+    sha256: 94350b1a7cc67244a5ff11e2a904bbd363317bda3ec50fd9d7397f719093e3c8
+  - original_path: data/p4_hailo_powercheck_retry.db
+    remote_path: data/p4_hailo_powercheck_retry.db
+    size_bytes: 372736
+    sha256: 02f39e8f9bcea936df5bb3a523fb1868f33ebc32c0f654b4012b2efc23b44fd0
+  - original_path: data/p4_hailo_powercheck_retry2.db
+    remote_path: data/p4_hailo_powercheck_retry2.db
+    size_bytes: 364544
+    sha256: 8d96601be60b08068afc2c58582070f85ad8681fdd9b14cd61a8ba624a3ca86d
+  - original_path: data/p4_hailo_powercheck_retry3.db
+    remote_path: data/p4_hailo_powercheck_retry3.db
+    size_bytes: 286720
+    sha256: 8858f23164ee3bdc68b1b1c0059fd860171e1235787791becc25b8962942cb0b
+  - original_path: data/p4_hailo_usb_inline_powercheck.db
+    remote_path: data/p4_hailo_usb_inline_powercheck.db
+    size_bytes: 200704
+    sha256: 4a79512734f9a59d45c3d3e0524d9817a5448919edc5c17f3032b5fb0cc6b334
+  - original_path: data/p4_hailo_usb_inline_powercheck2.db
+    remote_path: data/p4_hailo_usb_inline_powercheck2.db
+    size_bytes: 282624
+    sha256: c968cfa3e221ed10e79b65ae547bea9a184f5ef910de43f7d2201eee869e055f
+  - original_path: data/p4_hailo_usb_powercheck.db
+    remote_path: data/p4_hailo_usb_powercheck.db
+    size_bytes: 278528
+    sha256: 4323784cda37bf980e8165da3fa7ba484e0c0265899562c241cecacec9a29cbb
+  - original_path: data/p4_hailo_xcorpus.db
+    remote_path: data/p4_hailo_xcorpus.db
+    size_bytes: 1004204032
+    sha256: 43d8cf573bb9121b41effca7b7597e1a48607609557d474c717b5d8140462f4f
+  - original_path: data/p4_hailo_xcorpus_aligned.db
+    remote_path: data/p4_hailo_xcorpus_aligned.db
+    size_bytes: 727277568
+    sha256: b7e545461e96c9c990641bff540613869460197acea352a695761cec430d0811
+  - original_path: data/pi_no_hailo_voltage_check.db
+    remote_path: data/pi_no_hailo_voltage_check.db
+    size_bytes: 286720
+    sha256: 701cd7cee767044902ed967f7aa310bd394292f6fd7fedf823405c57674aa5ec
+  - original_path: data/pi_no_hailo_voltage_check_after_reboot.db
+    remote_path: data/pi_no_hailo_voltage_check_after_reboot.db
+    size_bytes: 286720
+    sha256: 4fa21acdf6dcdade958e2647e6c668626809700ad97f3e48a5b34259347f14e2

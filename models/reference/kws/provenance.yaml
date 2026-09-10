@@ -1,0 +1,52 @@
+task: keyword_spotting
+mlperf_tiny_version: v1.3
+mlperf_tiny_repo: https://github.com/mlcommons/tiny
+mlperf_tiny_tag: null
+mlperf_tiny_commit: 5dae3296bd899ed58a65311a8e6fd91d83f664ab
+source_path: benchmark/training/keyword_spotting/trained_models/kws_ref_model.tflite
+source_url: https://raw.githubusercontent.com/mlcommons/tiny/5dae3296bd899ed58a65311a8e6fd91d83f664ab/benchmark/training/keyword_spotting/trained_models/kws_ref_model.tflite
+files:
+  - name: kws_ref_model.tflite
+    sha256: aeea436800704fce17b17292e4412630ad856e9d777c044c64ef748a880bd0ae
+    bytes: 53936
+    retrieved_at: 2026-05-10T04:03:03Z
+model_card:
+  architecture: DS-CNN
+  dataset: Speech Commands v2
+  accuracy_target: 0.90
+  accuracy_metric: top_1
+  format: tflite
+  quantization: int8
+  input_shape: [1, 49, 10, 1]
+  output_shape: [1, 12]
+  input_quantization:
+    scale: 0.5847029089927673
+    zero_point: 83
+  output_quantization:
+    scale: 0.00390625
+    zero_point: -128
+license:
+  name: Apache-2.0
+  url: https://github.com/mlcommons/tiny/blob/5dae3296bd899ed58a65311a8e6fd91d83f664ab/LICENSE.md
+notes: |
+  Canonical deployable KWS artifact from the public MLCommons Tiny tree. The
+  task README describes the paired SavedModel source and quantized TFLite form.
+  T2.2 pins the published TFLite bytes; T2.3 may wrap them for TFLM firmware.
+onnx_conversion:
+  tool: tf2onnx
+  tool_version: 1.17.0
+  tensorflow_version: 2.21.0
+  onnx_version: 1.21.0
+  onnxruntime_version: 1.25.1
+  opset: 13
+  source_format: tflite
+  source_path: kws/kws_ref_model.tflite
+  output_path: ../onnx/kws_int8.onnx
+  output_sha256: d7eb060290aa1da24fe2d713d2d68007529531ab661ff55965fe66775181f1da
+  output_bytes: 73802
+  conversion_date: 2026-05-10
+  cross_format_validation:
+    max_abs_diff: 0
+    mean_abs_diff: 0.0
+    threshold: 1
+    passed: true

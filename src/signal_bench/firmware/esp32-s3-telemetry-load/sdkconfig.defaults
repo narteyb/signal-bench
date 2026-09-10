@@ -1,0 +1,3 @@
+# Non-secret ESP-IDF defaults for the telemetry load firmware.
+# Generated sdkconfig files are intentionally ignored.
+CONFIG_FREERTOS_HZ=1000

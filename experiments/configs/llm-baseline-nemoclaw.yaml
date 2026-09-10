@@ -1,0 +1,22 @@
+experiment_id: e01_llm_baseline
+task:
+  name: llm-nemoclaw-baseline-v1
+  version: "1"
+  family: llm
+model:
+  ollama_tag: nemotron-3-nano:4b
+generation:
+  temperature: 0.0
+  top_p: 1.0
+  seed: 42
+  num_ctx: 4096
+protocol:
+  warmup_count: 5
+  measurement_count: 20
+targets:
+  - m1-max-64gb
+  - modal-a10g
+prompt_tiers:
+  - short
+  - medium
+  - long

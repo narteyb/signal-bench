@@ -1,0 +1,14 @@
+{
+  "models": [
+    {
+      "name": "nemotron-3-nano:4b",
+      "model": "nemotron-3-nano:4b",
+      "digest": "6cc467f054393a55e98a74098abde0c762ffb6d1d8cd64becf30458f38886197",
+      "size": 2800000000,
+      "details": {
+        "quantization_level": "Q4_K_M",
+        "parameter_size": "4B"
+      }
+    }
+  ]
+}

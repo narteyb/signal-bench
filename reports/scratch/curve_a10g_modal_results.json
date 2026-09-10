@@ -1,0 +1,229 @@
+[
+  {
+    "measurement_count": 147076,
+    "metrics": {
+      "accuracy_proxy": {
+        "delta": 0.012299999999999978,
+        "eval_count": 100,
+        "lineage": 0.8577,
+        "metric": "top1",
+        "pass": true,
+        "value": 0.87
+      },
+      "energy": {
+        "by_source": {
+          "nvml": {
+            "avg_power_w": 66.94378877552063,
+            "duration_s": 34.949131,
+            "source": "nvml",
+            "wh_per_1000_inferences": 0.004418779791007521
+          }
+        },
+        "headline": {
+          "avg_power_w": 66.94378877552063,
+          "duration_s": 34.949131,
+          "source": "nvml",
+          "wh_per_1000_inferences": 0.004418779791007521
+        },
+        "headline_source": "nvml"
+      },
+      "inference_count": 147076,
+      "latency_ms": {
+        "count": 147076,
+        "mean": 0.21564136346514726,
+        "p50": 0.20895,
+        "p99": 0.24886675
+      },
+      "telemetry": {
+        "count": 349,
+        "metric": "power",
+        "partial": false,
+        "source": "nvml"
+      }
+    },
+    "power_boundary": "GPU package (NVML)",
+    "result_rows_sampled": 147076,
+    "run_id": "019e62ed-03c9-7913-9eea-6e5140a11f5b",
+    "run_metadata": {
+      "active_providers": [
+        "CUDAExecutionProvider",
+        "CPUExecutionProvider"
+      ],
+      "execution_provider": "CUDAExecutionProvider",
+      "gpu": {
+        "driver_version": "580.95.05",
+        "memory_total_mb": 23028,
+        "name": "NVIDIA A10"
+      },
+      "input_count": 100,
+      "input_name": "serving_default_input_1:0",
+      "input_shape": [
+        32,
+        32,
+        3
+      ],
+      "onnx_opset": 17,
+      "output_name": "StatefulPartitionedCall:0",
+      "python": "3.11.5",
+      "runtime_name": "onnxruntime-gpu",
+      "runtime_version": "1.20.1"
+    },
+    "runtime_name": "onnxruntime-gpu",
+    "runtime_version": "1.20.1",
+    "status": "completed",
+    "target": "modal-a10g",
+    "task": "ic",
+    "telemetry_partial": false
+  },
+  {
+    "measurement_count": 176599,
+    "metrics": {
+      "accuracy_proxy": {
+        "delta": -0.01717832310838452,
+        "eval_count": 4890,
+        "lineage": 0.8818,
+        "metric": "top1",
+        "pass": true,
+        "value": 0.8646216768916155
+      },
+      "energy": {
+        "by_source": {
+          "nvml": {
+            "avg_power_w": 66.68573726398097,
+            "duration_s": 34.93509199999998,
+            "source": "nvml",
+            "wh_per_1000_inferences": 0.003664410403741122
+          }
+        },
+        "headline": {
+          "avg_power_w": 66.68573726398097,
+          "duration_s": 34.93509199999998,
+          "source": "nvml",
+          "wh_per_1000_inferences": 0.003664410403741122
+        },
+        "headline_source": "nvml"
+      },
+      "inference_count": 176599,
+      "latency_ms": {
+        "count": 176599,
+        "mean": 0.17851290288166977,
+        "p50": 0.17477,
+        "p99": 0.21069925999999986
+      },
+      "telemetry": {
+        "count": 350,
+        "metric": "power",
+        "partial": false,
+        "source": "nvml"
+      }
+    },
+    "power_boundary": "GPU package (NVML)",
+    "result_rows_sampled": 176599,
+    "run_id": "019e62ed-d647-7472-96fe-66c821d5066d",
+    "run_metadata": {
+      "active_providers": [
+        "CUDAExecutionProvider",
+        "CPUExecutionProvider"
+      ],
+      "execution_provider": "CUDAExecutionProvider",
+      "gpu": {
+        "driver_version": "580.95.05",
+        "memory_total_mb": 23028,
+        "name": "NVIDIA A10"
+      },
+      "input_count": 4890,
+      "input_name": "serving_default_input_1:0",
+      "input_shape": [
+        49,
+        10,
+        1
+      ],
+      "onnx_opset": 17,
+      "output_name": "StatefulPartitionedCall:0",
+      "python": "3.11.5",
+      "runtime_name": "onnxruntime-gpu",
+      "runtime_version": "1.20.1"
+    },
+    "runtime_name": "onnxruntime-gpu",
+    "runtime_version": "1.20.1",
+    "status": "completed",
+    "target": "modal-a10g",
+    "task": "kws",
+    "telemetry_partial": false
+  },
+  {
+    "measurement_count": 206086,
+    "metrics": {
+      "accuracy_proxy": {
+        "delta": 0.014337500000000003,
+        "eval_count": 31360,
+        "groups": 160,
+        "lineage": 0.8391,
+        "metric": "clip_auroc",
+        "pass": true,
+        "value": 0.8534375
+      },
+      "energy": {
+        "by_source": {
+          "nvml": {
+            "avg_power_w": 65.27380218783951,
+            "duration_s": 34.956357000000025,
+            "source": "nvml",
+            "wh_per_1000_inferences": 0.003075488350636655
+          }
+        },
+        "headline": {
+          "avg_power_w": 65.27380218783951,
+          "duration_s": 34.956357000000025,
+          "source": "nvml",
+          "wh_per_1000_inferences": 0.003075488350636655
+        },
+        "headline_source": "nvml"
+      },
+      "inference_count": 206086,
+      "latency_ms": {
+        "count": 206086,
+        "mean": 0.13801383597139058,
+        "p50": 0.133912,
+        "p99": 0.16320374999999995
+      },
+      "telemetry": {
+        "count": 350,
+        "metric": "power",
+        "partial": false,
+        "source": "nvml"
+      }
+    },
+    "power_boundary": "GPU package (NVML)",
+    "result_rows_sampled": 200000,
+    "run_id": "019e62ee-c2f2-7701-a81e-7f2f241419a2",
+    "run_metadata": {
+      "active_providers": [
+        "CUDAExecutionProvider",
+        "CPUExecutionProvider"
+      ],
+      "execution_provider": "CUDAExecutionProvider",
+      "gpu": {
+        "driver_version": "580.95.05",
+        "memory_total_mb": 23028,
+        "name": "NVIDIA A10"
+      },
+      "input_count": 31360,
+      "input_name": "serving_default_input_2:0",
+      "input_shape": [
+        640
+      ],
+      "onnx_opset": 17,
+      "output_name": "StatefulPartitionedCall:0",
+      "python": "3.11.5",
+      "runtime_name": "onnxruntime-gpu",
+      "runtime_version": "1.20.1"
+    },
+    "runtime_name": "onnxruntime-gpu",
+    "runtime_version": "1.20.1",
+    "status": "completed",
+    "target": "modal-a10g",
+    "task": "ad",
+    "telemetry_partial": false
+  }
+]

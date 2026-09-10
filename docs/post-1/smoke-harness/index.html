@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Post 1 Chart.js Smoke Harness</title>
+    <style>
+      :root {
+        --midnight: #0D1117;
+        --signal-green: #00D4AA;
+        --amber: #E8C444;
+        --coral: #FF6B6B;
+        --sky: #58A6FF;
+        --violet: #A78BFA;
+        --slate: #C9D1D9;
+        --smoke: #8B949E;
+        --bone: #F0F6FC;
+        --surface: #161B22;
+        --border: rgba(201, 209, 217, 0.16);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--midnight);
+        color: var(--bone);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      main {
+        width: min(1120px, calc(100vw - 32px));
+        margin: 0 auto;
+        padding: 40px 0 56px;
+      }
+
+      header {
+        margin-bottom: 32px;
+      }
+
+      .eyebrow {
+        color: var(--signal-green);
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        margin: 0 0 10px;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        font-size: clamp(28px, 5vw, 48px);
+        line-height: 1.05;
+        margin: 0 0 14px;
+      }
+
+      .intro {
+        color: var(--smoke);
+        font-size: 16px;
+        line-height: 1.65;
+        margin: 0;
+        max-width: 820px;
+      }
+
+      .toolbar {
+        align-items: center;
+        border: 1px solid var(--border);
+        background: rgba(22, 27, 34, 0.75);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px 16px;
+        margin: 26px 0 32px;
+        padding: 14px 16px;
+      }
+
+      .toolbar a,
+      .toolbar span {
+        color: var(--smoke);
+        font-size: 13px;
+      }
+
+      .toolbar a {
+        color: var(--signal-green);
+        text-decoration: none;
+      }
+
+      .chart-card {
+        background: rgba(22, 27, 34, 0.72);
+        border: 1px solid var(--border);
+        margin: 0 0 28px;
+        padding: 22px;
+      }
+
+      .chart-card h2 {
+        font-size: 22px;
+        line-height: 1.2;
+        margin: 0 0 8px;
+      }
+
+      .chart-purpose {
+        color: var(--smoke);
+        font-size: 14px;
+        line-height: 1.55;
+        margin: 0 0 18px;
+        max-width: 780px;
+      }
+
+      .canvas-wrap {
+        min-height: 430px;
+        position: relative;
+      }
+
+      .canvas-wrap.tall {
+        min-height: 520px;
+      }
+
+      canvas {
+        width: 100%;
+        min-height: 400px;
+      }
+
+      .empty-state {
+        align-items: center;
+        background: rgba(13, 17, 23, 0.84);
+        border: 1px dashed rgba(201, 209, 217, 0.24);
+        color: var(--smoke);
+        display: none;
+        font-size: 14px;
+        inset: 48px 24px 24px;
+        justify-content: center;
+        line-height: 1.5;
+        padding: 24px;
+        position: absolute;
+        text-align: center;
+      }
+
+      .canvas-wrap.is-empty .empty-state {
+        display: flex;
+      }
+
+      .caption {
+        color: var(--smoke);
+        font-size: 14px;
+        font-style: italic;
+        line-height: 1.5;
+        margin: 12px 0 0;
+        max-width: 760px;
+      }
+
+      .error {
+        border: 1px solid rgba(255, 107, 107, 0.45);
+        color: var(--coral);
+        display: none;
+        line-height: 1.5;
+        margin: 0 0 24px;
+        padding: 14px 16px;
+      }
+
+      .error.is-visible {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <p class="eyebrow">Signal Report smoke harness</p>
+        <h1>Post 1 Chart.js rendering reference</h1>
+        <p class="intro">
+          Self-contained reference implementation for the three Post 1 charts. It loads the
+          same YAML shape produced by T4.6 and renders Chart.js configs that can be ported to
+          a downstream blog renderer.
+        </p>
+      </header>
+
+      <div class="toolbar">
+        <span>Default data: synthetic smoke YAML</span>
+        <a href="?data=synthetic">synthetic</a>
+        <a href="?data=production">production empty state</a>
+      </div>
+
+      <div id="error" class="error"></div>
+
+      <section class="chart-card" id="card-hardware_curve_tier1">
+        <h2>Latency across the Tier 1 floor</h2>
+        <p class="chart-purpose">
+          Line chart for the MCU floor: F401RE, Nano 33 BLE Sense, and ESP32-S3. The dashed
+          right-edge marker points to future tiers without plotting future-tier data.
+        </p>
+        <div class="canvas-wrap">
+          <canvas id="chart-hardware_curve_tier1"></canvas>
+          <div class="empty-state">Awaiting Phase 5 data.</div>
+        </div>
+        <p class="caption" id="caption-hardware_curve_tier1"></p>
+      </section>
+
+      <section class="chart-card" id="card-energy_comparison_tier1">
+        <h2>Wh per 1000 inferences across Tier 1</h2>
+        <p class="chart-purpose">
+          Grouped bar chart for the headline energy metric. It keeps the same task color
+          mapping as the latency chart so energy and speed can be compared without relearning
+          the legend.
+        </p>
+        <div class="canvas-wrap">
+          <canvas id="chart-energy_comparison_tier1"></canvas>
+          <div class="empty-state">Awaiting Phase 5 data.</div>
+        </div>
+        <p class="caption" id="caption-energy_comparison_tier1"></p>
+      </section>
+
+      <section class="chart-card" id="card-variance_strip_tier1">
+        <h2>Run-to-run variance across Tier 1 cells</h2>
+        <p class="chart-purpose">
+          Scatter strip plot showing individual runs, task-colored mean lines, and standard
+          deviation bands for all 9 Tier 1 cells.
+        </p>
+        <div class="canvas-wrap tall">
+          <canvas id="chart-variance_strip_tier1"></canvas>
+          <div class="empty-state">Awaiting Phase 5 data.</div>
+        </div>
+        <p class="caption" id="caption-variance_strip_tier1"></p>
+      </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+    <script src="./chart-config.js"></script>
+  </body>
+</html>

@@ -1,0 +1,270 @@
+[
+  {
+    "accuracy_proxy": {
+      "delta": 0.012299999999999978,
+      "eval_count": 100,
+      "lineage": 0.8577,
+      "metric": "top1",
+      "pass": true,
+      "value": 0.87
+    },
+    "energy": {
+      "avg_power_w": 16.06358793293824,
+      "duration_s": 34.18235600000002,
+      "source": "powermetrics",
+      "wh_per_1000_inferences": 0.001218243911259582
+    },
+    "latency_ms": {
+      "count": 125201,
+      "mean": 0.2694639297769187,
+      "p50": 0.260375,
+      "p99": 0.531583
+    },
+    "metadata": {
+      "batch_size": 1,
+      "execution_provider": "CPU/XNNPACK",
+      "input_count": 100,
+      "input_shape": [
+        32,
+        32,
+        3
+      ],
+      "input_tensor": {
+        "dtype": "float32",
+        "name": "serving_default_input_1:0",
+        "quantization": [
+          0.0,
+          0
+        ],
+        "shape": [
+          1,
+          32,
+          32,
+          3
+        ],
+        "shape_signature": [
+          -1,
+          32,
+          32,
+          3
+        ]
+      },
+      "kernel": "25.5.0",
+      "machine": "arm64",
+      "output_tensor": {
+        "dtype": "float32",
+        "name": "StatefulPartitionedCall:0",
+        "quantization": [
+          0.0,
+          0
+        ],
+        "shape": [
+          1,
+          10
+        ],
+        "shape_signature": [
+          -1,
+          10
+        ]
+      },
+      "platform": "macOS-26.5-arm64-arm-64bit",
+      "power_boundary": "device package (powermetrics)",
+      "python": "3.12.3",
+      "runtime_name": "ai-edge-litert",
+      "runtime_version": "2.1.4",
+      "threads": 4
+    },
+    "run_id": "019e62fb-c852-77b2-879a-db7c00d53953",
+    "status": "pass",
+    "task": "ic",
+    "telemetry": {
+      "grouped_instants": {
+        "powermetrics": 322
+      },
+      "partial": false,
+      "partial_sources": [],
+      "rows": {
+        "powermetrics": {
+          "power": 322
+        }
+      }
+    }
+  },
+  {
+    "accuracy_proxy": {
+      "delta": -0.01717832310838452,
+      "eval_count": 4890,
+      "lineage": 0.8818,
+      "metric": "top1",
+      "pass": true,
+      "value": 0.8646216768916155
+    },
+    "energy": {
+      "avg_power_w": 15.747991739310313,
+      "duration_s": 34.867003999999994,
+      "source": "powermetrics",
+      "wh_per_1000_inferences": 0.000670870244973164
+    },
+    "latency_ms": {
+      "count": 227352,
+      "mean": 0.14507958643425173,
+      "p50": 0.130042,
+      "p99": 0.309334
+    },
+    "metadata": {
+      "batch_size": 1,
+      "execution_provider": "CPU/XNNPACK",
+      "input_count": 4890,
+      "input_shape": [
+        49,
+        10,
+        1
+      ],
+      "input_tensor": {
+        "dtype": "float32",
+        "name": "serving_default_input_1:0",
+        "quantization": [
+          0.0,
+          0
+        ],
+        "shape": [
+          1,
+          49,
+          10,
+          1
+        ],
+        "shape_signature": [
+          -1,
+          49,
+          10,
+          1
+        ]
+      },
+      "kernel": "25.5.0",
+      "machine": "arm64",
+      "output_tensor": {
+        "dtype": "float32",
+        "name": "StatefulPartitionedCall:0",
+        "quantization": [
+          0.0,
+          0
+        ],
+        "shape": [
+          1,
+          12
+        ],
+        "shape_signature": [
+          -1,
+          12
+        ]
+      },
+      "platform": "macOS-26.5-arm64-arm-64bit",
+      "power_boundary": "device package (powermetrics)",
+      "python": "3.12.3",
+      "runtime_name": "ai-edge-litert",
+      "runtime_version": "2.1.4",
+      "threads": 4
+    },
+    "run_id": "019e62fc-676b-74b1-93f5-d00f20ae046a",
+    "status": "pass",
+    "task": "kws",
+    "telemetry": {
+      "grouped_instants": {
+        "powermetrics": 328
+      },
+      "partial": false,
+      "partial_sources": [],
+      "rows": {
+        "powermetrics": {
+          "power": 328
+        }
+      }
+    }
+  },
+  {
+    "accuracy_proxy": {
+      "delta": 0.014337500000000003,
+      "eval_count": 31360,
+      "groups": 160,
+      "lineage": 0.8391,
+      "metric": "clip_auroc",
+      "pass": true,
+      "value": 0.8534375
+    },
+    "energy": {
+      "avg_power_w": 10.672596909775773,
+      "duration_s": 35.83672000000002,
+      "source": "powermetrics",
+      "wh_per_1000_inferences": 0.00010225537931761776
+    },
+    "latency_ms": {
+      "count": 1038986,
+      "mean": 0.03017339802942484,
+      "p50": 0.02725,
+      "p99": 0.083958
+    },
+    "metadata": {
+      "batch_size": 1,
+      "execution_provider": "CPU/XNNPACK",
+      "input_count": 31360,
+      "input_shape": [
+        640
+      ],
+      "input_tensor": {
+        "dtype": "float32",
+        "name": "serving_default_input_2:0",
+        "quantization": [
+          0.0,
+          0
+        ],
+        "shape": [
+          1,
+          640
+        ],
+        "shape_signature": [
+          -1,
+          640
+        ]
+      },
+      "kernel": "25.5.0",
+      "machine": "arm64",
+      "output_tensor": {
+        "dtype": "float32",
+        "name": "StatefulPartitionedCall:0",
+        "quantization": [
+          0.0,
+          0
+        ],
+        "shape": [
+          1,
+          640
+        ],
+        "shape_signature": [
+          -1,
+          640
+        ]
+      },
+      "platform": "macOS-26.5-arm64-arm-64bit",
+      "power_boundary": "device package (powermetrics)",
+      "python": "3.12.3",
+      "runtime_name": "ai-edge-litert",
+      "runtime_version": "2.1.4",
+      "threads": 4
+    },
+    "run_id": "019e62fd-16b1-71c0-9909-bad476e7db46",
+    "status": "pass",
+    "task": "ad",
+    "telemetry": {
+      "grouped_instants": {
+        "powermetrics": 337
+      },
+      "partial": false,
+      "partial_sources": [],
+      "rows": {
+        "powermetrics": {
+          "power": 337
+        }
+      }
+    }
+  }
+]

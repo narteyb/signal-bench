@@ -1,0 +1,22 @@
+{
+  "accuracy_retention": {
+    "canonical": 0.8643960834762722,
+    "metric": "auroc",
+    "ratio": 0.9822200667332764,
+    "variant": 0.8490271787960468
+  },
+  "derived_from": "tinyml-ad-autoencoder-ref-v1",
+  "prep_method": "knowledge-distillation",
+  "prep_params": {
+    "distillation_alpha": 0.3,
+    "post_distillation_quantization": "ptq-int8",
+    "random_seed": 51051,
+    "student_bottleneck_factor": 0.7,
+    "student_depth_factor": 0.7,
+    "student_param_count": 147982,
+    "student_to_teacher_ratio": 0.5480977214139678,
+    "teacher_param_count": 269992,
+    "training_epochs": 320
+  },
+  "prep_pipeline_uri": "variant-pipeline://model-prep/ad-distill-50"
+}

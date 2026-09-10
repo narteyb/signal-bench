@@ -1,0 +1,12 @@
+.pio/
+.vscode/
+/CMakeLists.txt
+/dependencies.lock
+*.bin
+*.elf
+*.map
+build/
+sdkconfig
+sdkconfig.*
+!sdkconfig.defaults
+sdkconfig.old

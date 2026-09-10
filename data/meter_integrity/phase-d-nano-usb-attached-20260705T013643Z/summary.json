@@ -1,0 +1,39 @@
+{
+  "comparison": {
+    "fnb58_vs_ina219_pct_integrated": -4.437777591017959
+  },
+  "created_at": "2026-07-05T01:37:47.013344+00:00",
+  "duration_requested_s": 60.0,
+  "errors": [],
+  "phase": "meter-integrity-phase-d-nano-usb-bypass",
+  "protocol": "diagnostic",
+  "run_id": "phase-d-nano-usb-attached-20260705T013643Z",
+  "setup": "Nano 33 on metered rail with Nano USB serial attached to Mac; intentional bypass-candidate test",
+  "source_summaries": {
+    "fnb58": {
+      "avg_power_mw": 31.406225602028382,
+      "avg_power_w": 0.03140622560202838,
+      "duration_s": 59.56814,
+      "joules": 1.870810443533211,
+      "power_w_max": 0.031414199999999996,
+      "power_w_mean_sample": 0.03140626108333334,
+      "power_w_min": 0.03088886,
+      "power_w_p50": 0.0314088,
+      "sample_count": 240
+    },
+    "ina219_0x40": {
+      "avg_power_mw": 32.864687331796986,
+      "avg_power_w": 0.03286468733179699,
+      "duration_s": 60.340034,
+      "joules": 1.9830563509999999,
+      "power_w_max": 0.039999999999999994,
+      "power_w_mean_sample": 0.03286146095717884,
+      "power_w_min": 0.025999999999999995,
+      "power_w_p50": 0.031999999999999994,
+      "sample_count": 397
+    }
+  },
+  "usb_state": "attached",
+  "window_finished_at": "2026-07-05T01:37:47.011418+00:00",
+  "window_started_at": "2026-07-05T01:36:46.607462+00:00"
+}

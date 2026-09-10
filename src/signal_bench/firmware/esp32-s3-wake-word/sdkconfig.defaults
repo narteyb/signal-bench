@@ -1,0 +1,20 @@
+# Console output via USB-CDC (the DevKitC-1 has only one USB port)
+CONFIG_ESP_CONSOLE_USB_SERIAL_JTAG=y
+CONFIG_ESP_CONSOLE_USB_SERIAL_JTAG_ENABLED=y
+
+# FreeRTOS at 1kHz tick - needed for sub-ms timing in M3 proper
+CONFIG_FREERTOS_HZ=1000
+
+# Flash
+CONFIG_ESPTOOLPY_FLASHSIZE_8MB=y
+
+# Logging
+CONFIG_LOG_DEFAULT_LEVEL_INFO=y
+
+# Bluetooth off for measurement scaffolds; protocol transport is USB-CDC only.
+# WiFi is defensively stopped/deinitialized in app_main when compiled.
+CONFIG_BT_ENABLED=n
+
+# PSRAM (DevKitC-1 has 8MB)
+CONFIG_SPIRAM=y
+CONFIG_SPIRAM_MODE_OCT=y

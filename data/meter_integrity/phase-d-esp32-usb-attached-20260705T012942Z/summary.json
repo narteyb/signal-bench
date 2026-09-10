@@ -1,0 +1,74 @@
+{
+  "baseline_comparison": {
+    "baseline_artifact": "data/meter_integrity/phase-c-esp32-fnb58-windowing-cycling-20260705T012444Z/summary.json",
+    "baseline_setup": "ESP32-S3 telemetry-load cycling firmware on metered rail; one INA219 rail-side, FNB58 upstream; ESP32 USB disconnected/isolated per user ready",
+    "fnb_avg_power_mw_baseline_usb_disconnected": 180.2340374011998,
+    "fnb_avg_power_mw_usb_attached": 226.65716867132267,
+    "fnb_usb_attached_vs_disconnected_pct": 25.757138850962587,
+    "ina_avg_power_mw_baseline_usb_disconnected": 194.03834918844686,
+    "ina_avg_power_mw_usb_attached": 237.96444201992733,
+    "ina_usb_attached_vs_disconnected_pct": 22.63784092948563
+  },
+  "comparison": {
+    "fnb58_vs_ina219_pct_integrated": -4.751665102829854
+  },
+  "created_at": "2026-07-05T01:32:40.732209+00:00",
+  "duration_requested_s": 175.0,
+  "errors": [],
+  "matched_offset_analysis": {
+    "idle_like_lt_190mw": {
+      "count": 0
+    },
+    "load_like_gt_220mw": {
+      "count": 405,
+      "delta_pct_mean": -14.045097694796748,
+      "delta_pct_median": -8.84484353741493,
+      "fnb_power_mw_mean": 244.74446182716048,
+      "ina_power_mw_mean": 285.4469135802468,
+      "match_age_s_mean": 0.06520901728395062
+    },
+    "matched_count": 1181,
+    "overall": {
+      "count": 1181,
+      "delta_pct_mean": -3.631870479577686,
+      "delta_pct_median": -2.3508611111110937,
+      "fnb_power_mw_mean": 226.60216992379335,
+      "ina_power_mw_mean": 238.07620660457235,
+      "match_age_s_mean": 0.0661177417442845
+    }
+  },
+  "phase": "meter-integrity-phase-d-esp32-usb-bypass",
+  "protocol": "diagnostic",
+  "run_id": "phase-d-esp32-usb-attached-20260705T012942Z",
+  "setup": "ESP32-S3 telemetry-load cycling firmware on metered rail with ESP32 USB serial attached to Mac; intentional bypass-candidate test",
+  "source_summaries": {
+    "fnb58": {
+      "avg_power_mw": 226.65716867132267,
+      "avg_power_w": 0.22665716867132266,
+      "duration_s": 174.545417,
+      "joules": 39.561970021775345,
+      "power_w_max": 0.29254705999999997,
+      "power_w_mean_sample": 0.22682513015714287,
+      "power_w_min": 0.20669165,
+      "power_w_p10": 0.209336,
+      "power_w_p50": 0.210924155,
+      "power_w_p90": 0.26793984000000004,
+      "sample_count": 700
+    },
+    "ina219_0x40": {
+      "avg_power_mw": 237.96444201992733,
+      "avg_power_w": 0.23796444201992734,
+      "duration_s": 175.014019,
+      "joules": 41.64711337699996,
+      "power_w_max": 0.30199999999999994,
+      "power_w_mean_sample": 0.23811844331641283,
+      "power_w_min": 0.20599999999999996,
+      "power_w_p10": 0.20999999999999996,
+      "power_w_p50": 0.21599999999999997,
+      "power_w_p90": 0.2919999999999999,
+      "sample_count": 1182
+    }
+  },
+  "window_finished_at": "2026-07-05T01:32:40.721112+00:00",
+  "window_started_at": "2026-07-05T01:29:45.371967+00:00"
+}

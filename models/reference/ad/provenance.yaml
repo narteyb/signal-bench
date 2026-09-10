@@ -1,0 +1,52 @@
+task: anomaly_detection
+mlperf_tiny_version: v1.3
+mlperf_tiny_repo: https://github.com/mlcommons/tiny
+mlperf_tiny_tag: null
+mlperf_tiny_commit: 5dae3296bd899ed58a65311a8e6fd91d83f664ab
+source_path: benchmark/training/anomaly_detection/trained_models/ad01_int8.tflite
+source_url: https://raw.githubusercontent.com/mlcommons/tiny/5dae3296bd899ed58a65311a8e6fd91d83f664ab/benchmark/training/anomaly_detection/trained_models/ad01_int8.tflite
+files:
+  - name: ad01_int8.tflite
+    sha256: 87cf24194ef93d1d9b11a591d805526b98008e351655d29883c825c9c106ba24
+    bytes: 276976
+    retrieved_at: 2026-05-10T04:03:03Z
+model_card:
+  architecture: Dense AutoEncoder
+  dataset: ToyADMOS ToyCar
+  accuracy_target: 0.85
+  accuracy_metric: auc
+  format: tflite
+  quantization: int8
+  input_shape: [1, 640]
+  output_shape: [1, 640]
+  input_quantization:
+    scale: 0.3910152316093445
+    zero_point: 89
+  output_quantization:
+    scale: 0.36449846625328064
+    zero_point: 96
+license:
+  name: Apache-2.0
+  url: https://github.com/mlcommons/tiny/blob/5dae3296bd899ed58a65311a8e6fd91d83f664ab/LICENSE.md
+notes: |
+  Canonical AD int8 artifact. At 276,976 bytes, this model is already larger
+  than the F401RE's 96KB RAM budget before accounting for the TFLM arena. T2.7
+  must decide whether AD can run on F401RE or becomes a documented non-fit.
+onnx_conversion:
+  tool: tf2onnx
+  tool_version: 1.17.0
+  tensorflow_version: 2.21.0
+  onnx_version: 1.21.0
+  onnxruntime_version: 1.25.1
+  opset: 13
+  source_format: tflite
+  source_path: ad/ad01_int8.tflite
+  output_path: ../onnx/ad_int8.onnx
+  output_sha256: 7de136c8c472be09b00cb1047ea7dcb4e85b5d41f586b2e02721b46d2bac0f60
+  output_bytes: 285111
+  conversion_date: 2026-05-10
+  cross_format_validation:
+    max_abs_diff: 0
+    mean_abs_diff: 0.0
+    threshold: 1
+    passed: true

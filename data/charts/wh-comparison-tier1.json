@@ -1,0 +1,53 @@
+{
+  "data": {
+    "datasets": [
+      {
+        "data": [
+          21.381732891914194,
+          2.631484199113067,
+          13.572630223090275
+        ],
+        "label": "KWS"
+      },
+      {
+        "data": [
+          71.80184410326082,
+          14.185167899999993,
+          68.57813630268195
+        ],
+        "label": "IC"
+      },
+      {
+        "data": [
+          1.295446785231211,
+          0.18893861288541908,
+          1.4345456384689017
+        ],
+        "label": "AD"
+      }
+    ],
+    "labels": [
+      "F401RE",
+      "Nano 33",
+      "ESP32-S3"
+    ]
+  },
+  "options": {
+    "plugins": {
+      "legend": {
+        "position": "top"
+      }
+    },
+    "responsive": true,
+    "scales": {
+      "y": {
+        "title": {
+          "display": true,
+          "text": "mWh per 1000 inferences (log scale)"
+        },
+        "type": "logarithmic"
+      }
+    }
+  },
+  "type": "bar"
+}

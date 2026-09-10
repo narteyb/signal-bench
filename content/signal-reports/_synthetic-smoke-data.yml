@@ -1,0 +1,365 @@
+# SYNTHETIC SMOKE DATA — NOT FOR PRODUCTION.
+#
+# Companion to the production data file
+# `2026-05-28-tinyml-reality-check-data.yml`. Mirrors that file's
+# shape with plausible-but-fake numbers so local Chart.js verification
+# has something to render without using production values.
+#
+# The leading underscore is the marker that this file is excluded
+# from any future BlogSyncService run. If the sync service does not
+# yet honour an underscore prefix, treat the prefix as a manual
+# do-not-sync flag and add the actual exclusion when the sync code
+# is introduced.
+#
+# Numbers below are deliberately fictional: latency values land in
+# realistic-looking orders of magnitude for Tier 1 MCUs, Wh/1000
+# values fall in a plausible Wh/1000 band for steady inference load, and 20-run
+# strips assume CV around 4-8% with a few outliers in the IC/AD
+# cells. This file remains synthetic and is excluded from publication.
+
+hardware_curve_tier1:
+  chart_type: line
+  title: "Latency across the Tier 1 floor"
+  x_axis:
+    label: "Target"
+    unit: null
+    scale: categorical
+    values:
+      - "STM32 F401RE"
+      - "Arduino Nano 33 BLE Sense"
+      - "ESP32-S3"
+    ordering_rationale: "Ordered by MCU capability proxy: SRAM budget, clock class, and expected inference throughput."
+  y_axis:
+    label: "Median latency"
+    unit: ms
+    scale: log
+    value_source: "Run latency_stats.median_us converted to ms; headline is median across runs per cell."
+  series:
+    - label: "Keyword Spotting"
+      task: kws
+      color: "var(--signal-green)"
+      data: [42.6, 18.3, 11.1]
+    - label: "Image Classification"
+      task: ic
+      color: "var(--amber)"
+      data: [612.4, 188.0, 96.2]
+    - label: "Anomaly Detection"
+      task: ad
+      color: "var(--coral)"
+      data: [98.7, 41.9, 24.4]
+  annotations:
+    - type: dashed_extension
+      position: x_axis_right
+      label: "Posts 2–5 →"
+      arrow: right
+  caption_template: |
+    [SMOKE] ESP32-S3 leads on every task; Tier 1 latency spread is roughly 25× between fastest and slowest cell. Log scale.
+
+energy_comparison_tier1:
+  chart_type: bar
+  title: "Wh per 1000 inferences across Tier 1"
+  x_axis:
+    label: "Target"
+    unit: null
+    scale: categorical
+    values:
+      - "STM32 F401RE"
+      - "Arduino Nano 33 BLE Sense"
+      - "ESP32-S3"
+    grouping: "Three task bars per target."
+  y_axis:
+    label: "Energy"
+    unit: "Wh per 1000 inferences"
+    scale: log
+    value_source: "Run energy_stats.wh_per_1000; headline is median across runs per cell."
+  bar_count:
+    total: 9
+    rationale: "Three tasks across three Tier 1 MCUs. No placeholder bars for devices that do not run the workload."
+  series:
+    - label: "Keyword Spotting"
+      task: kws
+      color: "var(--signal-green)"
+      data: [0.0061, 0.0083, 0.0118]
+    - label: "Image Classification"
+      task: ic
+      color: "var(--amber)"
+      data: [0.0540, 0.0312, 0.0438]
+    - label: "Anomaly Detection"
+      task: ad
+      color: "var(--coral)"
+      data: [0.0094, 0.0117, 0.0156]
+  annotations: []
+  caption_template: |
+    [SMOKE] F401RE is the lowest-energy target on KWS and IC despite being the slowest, because its idle power floor is lower than the other two boards.
+
+variance_strip_tier1:
+  chart_type: scatter_strip
+  title: "Run-to-run variance across Tier 1 cells"
+  x_axis:
+    label: "Cell"
+    unit: null
+    scale: categorical
+    values:
+      - "KWS / STM32 F401RE"
+      - "KWS / Arduino Nano 33 BLE Sense"
+      - "KWS / ESP32-S3"
+      - "IC / STM32 F401RE"
+      - "IC / Arduino Nano 33 BLE Sense"
+      - "IC / ESP32-S3"
+      - "AD / STM32 F401RE"
+      - "AD / Arduino Nano 33 BLE Sense"
+      - "AD / ESP32-S3"
+    grouping: "Cells grouped by task, then ordered by target capability."
+  y_axis:
+    label: "Latency"
+    unit: ms
+    scale: log
+    value_source: "Per-run latency_stats.median_us converted to ms; strip points preserve every run."
+  series:
+    - label: "Individual runs"
+      color: "var(--smoke)"
+      opacity: 0.55
+      point_shape: circle
+      # 9 cells × 20 runs each = 180 points. Each entry is
+      # [cell_index_0_to_8, latency_ms]. Synthesised with a small
+      # gaussian jitter around the mean values above (CV 4-8% for
+      # most cells, ~12% for IC/F401RE to surface the noisy-cell
+      # narrative beat).
+      data:
+        # KWS / F401RE (cell 0, mean ~42.6, CV ~5%)
+        - [0, 41.2]
+        - [0, 42.8]
+        - [0, 43.1]
+        - [0, 42.3]
+        - [0, 41.7]
+        - [0, 44.0]
+        - [0, 42.5]
+        - [0, 43.4]
+        - [0, 42.6]
+        - [0, 41.9]
+        - [0, 42.7]
+        - [0, 43.6]
+        - [0, 42.9]
+        - [0, 41.5]
+        - [0, 43.2]
+        - [0, 42.1]
+        - [0, 42.8]
+        - [0, 43.0]
+        - [0, 42.4]
+        - [0, 42.5]
+        # KWS / Nano 33 (cell 1, mean ~18.3, CV ~5%)
+        - [1, 18.1]
+        - [1, 18.5]
+        - [1, 18.2]
+        - [1, 18.7]
+        - [1, 18.4]
+        - [1, 18.0]
+        - [1, 18.6]
+        - [1, 18.9]
+        - [1, 18.3]
+        - [1, 18.2]
+        - [1, 18.5]
+        - [1, 18.1]
+        - [1, 18.8]
+        - [1, 18.4]
+        - [1, 18.3]
+        - [1, 18.2]
+        - [1, 18.6]
+        - [1, 18.5]
+        - [1, 18.0]
+        - [1, 18.3]
+        # KWS / ESP32-S3 (cell 2, mean ~11.1, CV ~5%)
+        - [2, 11.0]
+        - [2, 11.2]
+        - [2, 11.3]
+        - [2, 10.9]
+        - [2, 11.1]
+        - [2, 11.0]
+        - [2, 11.4]
+        - [2, 11.2]
+        - [2, 10.8]
+        - [2, 11.1]
+        - [2, 11.0]
+        - [2, 11.3]
+        - [2, 11.1]
+        - [2, 10.9]
+        - [2, 11.2]
+        - [2, 11.0]
+        - [2, 11.1]
+        - [2, 11.3]
+        - [2, 10.9]
+        - [2, 11.2]
+        # IC / F401RE (cell 3, mean ~612.4, CV ~12% — outlier cell)
+        - [3, 588.0]
+        - [3, 595.2]
+        - [3, 612.7]
+        - [3, 634.1]
+        - [3, 718.9, {partial: true, partial_reasons: ["fnb58: coverage=72%, threshold=90%, samples=1080/1500"]}]   # partial outlier
+        - [3, 601.3]
+        - [3, 599.8]
+        - [3, 608.5]
+        - [3, 620.0]
+        - [3, 611.4]
+        - [3, 615.2]
+        - [3, 603.7]
+        - [3, 612.8]
+        - [3, 593.5]
+        - [3, 610.6]
+        - [3, 705.2, {partial: true, partial_reasons: ["fnb58: coverage=76%, threshold=90%, samples=1140/1500"]}]   # partial outlier
+        - [3, 614.9]
+        - [3, 609.0]
+        - [3, 600.4]
+        - [3, 613.5]
+        # IC / Nano 33 (cell 4, mean ~188.0, CV ~5%)
+        - [4, 185.0]
+        - [4, 189.4]
+        - [4, 188.2]
+        - [4, 186.5]
+        - [4, 190.8]
+        - [4, 187.3]
+        - [4, 189.0]
+        - [4, 188.5]
+        - [4, 186.9]
+        - [4, 188.1]
+        - [4, 189.7]
+        - [4, 187.8]
+        - [4, 188.0]
+        - [4, 186.4]
+        - [4, 189.2]
+        - [4, 188.4]
+        - [4, 187.6]
+        - [4, 189.5]
+        - [4, 187.1]
+        - [4, 188.3]
+        # IC / ESP32-S3 (cell 5, mean ~96.2, CV ~5%)
+        - [5, 94.8]
+        - [5, 96.5]
+        - [5, 97.1]
+        - [5, 95.4]
+        - [5, 96.0]
+        - [5, 95.9]
+        - [5, 97.3]
+        - [5, 96.2]
+        - [5, 95.7]
+        - [5, 96.6]
+        - [5, 95.2]
+        - [5, 96.0]
+        - [5, 97.0]
+        - [5, 96.5]
+        - [5, 95.8]
+        - [5, 96.4]
+        - [5, 96.1]
+        - [5, 95.6]
+        - [5, 96.8]
+        - [5, 96.3]
+        # AD / F401RE (cell 6, mean ~98.7, CV ~6%)
+        - [6, 96.0]
+        - [6, 99.5]
+        - [6, 100.2]
+        - [6, 97.3]
+        - [6, 98.5]
+        - [6, 99.0]
+        - [6, 101.4]
+        - [6, 98.2]
+        - [6, 96.8]
+        - [6, 99.1]
+        - [6, 98.4]
+        - [6, 100.7]
+        - [6, 97.6]
+        - [6, 99.3]
+        - [6, 98.0]
+        - [6, 100.5]
+        - [6, 98.8]
+        - [6, 97.5]
+        - [6, 99.7]
+        - [6, 98.9]
+        # AD / Nano 33 (cell 7, mean ~41.9, CV ~5%)
+        - [7, 40.8]
+        - [7, 42.1]
+        - [7, 42.5]
+        - [7, 41.3]
+        - [7, 41.9]
+        - [7, 42.0]
+        - [7, 42.7]
+        - [7, 41.6]
+        - [7, 41.4]
+        - [7, 42.2]
+        - [7, 41.8]
+        - [7, 42.4]
+        - [7, 41.2]
+        - [7, 42.0]
+        - [7, 41.7]
+        - [7, 42.3]
+        - [7, 41.9]
+        - [7, 42.1]
+        - [7, 41.5]
+        - [7, 42.0]
+        # AD / ESP32-S3 (cell 8, all telemetry gaps for this smoke state)
+        - [8, null, {partial: true, partial_inference_warnings: [{inference_id: 0, source: "fnb58"}]}]
+        - [8, null, {partial: true, partial_inference_warnings: [{inference_id: 1, source: "fnb58"}]}]
+        - [8, null, {partial: true, partial_inference_warnings: [{inference_id: 2, source: "fnb58"}]}]
+        - [8, null, {partial: true, partial_inference_warnings: [{inference_id: 3, source: "fnb58"}]}]
+        - [8, null, {partial: true, partial_inference_warnings: [{inference_id: 4, source: "fnb58"}]}]
+        - [8, null, {partial: true, partial_inference_warnings: [{inference_id: 5, source: "fnb58"}]}]
+        - [8, null, {partial: true, partial_inference_warnings: [{inference_id: 6, source: "fnb58"}]}]
+        - [8, null, {partial: true, partial_inference_warnings: [{inference_id: 7, source: "fnb58"}]}]
+        - [8, null, {partial: true, partial_inference_warnings: [{inference_id: 8, source: "fnb58"}]}]
+        - [8, null, {partial: true, partial_inference_warnings: [{inference_id: 9, source: "fnb58"}]}]
+        - [8, null, {partial: true, partial_inference_warnings: [{inference_id: 10, source: "fnb58"}]}]
+        - [8, null, {partial: true, partial_inference_warnings: [{inference_id: 11, source: "fnb58"}]}]
+        - [8, null, {partial: true, partial_inference_warnings: [{inference_id: 12, source: "fnb58"}]}]
+        - [8, null, {partial: true, partial_inference_warnings: [{inference_id: 13, source: "fnb58"}]}]
+        - [8, null, {partial: true, partial_inference_warnings: [{inference_id: 14, source: "fnb58"}]}]
+        - [8, null, {partial: true, partial_inference_warnings: [{inference_id: 15, source: "fnb58"}]}]
+        - [8, null, {partial: true, partial_inference_warnings: [{inference_id: 16, source: "fnb58"}]}]
+        - [8, null, {partial: true, partial_inference_warnings: [{inference_id: 17, source: "fnb58"}]}]
+        - [8, null, {partial: true, partial_inference_warnings: [{inference_id: 18, source: "fnb58"}]}]
+        - [8, null, {partial: true, partial_inference_warnings: [{inference_id: 19, source: "fnb58"}]}]
+    - label: "Cell mean"
+      color_by_task:
+        kws: "var(--signal-green)"
+        ic: "var(--amber)"
+        ad: "var(--coral)"
+      mark: horizontal_line
+      # 9 mean values, one per cell (cell-index order matches x_axis.values)
+      data: [42.6, 18.3, 11.1, 612.4, 188.0, 96.2, 98.7, 41.9, null]
+    - label: "±1 stddev band"
+      color_by_task:
+        kws: "var(--signal-green) at 20% opacity"
+        ic: "var(--amber) at 20% opacity"
+        ad: "var(--coral) at 20% opacity"
+      mark: range_band
+      # 9 [low, high] pairs (mean ± stddev) per cell
+      data:
+        - [40.5, 44.7]
+        - [17.4, 19.2]
+        - [10.6, 11.6]
+        - [538.5, 686.3]   # noisy IC/F401RE
+        - [178.6, 197.4]
+        - [91.4, 101.0]
+        - [92.8, 104.6]
+        - [39.8, 44.0]
+        - [null, null]
+  annotations:
+    - type: low_coverage_flag
+      condition: "Run energy_stats.telemetry_coverage < 0.95 or run.telemetry_partial is true"
+      label: "partial telemetry"
+  caption_template: |
+    [SMOKE] IC/F401RE is the highest-variance cell (CV ~12%, two outliers >700ms). KWS/Nano 33 is the most stable.
+  cells:
+    - task: ad
+      target: esp32s3
+      partial_inference_count: 20
+      runs:
+        - [8, null, {partial: true, partial_reasons: ["fnb58: coverage=72%, threshold=90%, samples=1080/1500"], partial_inference_warnings: [{inference_id: 0, source: "fnb58"}]}]
+
+meta:
+  signal_bench_version: "0.0.0-synthetic"
+  phase_5_run_timestamps:
+    start: "2026-05-11T00:00:00Z"
+    end: "2026-05-11T00:00:00Z"
+  hardware_revisions:
+    f401re: "NUCLEO-F401RE (synthetic)"
+    nano33: "Arduino Nano 33 BLE Sense Rev2 (synthetic)"
+    esp32s3: "ESP32-S3-DevKitC-1 (synthetic)"
+  ambient_summary: "synthetic: 23±1 °C, 45±5 %RH"

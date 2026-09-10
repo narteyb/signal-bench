@@ -1,0 +1,21 @@
+{
+  "accuracy_retention": {
+    "canonical": 0.8754601226993866,
+    "delta_pp": 0.6339468302658413,
+    "metric": "top1",
+    "variant": 0.881799591002045
+  },
+  "derived_from": "tinyml-kws-ds-cnn-ref-v1",
+  "model_version": "770b0bdf5726a73293bc7d3ac71e26bee0605ae62ab56e80791a8c5a31bec8cf",
+  "prep_method": "quantization-aware-training",
+  "prep_params": {
+    "activation_scheme": "asymmetric",
+    "calibration_set": "speech-commands-v2-subset",
+    "learning_rate": 0.0001,
+    "random_seed": 51031,
+    "target_dtype": "int8",
+    "training_epochs": 13,
+    "weight_scheme": "per-channel"
+  },
+  "prep_pipeline_uri": "variant-pipeline://model-prep/kws-qat-int8"
+}

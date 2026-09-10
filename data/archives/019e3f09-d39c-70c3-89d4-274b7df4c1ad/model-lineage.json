@@ -1,0 +1,22 @@
+{
+  "accuracy_retention": {
+    "canonical": 0.8719,
+    "delta_pp": -1.419999999999999,
+    "metric": "top1",
+    "sparsity_achieved": 0.4000129265770424,
+    "variant": 0.8577
+  },
+  "derived_from": "tinyml-ic-resnet-ref-v1",
+  "prep_method": "magnitude-pruning",
+  "prep_params": {
+    "epochs_per_cycle": 5,
+    "iterative_cycles": 5,
+    "learning_rate_start": 0.001,
+    "pruning_schedule": "polynomial-decay-0-to-40",
+    "random_seed": 41041,
+    "sparsity": 0.4000129265770424,
+    "sparsity_target": 0.4,
+    "storage": "dense-zeroed-weights"
+  },
+  "prep_pipeline_uri": "variant-pipeline://model-prep/ic-resnet-prune-40"
+}

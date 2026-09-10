@@ -1,0 +1,28 @@
+name: security
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  dependency-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v3
+      - run: uv python install 3.12
+      - run: uv sync --extra dev
+      - name: Audit locked dependencies
+        run: |
+          uv export --all-extras --format requirements.txt --no-hashes --no-emit-project > /tmp/signal-bench-all-extras-requirements.txt
+          uv run pip-audit -r /tmp/signal-bench-all-extras-requirements.txt --no-deps --disable-pip
+
+  static-analysis:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v3
+      - run: uv python install 3.12
+      - run: uv sync --extra dev
+      - name: Run Bandit
+        run: uv run bandit -r src scripts tools experiments --severity-level medium --confidence-level medium

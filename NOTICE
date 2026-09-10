@@ -1,0 +1,28 @@
+signal-bench
+Copyright (c) 2026 Agoo AI LLC
+
+This product includes derivative works from MLPerf Tiny, the embedded ML
+benchmark suite from MLCommons.
+
+The reference models in models/reference/ are unmodified artifacts sourced
+from https://github.com/mlcommons/tiny at commit
+5dae3296bd899ed58a65311a8e6fd91d83f664ab.
+
+MLPerf Tiny is licensed under the Apache License, Version 2.0. The full
+license is available at:
+  https://github.com/mlcommons/tiny/blob/master/LICENSE
+
+This product's use of these reference models is in compliance with the
+Apache License, Version 2.0. Attribution required by Section 4(d) of that
+license is preserved in this NOTICE.
+
+For per-model provenance (architecture, reference accuracy, source path),
+see models/reference/<task>/provenance.yaml.
+
+This product also includes a compact keyword-spotting MCU input subset derived
+from Google Speech Commands v0.02, published by Pete Warden, under the Creative
+Commons Attribution 4.0 International license. The subset is filtered to the
+MLPerf Tiny 12-class target set and converted to MFCC features for MCU
+reproduction. It is not covered by this repository's Apache-2.0 license. For
+license details, attribution, change notices, and regeneration instructions,
+see docs/third-party-data.md.

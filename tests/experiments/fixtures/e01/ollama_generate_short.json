@@ -1,0 +1,13 @@
+[
+  {"response": "The Eiffel Tower was completed in 1889.", "done": false},
+  {
+    "response": "",
+    "done": true,
+    "prompt_eval_count": 17,
+    "eval_count": 9,
+    "total_duration": 1286000000,
+    "load_duration": 0,
+    "prompt_eval_duration": 100000000,
+    "eval_duration": 1186000000
+  }
+]

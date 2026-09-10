@@ -1,0 +1,1 @@
+{"derived_from":"tinyml-kws-ds-cnn-ref-v1","prep_method":"quantization-aware-training","prep_params":{"target_dtype":"int8"},"accuracy_retention":{"metric":"top1","canonical":0.943,"variant":0.935,"delta_pp":-1.0},"prep_pipeline_uri":"variant-pipeline://model-prep/v1/kws"}

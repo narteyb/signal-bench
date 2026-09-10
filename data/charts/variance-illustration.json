@@ -1,0 +1,36 @@
+{
+  "data": {
+    "datasets": [
+      {
+        "data": [],
+        "label": "KWS on Pi 5"
+      }
+    ],
+    "labels": []
+  },
+  "meta": {
+    "headlineBasis": 0,
+    "mean": null,
+    "nPartial": 0,
+    "nTotal": 0,
+    "partialInferenceCount": 0,
+    "stddev": null
+  },
+  "options": {
+    "plugins": {
+      "legend": {
+        "display": true
+      }
+    },
+    "responsive": true,
+    "scales": {
+      "y": {
+        "title": {
+          "display": true,
+          "text": "Median latency with min/max spread (us)"
+        }
+      }
+    }
+  },
+  "type": "bar"
+}

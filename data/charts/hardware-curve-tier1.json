@@ -1,0 +1,102 @@
+{
+  "data": {
+    "datasets": [
+      {
+        "data": [
+          158926.0,
+          224177.0,
+          106495.5,
+          null,
+          null,
+          null,
+          null
+        ],
+        "futureTiers": [
+          "Pi 5",
+          "Hailo",
+          "Jetson Orin Nano",
+          "M1 Max"
+        ],
+        "label": "KWS",
+        "spanGaps": false,
+        "tension": 0.25
+      },
+      {
+        "data": [
+          755414.25,
+          1232606.25,
+          551062.0,
+          null,
+          null,
+          null,
+          null
+        ],
+        "futureTiers": [
+          "Pi 5",
+          "Hailo",
+          "Jetson Orin Nano",
+          "M1 Max"
+        ],
+        "label": "IC",
+        "spanGaps": false,
+        "tension": 0.25
+      },
+      {
+        "data": [
+          8135.999999999999,
+          12420.5,
+          11723.0,
+          null,
+          null,
+          null,
+          null
+        ],
+        "futureTiers": [
+          "Pi 5",
+          "Hailo",
+          "Jetson Orin Nano",
+          "M1 Max"
+        ],
+        "label": "AD",
+        "spanGaps": false,
+        "tension": 0.25
+      }
+    ],
+    "labels": [
+      "F401RE",
+      "Nano 33",
+      "ESP32-S3",
+      "Pi 5",
+      "Hailo",
+      "Jetson Orin Nano",
+      "M1 Max"
+    ]
+  },
+  "future_tiers": {
+    "labels": [
+      "Pi 5",
+      "Hailo",
+      "Jetson Orin Nano",
+      "M1 Max"
+    ],
+    "note": "future tiers are axis-only; no data points"
+  },
+  "options": {
+    "plugins": {
+      "legend": {
+        "position": "top"
+      }
+    },
+    "responsive": true,
+    "scales": {
+      "y": {
+        "title": {
+          "display": true,
+          "text": "Median latency (us, log scale)"
+        },
+        "type": "logarithmic"
+      }
+    }
+  },
+  "type": "line"
+}

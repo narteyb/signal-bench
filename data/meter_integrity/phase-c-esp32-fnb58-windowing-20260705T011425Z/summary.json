@@ -1,0 +1,76 @@
+{
+  "comparison": {
+    "fnb58_vs_ina219_pct_integrated": -0.924341587621324
+  },
+  "created_at": "2026-07-05T01:16:49.350301+00:00",
+  "duration_requested_s": 140.0,
+  "errors": [],
+  "matched_offset_analysis": {
+    "high_ina_tertile": {
+      "count": 653,
+      "delta_pct_mean": -1.416793174012175,
+      "delta_pct_median": -0.8694651162790445,
+      "fnb_power_mw_mean": 255.8545791424196,
+      "ina_power_mw_mean": 259.5497702909647,
+      "match_age_s_mean": 0.06040373506891271
+    },
+    "ina_thresholds_w": {
+      "high_min": 0.25799999999999995,
+      "low_max": 0.25799999999999995
+    },
+    "low_ina_tertile": {
+      "count": 726,
+      "delta_pct_mean": -0.4087008878208528,
+      "delta_pct_median": -0.6496511627906816,
+      "fnb_power_mw_mean": 255.83279294765842,
+      "ina_power_mw_mean": 256.89256198347107,
+      "match_age_s_mean": 0.06362335399449036
+    },
+    "matched_count": 960,
+    "mid_ina_tertile": {
+      "count": 0
+    },
+    "overall": {
+      "count": 960,
+      "delta_pct_mean": -0.9119555801618128,
+      "delta_pct_median": -0.8429302325581173,
+      "fnb_power_mw_mean": 255.83268111458335,
+      "ina_power_mw_mean": 258.2166666666666,
+      "match_age_s_mean": 0.062182886458333336
+    }
+  },
+  "phase": "meter-integrity-phase-c-fnb58-windowing",
+  "protocol": "diagnostic",
+  "run_id": "phase-c-esp32-fnb58-windowing-20260705T011425Z",
+  "setup": "ESP32-S3 telemetry-load on metered rail; one INA219 rail-side, FNB58 upstream; no serial action during capture",
+  "source_summaries": {
+    "fnb58": {
+      "avg_power_mw": 255.83097051425767,
+      "avg_power_w": 0.2558309705142577,
+      "duration_s": 139.55394,
+      "joules": 35.70221990928849,
+      "power_w_max": 0.2568433,
+      "power_w_mean_sample": 0.2558289672142857,
+      "power_w_min": 0.25475456999999996,
+      "power_w_p10": 0.25528256000000005,
+      "power_w_p50": 0.25580568000000004,
+      "power_w_p90": 0.25633859999999997,
+      "sample_count": 560
+    },
+    "ina219_0x40": {
+      "avg_power_mw": 258.2177848865991,
+      "avg_power_w": 0.2582177848865991,
+      "duration_s": 140.081984,
+      "joules": 36.17165961100002,
+      "power_w_max": 0.26599999999999996,
+      "power_w_mean_sample": 0.25821436004162324,
+      "power_w_min": 0.24999999999999994,
+      "power_w_p10": 0.25599999999999995,
+      "power_w_p50": 0.25799999999999995,
+      "power_w_p90": 0.26199999999999996,
+      "sample_count": 961
+    }
+  },
+  "window_finished_at": "2026-07-05T01:16:49.347001+00:00",
+  "window_started_at": "2026-07-05T01:14:28.947764+00:00"
+}

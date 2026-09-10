@@ -1,0 +1,11 @@
+n3_accuracy_floors:
+  kws:
+    metric: top1
+    floor_delta_pp: -2.0
+  ic:
+    metric: top1
+    floor_delta_pp: -1.5
+    floor_sparsity: 0.40
+  ad:
+    metric: auroc
+    floor_ratio: 0.97

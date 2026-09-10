@@ -1,0 +1,48 @@
+{
+  "attached_comparison": {
+    "attached_artifact": "data/meter_integrity/phase-d-nano-usb-attached-20260705T013643Z/summary.json",
+    "fnb_attached_mw": 31.406225602028382,
+    "fnb_disconnected_mw": 30.8863452635438,
+    "fnb_disconnected_vs_attached_pct": -1.6553416671980046,
+    "ina_attached_mw": 32.864687331796986,
+    "ina_disconnected_mw": 32.291749370000915,
+    "ina_disconnected_vs_attached_pct": -1.7433239391927737
+  },
+  "comparison": {
+    "fnb58_vs_ina219_pct_integrated": -4.3522080217888055
+  },
+  "created_at": "2026-07-05T01:40:46.875793+00:00",
+  "duration_requested_s": 60.0,
+  "errors": [],
+  "phase": "meter-integrity-phase-d-nano-usb-bypass",
+  "protocol": "diagnostic",
+  "run_id": "phase-d-nano-usb-disconnected-20260705T013942Z",
+  "setup": "Nano 33 on metered rail with Nano USB serial disconnected; paired bypass-candidate test",
+  "source_summaries": {
+    "fnb58": {
+      "avg_power_mw": 30.8863452635438,
+      "avg_power_w": 0.030886345263543797,
+      "duration_s": 59.556688,
+      "joules": 1.8394884283211557,
+      "power_w_max": 0.03095553,
+      "power_w_mean_sample": 0.03088617795833333,
+      "power_w_min": 0.03082219,
+      "power_w_p50": 0.0308865,
+      "sample_count": 240
+    },
+    "ina219_0x40": {
+      "avg_power_mw": 32.291749370000915,
+      "avg_power_w": 0.03229174937000091,
+      "duration_s": 60.371911,
+      "joules": 1.9495146190000012,
+      "power_w_max": 0.03599999999999999,
+      "power_w_mean_sample": 0.03225125628140703,
+      "power_w_min": 0.025999999999999995,
+      "power_w_p50": 0.031999999999999994,
+      "sample_count": 398
+    }
+  },
+  "usb_state": "disconnected",
+  "window_finished_at": "2026-07-05T01:40:46.867982+00:00",
+  "window_started_at": "2026-07-05T01:39:46.426726+00:00"
+}

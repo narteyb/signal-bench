@@ -1,0 +1,1249 @@
+schema_version: 1
+report_id: post-1-tinyml-reality-check
+post_slug: tinyml-reality-check
+generated_at: '2026-07-08T22:52:18.286853Z'
+generated_from_runs: 48
+published_run_basis: canonical_a03_sessions
+source_matrix_yaml: data/matrices/post-1-data.yml
+scope:
+  tier: tier1
+  tasks:
+  - kws
+  - ic
+  - ad
+  targets:
+  - f401re
+  - nano33
+  - esp32s3
+  excluded_targets:
+  - pi5
+  - hailo
+  - jetson
+  - m1max
+  - modal
+hardware_curve:
+  chart_type: line
+  chartjs_type: line
+  title: Latency across the hardware curve
+  source_file: data/charts/hardware-curve-tier1.json
+  builder: build_hardware_curve(matrix_data, tier="tier1") with canonical A03 run
+    selection
+  x_axis:
+    label: Hardware target
+    unit: none
+    scale: categorical
+    values:
+    - F401RE
+    - Nano 33
+    - ESP32-S3
+    - Pi 5
+    - Hailo
+    - Jetson Orin Nano
+    - M1 Max
+    convention: Tier 1 MCU points only; future tiers extend the curve.
+  y_axis:
+    label: Median latency
+    unit: ms
+    scale: logarithmic
+  future_tiers:
+    labels:
+    - Pi 5
+    - Hailo
+    - Jetson Orin Nano
+    - M1 Max
+    note: Axis labels only; no future-tier values are plotted in Post 1.
+  series:
+  - label: KWS
+    task: kws
+    color: var(--signal-green)
+    data:
+    - x: F401RE
+      y: 158.926
+      wh_per_1000: 0.021381733
+      accuracy: 0.8832310838445808
+    - x: Nano 33
+      y: 224.177
+      wh_per_1000: 0.002631484
+      accuracy: 0.8832310838445808
+    - x: ESP32-S3
+      y: 106.4955
+      wh_per_1000: 0.01357263
+      accuracy: 0.8832310838445808
+    - null
+    - null
+    - null
+    - null
+  - label: IC
+    task: ic
+    color: var(--amber)
+    data:
+    - x: F401RE
+      y: 755.41425
+      wh_per_1000: 0.071801844
+      accuracy_note: not included in A01 full eval
+    - x: Nano 33
+      y: 1232.60625
+      wh_per_1000: 0.014185168
+      accuracy_note: not included in A01 full eval
+    - x: ESP32-S3
+      y: 551.062
+      wh_per_1000: 0.068578136
+      accuracy_note: not included in A01 full eval
+    - null
+    - null
+    - null
+    - null
+  - label: AD
+    task: ad
+    color: var(--coral)
+    data:
+    - x: F401RE
+      y: 8.136
+      wh_per_1000: 0.001295447
+      accuracy: 0.8496875
+    - x: Nano 33
+      y: 12.4205
+      wh_per_1000: 0.000188939
+      accuracy: 0.8496875
+    - x: ESP32-S3
+      y: 11.723
+      wh_per_1000: 0.001434546
+      accuracy: 0.8496875
+    - null
+    - null
+    - null
+    - null
+  annotations:
+  - type: continuation
+    label: Future tiers continue the curve
+    position: x_axis_right
+  caption: 'The curve starts at the MCU floor: three boards, three workloads, and
+    real Tier 1 latency, energy, and accuracy metadata. Future-tier labels are
+    shown on the axis only; no Pi 5, Hailo, Jetson, or M1 Max values are plotted
+    in Post 1.'
+energy_comparison_tier1:
+  chart_type: bar
+  chartjs_type: bar
+  title: Wh per 1000 inferences across Tier 1
+  source_file: data/charts/wh-comparison-tier1.json
+  builder: build_wh_comparison(matrix_data, tier="tier1") with canonical A03 run selection
+  x_axis:
+    label: Hardware target
+    unit: none
+    scale: categorical
+    values:
+    - F401RE
+    - Nano 33
+    - ESP32-S3
+    grouping: Three task bars per target.
+  y_axis:
+    label: Energy per 1000 inferences
+    unit: Wh/1000
+    scale: logarithmic
+    rationale: 'D26-B: log scale keeps low-energy and high-energy cells legible together.'
+  series:
+  - label: KWS
+    task: kws
+    color: var(--signal-green)
+    data:
+    - 0.021381733
+    - 0.002631484
+    - 0.01357263
+  - label: IC
+    task: ic
+    color: var(--amber)
+    data:
+    - 0.071801844
+    - 0.014185168
+    - 0.068578136
+  - label: AD
+    task: ad
+    color: var(--coral)
+    data:
+    - 0.001295447
+    - 0.000188939
+    - 0.001434546
+  annotations: []
+  caption: Energy is normalized to Wh/1000 inferences over the inference window. The
+    log axis is intentional.
+variance_illustration:
+  chart_type: bar
+  chartjs_type: bar
+  title: Run-to-run variance for a representative MCU cell
+  source_file: data/charts/variance-illustration.json
+  builder: build_variance_illustration(matrix_data, task="kws", target="nano33") with
+    canonical A03 run selection
+  representative_cell:
+    task: kws
+    target: nano33
+    label: KWS / Nano 33
+    rationale: KWS is the familiar always-on TinyML workload; Nano 33 is the middle
+      MCU in the Tier 1 floor.
+  x_axis:
+    label: Run
+    unit: none
+    scale: categorical
+    values:
+    - Run 1
+    - Run 2
+    - Run 3
+  y_axis:
+    label: Median latency with min/max spread
+    unit: ms
+    scale: linear
+  series:
+  - label: KWS on Nano 33
+    task: kws
+    target: nano33
+    data:
+    - 224.226
+    - 224.222
+    - 224.132
+    runs:
+    - session: session_1
+      run_id: 019e5da7-ef3e-7830-94a8-2ef6f6845b8e
+      started_at: '2026-05-25T05:42:27.390442Z'
+      telemetry_partial: false
+      latency_ms:
+        mean: 224.22493
+        p50: 224.226
+        p99: 224.251
+        min: 224.195
+        max: 224.252
+      energy_wh_per_1000: 0.002729146
+      avg_power_w: 0.037564
+      telemetry_counts:
+        bme280:
+          humidity: 71
+          pressure: 71
+          temperature: 71
+        fnb58:
+          current: 284
+          power: 284
+          voltage: 284
+        ina219:
+          current: 490
+          power: 490
+          voltage: 490
+    - session: session_2
+      run_id: 019e674c-cd81-7243-9470-a0d817a5b26d
+      started_at: '2026-05-27T02:39:07.138275Z'
+      telemetry_partial: false
+      latency_ms:
+        mean: 224.220021
+        p50: 224.222
+        p99: 224.23622
+        min: 224.194
+        max: 224.238
+      energy_wh_per_1000: 0.002429957
+      avg_power_w: 0.037668
+      telemetry_counts:
+        bme280:
+          humidity: 33
+          pressure: 33
+          temperature: 33
+        ina219:
+          current: 223
+          power: 223
+          voltage: 223
+    - session: session_3
+      run_id: 019e756b-3d0c-7610-be25-85b897d45d51
+      started_at: '2026-05-29T20:27:02.796657Z'
+      telemetry_partial: false
+      latency_ms:
+        mean: 224.131016
+        p50: 224.132
+        p99: 224.16114
+        min: 224.094
+        max: 224.167
+      energy_wh_per_1000: 0.002664703
+      avg_power_w: 0.038018
+      telemetry_counts:
+        bme280:
+          humidity: 33
+          pressure: 33
+          temperature: 33
+        ina219:
+          current: 217
+          power: 217
+          voltage: 217
+  meta:
+    nTotal: 3
+    nPartial: 0
+    headlineBasis: 3
+    partialInferenceCount: 0
+    mean_ms: 224.191989
+    stddev_ms: 0.053154
+    variance_pct: 0.0237
+    min_observed_ms: 224.094
+    max_observed_ms: 224.252
+  annotations:
+  - type: partial_telemetry_flag
+    condition: point.partial == true
+    label: partial telemetry
+  caption: Each bar is one KWS run on the Nano 33; the spread is kept visible instead
+    of collapsing the cell to one polished number.
+  matrix:
+  schema_version: 1
+  matrix_name: post-1-tier1-canonical-a03
+  generated_at: '2026-07-08T22:52:18.286853Z'
+  generated_from_runs: 48
+  published_cells:
+  - task: kws
+    target: f401re
+    status: ok
+    required_runs: 3
+    published_run_count: 3
+    raw_run_count: 11
+    run_ids:
+    - 019f366f-357b-7820-b347-949b9832f1e8
+    - 019f3d8a-7a6e-7f92-81de-8e9e49eb795a
+    - 019f43e6-85da-76c2-a654-e834f3f159a7
+    summary:
+      latency_ms:
+        mean: 158.926498
+        p50: 158.926
+        p99: 158.98698
+        stddev_across_runs: 0.002291
+        variance_pct: 0.0014
+        min_observed: 158.868
+        max_observed: 158.992
+      energy_wh_per_1000:
+        mean: 0.021345605
+        p50: 0.021381733
+        stddev_across_runs: 0.000211786
+        variance_pct: 0.9922
+      avg_power_w:
+        mean: 0.461914
+        p50: 0.462305
+    runs:
+    - session: session_1
+      run_id: 019f366f-357b-7820-b347-949b9832f1e8
+      started_at: '2026-07-06T07:58:05.691746Z'
+      telemetry_partial: false
+      latency_ms:
+        mean: 158.930891
+        p50: 158.923
+        p99: 158.98199
+        min: 158.868
+        max: 158.987
+      energy_wh_per_1000: 0.021537003
+      avg_power_w: 0.465825
+      telemetry_counts:
+        bme280:
+          humidity: 34
+          pressure: 34
+          temperature: 34
+        fnb58:
+          current: 134
+          power: 134
+          voltage: 134
+        ina219:
+          current: 229
+          power: 229
+          voltage: 229
+    - session: session_2
+      run_id: 019f3d8a-7a6e-7f92-81de-8e9e49eb795a
+      started_at: '2026-07-07T17:05:16.160270Z'
+      telemetry_partial: false
+      latency_ms:
+        mean: 158.932025
+        p50: 158.926
+        p99: 158.98698
+        min: 158.879
+        max: 158.992
+      energy_wh_per_1000: 0.021381733
+      avg_power_w: 0.462305
+      telemetry_counts:
+        bme280:
+          humidity: 34
+          pressure: 34
+          temperature: 34
+        fnb58:
+          current: 134
+          power: 134
+          voltage: 134
+        ina219:
+          current: 223
+          power: 223
+          voltage: 223
+    - session: session_3
+      run_id: 019f43e6-85da-76c2-a654-e834f3f159a7
+      started_at: '2026-07-08T22:43:33.720305Z'
+      telemetry_partial: false
+      latency_ms:
+        mean: 158.931733
+        p50: 158.9275
+        p99: 158.985
+        min: 158.879
+        max: 158.986
+      energy_wh_per_1000: 0.02111808
+      avg_power_w: 0.457613
+      telemetry_counts:
+        bme280:
+          humidity: 34
+          pressure: 34
+          temperature: 34
+        fnb58:
+          current: 135
+          power: 135
+          voltage: 135
+        ina219:
+          current: 222
+          power: 222
+          voltage: 222
+  - task: kws
+    target: nano33
+    status: ok
+    required_runs: 3
+    published_run_count: 3
+    raw_run_count: 7
+    run_ids:
+    - 019e5da7-ef3e-7830-94a8-2ef6f6845b8e
+    - 019e674c-cd81-7243-9470-a0d817a5b26d
+    - 019e756b-3d0c-7610-be25-85b897d45d51
+    summary:
+      latency_ms:
+        mean: 224.191989
+        p50: 224.222
+        p99: 224.23622
+        stddev_across_runs: 0.053154
+        variance_pct: 0.0237
+        min_observed: 224.094
+        max_observed: 224.252
+      energy_wh_per_1000:
+        mean: 0.002607935
+        p50: 0.002664703
+        stddev_across_runs: 0.000157466
+        variance_pct: 6.0379
+      avg_power_w:
+        mean: 0.03775
+        p50: 0.037668
+    runs:
+    - session: session_1
+      run_id: 019e5da7-ef3e-7830-94a8-2ef6f6845b8e
+      started_at: '2026-05-25T05:42:27.390442Z'
+      telemetry_partial: false
+      latency_ms:
+        mean: 224.22493
+        p50: 224.226
+        p99: 224.251
+        min: 224.195
+        max: 224.252
+      energy_wh_per_1000: 0.002729146
+      avg_power_w: 0.037564
+      telemetry_counts:
+        bme280:
+          humidity: 71
+          pressure: 71
+          temperature: 71
+        fnb58:
+          current: 284
+          power: 284
+          voltage: 284
+        ina219:
+          current: 490
+          power: 490
+          voltage: 490
+    - session: session_2
+      run_id: 019e674c-cd81-7243-9470-a0d817a5b26d
+      started_at: '2026-05-27T02:39:07.138275Z'
+      telemetry_partial: false
+      latency_ms:
+        mean: 224.220021
+        p50: 224.222
+        p99: 224.23622
+        min: 224.194
+        max: 224.238
+      energy_wh_per_1000: 0.002429957
+      avg_power_w: 0.037668
+      telemetry_counts:
+        bme280:
+          humidity: 33
+          pressure: 33
+          temperature: 33
+        ina219:
+          current: 223
+          power: 223
+          voltage: 223
+    - session: session_3
+      run_id: 019e756b-3d0c-7610-be25-85b897d45d51
+      started_at: '2026-05-29T20:27:02.796657Z'
+      telemetry_partial: false
+      latency_ms:
+        mean: 224.131016
+        p50: 224.132
+        p99: 224.16114
+        min: 224.094
+        max: 224.167
+      energy_wh_per_1000: 0.002664703
+      avg_power_w: 0.038018
+      telemetry_counts:
+        bme280:
+          humidity: 33
+          pressure: 33
+          temperature: 33
+        ina219:
+          current: 217
+          power: 217
+          voltage: 217
+  - task: kws
+    target: esp32s3
+    status: ok
+    required_runs: 3
+    published_run_count: 3
+    raw_run_count: 3
+    run_ids:
+    - 019e5d8a-b23b-7c12-a163-1a0d0496eaa9
+    - 019e653b-a89f-72b2-a648-adc974d864fc
+    - 019e71e7-8c70-7521-907f-5825a87931ad
+    summary:
+      latency_ms:
+        mean: 106.501574
+        p50: 106.4955
+        p99: 106.518
+        stddev_across_runs: 0.00852
+        variance_pct: 0.008
+        min_observed: 106.476
+        max_observed: 106.538
+      energy_wh_per_1000:
+        mean: 0.013717013
+        p50: 0.01357263
+        stddev_across_runs: 0.000280723
+        variance_pct: 2.0465
+      avg_power_w:
+        mean: 0.442076
+        p50: 0.4427
+    runs:
+    - session: session_1
+      run_id: 019e5d8a-b23b-7c12-a163-1a0d0496eaa9
+      started_at: '2026-05-25T05:10:31.227648Z'
+      telemetry_partial: false
+      latency_ms:
+        mean: 106.496608
+        p50: 106.495
+        p99: 106.518
+        min: 106.479
+        max: 106.518
+      energy_wh_per_1000: 0.01357263
+      avg_power_w: 0.444141
+      telemetry_counts:
+        bme280:
+          humidity: 71
+          pressure: 71
+          temperature: 71
+        fnb58:
+          current: 282
+          power: 282
+          voltage: 282
+        ina219:
+          current: 487
+          power: 487
+          voltage: 487
+    - session: session_2
+      run_id: 019e653b-a89f-72b2-a648-adc974d864fc
+      started_at: '2026-05-26T17:01:09.151405Z'
+      telemetry_partial: false
+      latency_ms:
+        mean: 106.495818
+        p50: 106.4955
+        p99: 106.51609
+        min: 106.476
+        max: 106.517
+      energy_wh_per_1000: 0.013537866
+      avg_power_w: 0.439387
+      telemetry_counts:
+        bme280:
+          humidity: 33
+          pressure: 33
+          temperature: 33
+        ina219:
+          current: 224
+          power: 224
+          voltage: 224
+    - session: session_3
+      run_id: 019e71e7-8c70-7521-907f-5825a87931ad
+      started_at: '2026-05-29T04:04:20.720796Z'
+      telemetry_partial: false
+      latency_ms:
+        mean: 106.512296
+        p50: 106.51
+        p99: 106.53617
+        min: 106.491
+        max: 106.538
+      energy_wh_per_1000: 0.014040542
+      avg_power_w: 0.4427
+      telemetry_counts:
+        bme280:
+          humidity: 33
+          pressure: 33
+          temperature: 33
+        ina219:
+          current: 226
+          power: 226
+          voltage: 226
+  - task: ic
+    target: f401re
+    status: ok
+    required_runs: 3
+    published_run_count: 3
+    raw_run_count: 4
+    run_ids:
+    - 019e7598-6637-7dd0-974b-881675b0bedc
+    - 019e759a-52b9-71e0-8769-486b450e2244
+    - 019e75fe-9c3b-7061-9423-2831fac5798d
+    summary:
+      latency_ms:
+        mean: 755.417743
+        p50: 755.418
+        p99: 755.50026
+        stddev_across_runs: 0.006292
+        variance_pct: 0.0008
+        min_observed: 755.336
+        max_observed: 755.513
+      energy_wh_per_1000:
+        mean: 0.071838467
+        p50: 0.071801844
+        stddev_across_runs: 0.000280734
+        variance_pct: 0.3908
+      avg_power_w:
+        mean: 0.34091
+        p50: 0.341233
+    runs:
+    - session: session_1
+      run_id: 019e7598-6637-7dd0-974b-881675b0bedc
+      started_at: '2026-05-29T21:16:22.455502Z'
+      telemetry_partial: false
+      latency_ms:
+        mean: 755.416467
+        p50: 755.4105
+        p99: 755.50109
+        min: 755.336
+        max: 755.502
+      energy_wh_per_1000: 0.072135714
+      avg_power_w: 0.341233
+      telemetry_counts:
+        bme280:
+          humidity: 71
+          pressure: 71
+          temperature: 71
+        fnb58:
+          current: 280
+          power: 280
+          voltage: 280
+        ina219:
+          current: 469
+          power: 469
+          voltage: 469
+    - session: session_2
+      run_id: 019e759a-52b9-71e0-8769-486b450e2244
+      started_at: '2026-05-29T21:18:28.537505Z'
+      telemetry_partial: false
+      latency_ms:
+        mean: 755.418891
+        p50: 755.423
+        p99: 755.50026
+        min: 755.34
+        max: 755.513
+      energy_wh_per_1000: 0.071801844
+      avg_power_w: 0.339434
+      telemetry_counts:
+        bme280:
+          humidity: 71
+          pressure: 71
+          temperature: 71
+        fnb58:
+          current: 280
+          power: 280
+          voltage: 280
+        ina219:
+          current: 465
+          power: 465
+          voltage: 465
+    - session: session_3
+      run_id: 019e75fe-9c3b-7061-9423-2831fac5798d
+      started_at: '2026-05-29T23:08:00.956378Z'
+      telemetry_partial: false
+      latency_ms:
+        mean: 755.417871
+        p50: 755.418
+        p99: 755.49216
+        min: 755.342
+        max: 755.494
+      energy_wh_per_1000: 0.071577842
+      avg_power_w: 0.342063
+      telemetry_counts:
+        bme280:
+          humidity: 71
+          pressure: 71
+          temperature: 71
+        fnb58:
+          current: 281
+          power: 281
+          voltage: 281
+        ina219:
+          current: 480
+          power: 480
+          voltage: 480
+  - task: ic
+    target: nano33
+    status: ok
+    required_runs: 3
+    published_run_count: 3
+    raw_run_count: 4
+    run_ids:
+    - 019e5daa-6c50-77d2-a24c-6ff624d22cc5
+    - 019e674a-f6b6-7092-a5d0-b84111bc0858
+    - 019e7569-6922-7123-be2a-5478fcbd3e5f
+    summary:
+      latency_ms:
+        mean: 1232.654082
+        p50: 1232.6125
+        p99: 1233.22676
+        stddev_across_runs: 0.118666
+        variance_pct: 0.0096
+        min_observed: 1231.541
+        max_observed: 1233.287
+      energy_wh_per_1000:
+        mean: 0.014120332
+        p50: 0.014185168
+        stddev_across_runs: 0.00037566
+        variance_pct: 2.6604
+      avg_power_w:
+        mean: 0.039784
+        p50: 0.03979
+    runs:
+    - session: session_1
+      run_id: 019e5daa-6c50-77d2-a24c-6ff624d22cc5
+      started_at: '2026-05-25T05:45:10.480467Z'
+      telemetry_partial: false
+      latency_ms:
+        mean: 1232.771093
+        p50: 1232.8115
+        p99: 1233.25414
+        min: 1232.213
+        max: 1233.287
+      energy_wh_per_1000: 0.014459354
+      avg_power_w: 0.03979
+      telemetry_counts:
+        bme280:
+          humidity: 71
+          pressure: 71
+          temperature: 71
+        fnb58:
+          current: 282
+          power: 282
+          voltage: 282
+        ina219:
+          current: 488
+          power: 488
+          voltage: 488
+    - session: session_2
+      run_id: 019e674a-f6b6-7092-a5d0-b84111bc0858
+      started_at: '2026-05-27T02:37:06.615077Z'
+      telemetry_partial: false
+      latency_ms:
+        mean: 1232.611154
+        p50: 1232.6125
+        p99: 1233.0635
+        min: 1231.541
+        max: 1233.068
+      energy_wh_per_1000: 0.013716474
+      avg_power_w: 0.039595
+      telemetry_counts:
+        bme280:
+          humidity: 33
+          pressure: 33
+          temperature: 33
+        ina219:
+          current: 224
+          power: 224
+          voltage: 224
+    - session: session_3
+      run_id: 019e7569-6922-7123-be2a-5478fcbd3e5f
+      started_at: '2026-05-29T20:25:03.010607Z'
+      telemetry_partial: false
+      latency_ms:
+        mean: 1232.58
+        p50: 1232.6
+        p99: 1233.22676
+        min: 1231.699
+        max: 1233.269
+      energy_wh_per_1000: 0.014185168
+      avg_power_w: 0.039966
+      telemetry_counts:
+        bme280:
+          humidity: 33
+          pressure: 33
+          temperature: 33
+        ina219:
+          current: 212
+          power: 212
+          voltage: 212
+  - task: ic
+    target: esp32s3
+    status: ok
+    required_runs: 3
+    published_run_count: 3
+    raw_run_count: 3
+    run_ids:
+    - 019e5d8c-b9d7-76c1-ad1d-320a29516ca4
+    - 019e653a-5889-71d1-8252-562d3a20e2e2
+    - 019e71e6-290e-70a0-a30c-fc3b5f797aba
+    summary:
+      latency_ms:
+        mean: 551.065638
+        p50: 551.062
+        p99: 551.08
+        stddev_across_runs: 0.007858
+        variance_pct: 0.0014
+        min_observed: 551.047
+        max_observed: 551.087
+      energy_wh_per_1000:
+        mean: 0.068638274
+        p50: 0.068578136
+        stddev_across_runs: 0.000507077
+        variance_pct: 0.7388
+      avg_power_w:
+        mean: 0.439012
+        p50: 0.440024
+    runs:
+    - session: session_1
+      run_id: 019e5d8c-b9d7-76c1-ad1d-320a29516ca4
+      started_at: '2026-05-25T05:12:44.247560Z'
+      telemetry_partial: false
+      latency_ms:
+        mean: 551.062
+        p50: 551.062
+        p99: 551.08
+        min: 551.047
+        max: 551.08
+      energy_wh_per_1000: 0.068163948
+      avg_power_w: 0.440024
+      telemetry_counts:
+        bme280:
+          humidity: 71
+          pressure: 71
+          temperature: 71
+        fnb58:
+          current: 284
+          power: 284
+          voltage: 284
+        ina219:
+          current: 489
+          power: 489
+          voltage: 489
+    - session: session_2
+      run_id: 019e653a-5889-71d1-8252-562d3a20e2e2
+      started_at: '2026-05-26T16:59:43.113263Z'
+      telemetry_partial: false
+      latency_ms:
+        mean: 551.061621
+        p50: 551.06
+        p99: 551.07715
+        min: 551.048
+        max: 551.08
+      energy_wh_per_1000: 0.068578136
+      avg_power_w: 0.43661
+      telemetry_counts:
+        bme280:
+          humidity: 33
+          pressure: 33
+          temperature: 33
+        ina219:
+          current: 227
+          power: 227
+          voltage: 227
+    - session: session_3
+      run_id: 019e71e6-290e-70a0-a30c-fc3b5f797aba
+      started_at: '2026-05-29T04:02:49.742895Z'
+      telemetry_partial: false
+      latency_ms:
+        mean: 551.073293
+        p50: 551.0745
+        p99: 551.087
+        min: 551.055
+        max: 551.087
+      energy_wh_per_1000: 0.069172739
+      avg_power_w: 0.440403
+      telemetry_counts:
+        bme280:
+          humidity: 33
+          pressure: 33
+          temperature: 33
+        ina219:
+          current: 229
+          power: 229
+          voltage: 229
+  - task: ad
+    target: f401re
+    status: ok
+    required_runs: 3
+    published_run_count: 3
+    raw_run_count: 8
+    run_ids:
+    - 019f3676-d96e-7f10-9907-3586f4f15606
+    - 019f3d8d-b3fd-79b2-885f-007399c54367
+    - 019f43ea-02f5-7ac0-a2c0-e4fd615f9b08
+    summary:
+      latency_ms:
+        mean: 8.136
+        p50: 8.136
+        p99: 8.181
+        stddev_across_runs: 0.0
+        variance_pct: 0.0
+        min_observed: 8.086
+        max_observed: 8.186
+      energy_wh_per_1000:
+        mean: 0.001300346
+        p50: 0.001295447
+        stddev_across_runs: 0.000013404
+        variance_pct: 1.0308
+      avg_power_w:
+        mean: 0.384446
+        p50: 0.384272
+    runs:
+    - session: session_1
+      run_id: 019f3676-d96e-7f10-9907-3586f4f15606
+      started_at: '2026-07-06T08:06:26.414626Z'
+      telemetry_partial: false
+      latency_ms:
+        mean: 8.137278
+        p50: 8.136
+        p99: 8.181
+        min: 8.086
+        max: 8.184
+      energy_wh_per_1000: 0.00129008
+      avg_power_w: 0.380984
+      telemetry_counts:
+        bme280:
+          humidity: 48
+          pressure: 48
+          temperature: 48
+        fnb58:
+          current: 191
+          power: 191
+          voltage: 191
+        ina219:
+          current: 315
+          power: 315
+          voltage: 315
+    - session: session_2
+      run_id: 019f3d8d-b3fd-79b2-885f-007399c54367
+      started_at: '2026-07-07T17:08:49.616481Z'
+      telemetry_partial: false
+      latency_ms:
+        mean: 8.137198
+        p50: 8.136
+        p99: 8.181
+        min: 8.086
+        max: 8.184
+      energy_wh_per_1000: 0.00131551
+      avg_power_w: 0.388083
+      telemetry_counts:
+        bme280:
+          humidity: 48
+          pressure: 48
+          temperature: 48
+        fnb58:
+          current: 192
+          power: 192
+          voltage: 192
+        ina219:
+          current: 315
+          power: 315
+          voltage: 315
+    - session: session_3
+      run_id: 019f43ea-02f5-7ac0-a2c0-e4fd615f9b08
+      started_at: '2026-07-08T22:47:21.483171Z'
+      telemetry_partial: false
+      latency_ms:
+        mean: 8.137214
+        p50: 8.136
+        p99: 8.181
+        min: 8.086
+        max: 8.184
+      energy_wh_per_1000: 0.001295447
+      avg_power_w: 0.384272
+      telemetry_counts:
+        bme280:
+          humidity: 48
+          pressure: 48
+          temperature: 48
+        fnb58:
+          current: 192
+          power: 192
+          voltage: 192
+        ina219:
+          current: 316
+          power: 316
+          voltage: 316
+  - task: ad
+    target: nano33
+    status: ok
+    required_runs: 3
+    published_run_count: 3
+    raw_run_count: 4
+    run_ids:
+    - 019e5dac-d497-7a52-b3a9-ba11b3f2185f
+    - 019e6748-d2ff-7271-90c9-fe0415802f39
+    - 019e7567-3aea-7621-9671-32874cf4529e
+    summary:
+      latency_ms:
+        mean: 12.419966
+        p50: 12.421
+        p99: 12.448
+        stddev_across_runs: 0.009815
+        variance_pct: 0.0791
+        min_observed: 12.396
+        max_observed: 12.46
+      energy_wh_per_1000:
+        mean: 0.000188763
+        p50: 0.000188939
+        stddev_across_runs: 3.46e-07
+        variance_pct: 0.1833
+      avg_power_w:
+        mean: 0.037027
+        p50: 0.037019
+    runs:
+    - session: session_1
+      run_id: 019e5dac-d497-7a52-b3a9-ba11b3f2185f
+      started_at: '2026-05-25T05:47:48.247740Z'
+      telemetry_partial: false
+      latency_ms:
+        mean: 12.422005
+        p50: 12.421
+        p99: 12.448
+        min: 12.396
+        max: 12.46
+      energy_wh_per_1000: 0.000188939
+      avg_power_w: 0.037019
+      telemetry_counts:
+        bme280:
+          humidity: 104
+          pressure: 104
+          temperature: 104
+        fnb58:
+          current: 415
+          power: 415
+          voltage: 415
+        ina219:
+          current: 708
+          power: 708
+          voltage: 708
+    - session: session_2
+      run_id: 019e6748-d2ff-7271-90c9-fe0415802f39
+      started_at: '2026-05-27T02:34:46.399797Z'
+      telemetry_partial: false
+      latency_ms:
+        mean: 12.422102
+        p50: 12.421
+        p99: 12.448
+        min: 12.397
+        max: 12.448
+      energy_wh_per_1000: 0.000188986
+      avg_power_w: 0.036858
+      telemetry_counts:
+        bme280:
+          humidity: 48
+          pressure: 48
+          temperature: 48
+        ina219:
+          current: 331
+          power: 331
+          voltage: 331
+    - session: session_3
+      run_id: 019e7567-3aea-7621-9671-32874cf4529e
+      started_at: '2026-05-29T20:22:40.107209Z'
+      telemetry_partial: false
+      latency_ms:
+        mean: 12.415791
+        p50: 12.404
+        p99: 12.448
+        min: 12.396
+        max: 12.448
+      energy_wh_per_1000: 0.000188364
+      avg_power_w: 0.037205
+      telemetry_counts:
+        bme280:
+          humidity: 48
+          pressure: 48
+          temperature: 48
+        ina219:
+          current: 313
+          power: 313
+          voltage: 313
+  - task: ad
+    target: esp32s3
+    status: ok
+    required_runs: 3
+    published_run_count: 3
+    raw_run_count: 4
+    run_ids:
+    - 019e5d8e-c5c3-7fa0-b798-93347e4afa0f
+    - 019e6538-f7b8-76a2-b79c-8353623df07c
+    - 019e71e4-ab8b-70a3-a4f0-b894ceb098bf
+    summary:
+      latency_ms:
+        mean: 11.721691
+        p50: 11.723
+        p99: 11.727
+        stddev_across_runs: 0.0
+        variance_pct: 0.0
+        min_observed: 11.712
+        max_observed: 11.73
+      energy_wh_per_1000:
+        mean: 0.001436449
+        p50: 0.001438716
+        stddev_across_runs: 5.315e-06
+        variance_pct: 0.37
+      avg_power_w:
+        mean: 0.422459
+        p50: 0.422943
+    runs:
+    - session: session_1
+      run_id: 019e5d8e-c5c3-7fa0-b798-93347e4afa0f
+      started_at: '2026-05-25T05:14:58.371730Z'
+      telemetry_partial: false
+      latency_ms:
+        mean: 11.721594
+        p50: 11.723
+        p99: 11.727
+        min: 11.712
+        max: 11.73
+      energy_wh_per_1000: 0.001440255
+      avg_power_w: 0.424801
+      telemetry_counts:
+        bme280:
+          humidity: 73
+          pressure: 73
+          temperature: 73
+        fnb58:
+          current: 292
+          power: 292
+          voltage: 292
+        ina219:
+          current: 499
+          power: 499
+          voltage: 499
+    - session: session_2
+      run_id: 019e6538-f7b8-76a2-b79c-8353623df07c
+      started_at: '2026-05-26T16:58:12.792591Z'
+      telemetry_partial: false
+      latency_ms:
+        mean: 11.721711
+        p50: 11.723
+        p99: 11.727
+        min: 11.712
+        max: 11.73
+      energy_wh_per_1000: 0.001430376
+      avg_power_w: 0.419632
+      telemetry_counts:
+        bme280:
+          humidity: 34
+          pressure: 34
+          temperature: 34
+        ina219:
+          current: 231
+          power: 231
+          voltage: 231
+    - session: session_3
+      run_id: 019e71e4-ab8b-70a3-a4f0-b894ceb098bf
+      started_at: '2026-05-29T04:01:12.076407Z'
+      telemetry_partial: false
+      latency_ms:
+        mean: 11.721766
+        p50: 11.723
+        p99: 11.727
+        min: 11.712
+        max: 11.728
+      energy_wh_per_1000: 0.001438716
+      avg_power_w: 0.422943
+      telemetry_counts:
+        bme280:
+          humidity: 34
+          pressure: 34
+          temperature: 34
+        ina219:
+          current: 230
+          power: 230
+          voltage: 230
+  energy_quarantines:
+  - task: kws
+    target: nano33
+    run_id: 019e7548-0873-7571-99dd-e67e5eb23723
+    scope: energy_only
+    reason: 'Nano33 session 3 INA219 current path anomaly: ~1 mW average power while
+      latency matched sessions 1-2; energy excluded pending diagnosis.'
+  - task: kws
+    target: nano33
+    run_id: 019e755c-e759-7ff3-8303-c589cf777493
+    scope: energy_only
+    reason: Diagnostic FNB58/INA219 cross-check; not an A03 repeatability session.
+  - task: kws
+    target: nano33
+    run_id: 019e7564-8561-7cc3-b6fb-9359503a5a88
+    scope: energy_only
+    reason: Diagnostic fixed-path FNB58/INA219 smoke run; telemetry_partial=true,
+      not A03 repeatability energy.
+  - task: ic
+    target: f401re
+    run_id: 019e5db4-e375-7942-9182-e4fef42ce9c7
+    scope: energy_only
+    reason: F401RE/IC 2026-05-25 run predates full-board metered-rail discipline;
+      power is MCU-only scale (~0.071 W average) rather than full-board scale (~0.34
+      W). Energy excluded; latency remains valid.
+  - task: ic
+    target: nano33
+    run_id: 019e7545-f8a5-75e0-a20d-857ae690429e
+    scope: energy_only
+    reason: 'Nano33 session 3 INA219 current path anomaly: ~1 mW average power while
+      latency matched sessions 1-2; energy excluded pending diagnosis.'
+  - task: ad
+    target: nano33
+    run_id: 019e7543-37c3-7e32-bd60-339408178788
+    scope: energy_only
+    reason: 'Nano33 session 3 INA219 current path anomaly: ~1 mW average power while
+      latency matched sessions 1-2; energy excluded pending diagnosis.'
+meta:
+  signal_bench_version: 0.2.0.dev0
+  phase_5_run_timestamps:
+    start: '2026-05-25 05:10:31.227648'
+    end: '2026-05-29 23:08:00.956378'
+  hardware_revisions:
+    f401re: NUCLEO-F401RE, external STLINK-V3SET plus USART1 PA9/PA10 for final IC
+      repeats
+    nano33: Arduino Nano 33 BLE Sense Rev2
+    esp32s3: ESP32-S3 bare-metal target
+  power_boundary: Full-board power boundary; published Wh/1000 uses INA219 full-board
+    rail after FNB58/INA219 cross-check discipline.
+  ambient_summary:
+    humidity:
+      mean: 44.146
+      min: 36.792
+      max: 50.724
+      samples: 1432
+    pressure:
+      mean: 1014.363
+      min: 1008.766
+      max: 1018.355
+      samples: 1432
+    temperature:
+      mean: 27.292
+      min: 24.782
+      max: 31.258
+      samples: 1432
+  telemetry_sources:
+  - ina219
+  - fnb58
+  - bme280
+  notes:
+  - All nine Tier 1 cells have three canonical non-partial A03 runs for published
+    headlines.
+  - F401RE/IC is present and closed; the May 25 baseline remains latency-valid in
+    raw provenance but its energy is quarantined for a pre-discipline power boundary.
+  - F401RE/KWS and F401RE/AD May 25 low-boundary rows and May 29 unrecorded-topology
+    rows are quarantined from the published repeat sets; July 6/7/8 documented-boundary
+    sessions provide the 3/3 coverage for those cells.
+  - Historical partial and diagnostic runs remain in data/matrices/post-1-data.yml
+    but are excluded from published headline math.

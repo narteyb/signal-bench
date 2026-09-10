@@ -1,0 +1,52 @@
+task: image_classification
+mlperf_tiny_version: v1.3
+mlperf_tiny_repo: https://github.com/mlcommons/tiny
+mlperf_tiny_tag: null
+mlperf_tiny_commit: 5dae3296bd899ed58a65311a8e6fd91d83f664ab
+source_path: benchmark/training/image_classification/trained_models/pretrainedResnet_quant.tflite
+source_url: https://raw.githubusercontent.com/mlcommons/tiny/5dae3296bd899ed58a65311a8e6fd91d83f664ab/benchmark/training/image_classification/trained_models/pretrainedResnet_quant.tflite
+files:
+  - name: pretrainedResnet_quant.tflite
+    sha256: 3c002613d1b2475eb51dd78dfb85a546c8ae658dee71cf6ade43b022fe205415
+    bytes: 98496
+    retrieved_at: 2026-05-10T04:03:03Z
+model_card:
+  architecture: ResNet
+  dataset: CIFAR-10
+  accuracy_target: 0.85
+  accuracy_metric: top_1
+  format: tflite
+  quantization: int8
+  input_shape: [1, 32, 32, 3]
+  output_shape: [1, 10]
+  input_quantization:
+    scale: 1.0
+    zero_point: -128
+  output_quantization:
+    scale: 0.00390625
+    zero_point: -128
+license:
+  name: Apache-2.0
+  url: https://github.com/mlcommons/tiny/blob/5dae3296bd899ed58a65311a8e6fd91d83f664ab/LICENSE.md
+notes: |
+  Canonical small quantized IC artifact. The source tree also includes float and
+  larger ResNet variants; Post 1 uses this smaller quantized model so T2.7 can
+  evaluate the tight F401RE budget before Phase 5.
+onnx_conversion:
+  tool: tf2onnx
+  tool_version: 1.17.0
+  tensorflow_version: 2.21.0
+  onnx_version: 1.21.0
+  onnxruntime_version: 1.25.1
+  opset: 13
+  source_format: tflite
+  source_path: ic/pretrainedResnet_quant.tflite
+  output_path: ../onnx/ic_int8.onnx
+  output_sha256: 6ce9e5fab1590a8365ced31e467796e98bf92c0b29c732164f086053f75e5029
+  output_bytes: 112387
+  conversion_date: 2026-05-10
+  cross_format_validation:
+    max_abs_diff: 1
+    mean_abs_diff: 0.2
+    threshold: 1
+    passed: true

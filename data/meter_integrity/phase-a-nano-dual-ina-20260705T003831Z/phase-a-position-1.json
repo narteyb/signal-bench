@@ -1,0 +1,7552 @@
+{
+  "action_result": {
+    "done_line": "DONE 120",
+    "duration_us_p50": 224193.0,
+    "durations_us": [
+      224177,
+      224194,
+      224217,
+      224227,
+      224223,
+      224236,
+      224212,
+      224211,
+      224214,
+      224180,
+      224198,
+      224206,
+      224193,
+      224232,
+      224227,
+      224213,
+      224194,
+      224207,
+      224191,
+      224242,
+      224276,
+      224200,
+      224204,
+      224179,
+      224195,
+      224169,
+      224241,
+      224207,
+      224211,
+      224201,
+      224176,
+      224225,
+      224171,
+      224206,
+      224185,
+      224217,
+      224233,
+      224186,
+      224187,
+      224168,
+      224236,
+      224208,
+      224200,
+      224190,
+      224186,
+      224254,
+      224223,
+      224174,
+      224217,
+      224169,
+      224175,
+      224227,
+      224198,
+      224229,
+      224175,
+      224184,
+      224154,
+      224193,
+      224155,
+      224166,
+      224185,
+      224180,
+      224167,
+      224198,
+      224149,
+      224189,
+      224159,
+      224165,
+      224223,
+      224209,
+      224176,
+      224104,
+      224122,
+      224083,
+      224066,
+      224038,
+      224048,
+      224049,
+      224016,
+      224061,
+      224104,
+      224148,
+      224143,
+      224192,
+      224158,
+      224159,
+      224202,
+      224209,
+      224121,
+      224218,
+      224209,
+      224231,
+      224165,
+      224201,
+      224182,
+      224169,
+      224186,
+      224194,
+      224237,
+      224162,
+      224167,
+      224202,
+      224216,
+      224147,
+      224163,
+      224165,
+      224185,
+      224165,
+      224218,
+      224204,
+      224189,
+      224191,
+      224208,
+      224214,
+      224209,
+      224237,
+      224194,
+      224166,
+      224212,
+      224225
+    ],
+    "inference_count": 120,
+    "iterations_requested": 120,
+    "mode": "back-to-back",
+    "serial_lines_tail": [
+      "RESULT 111 224191 {\"sample\":3,\"label\":3,\"pred\":11,\"correct\":false,\"arena_used\":24260}",
+      "RESULT 112 224208 {\"sample\":4,\"label\":4,\"pred\":11,\"correct\":false,\"arena_used\":24260}",
+      "RESULT 113 224214 {\"sample\":5,\"label\":5,\"pred\":11,\"correct\":false,\"arena_used\":24260}",
+      "RESULT 114 224209 {\"sample\":6,\"label\":6,\"pred\":11,\"correct\":false,\"arena_used\":24260}",
+      "RESULT 115 224237 {\"sample\":7,\"label\":7,\"pred\":11,\"correct\":false,\"arena_used\":24260}",
+      "RESULT 116 224194 {\"sample\":8,\"label\":8,\"pred\":11,\"correct\":false,\"arena_used\":24260}",
+      "RESULT 117 224166 {\"sample\":9,\"label\":9,\"pred\":0,\"correct\":false,\"arena_used\":24260}",
+      "RESULT 118 224212 {\"sample\":10,\"label\":10,\"pred\":10,\"correct\":true,\"arena_used\":24260}",
+      "RESULT 119 224225 {\"sample\":11,\"label\":11,\"pred\":11,\"correct\":true,\"arena_used\":24260}",
+      "DONE 120"
+    ]
+  },
+  "comparisons": {
+    "fnb58_vs_ina219_0x40_pct": -2.0375128758293384,
+    "fnb58_vs_ina219_0x41_pct": 0.11806289060660635,
+    "ina219_0x41_vs_0x40_pct": -2.153033832457607
+  },
+  "created_at": "2026-07-05T00:39:07.359422+00:00",
+  "errors": [],
+  "i2c_addresses": [
+    "0x40",
+    "0x41",
+    "0x77"
+  ],
+  "iterations": 120,
+  "metrics": {
+    "bme280_0x77": {
+      "avg_power_mw": null,
+      "avg_power_w": null,
+      "current_mean_a": null,
+      "duration_s": null,
+      "joules": null,
+      "power_sample_count": 0,
+      "sample_count": 31,
+      "voltage_mean_v": null,
+      "wh": null,
+      "wh_per_1000": null
+    },
+    "fnb58": {
+      "avg_power_mw": 25.50833714896476,
+      "avg_power_w": 0.02550833714896476,
+      "current_mean_a": 0.004875609756097561,
+      "duration_s": 30.671536,
+      "joules": 0.78237988116461,
+      "power_sample_count": 123,
+      "sample_count": 123,
+      "voltage_mean_v": 5.233873170731707,
+      "wh": 0.00021732774476794723,
+      "wh_per_1000": 0.0018110645397328934
+    },
+    "ina219_0x40": {
+      "avg_power_mw": 26.038882737462664,
+      "avg_power_w": 0.026038882737462663,
+      "current_mean_a": 0.0051648648648648645,
+      "duration_s": 30.710132,
+      "joules": 0.7996575259999997,
+      "power_sample_count": 185,
+      "sample_count": 185,
+      "voltage_mean_v": 5.233772972972973,
+      "wh": 0.00022212709055555548,
+      "wh_per_1000": 0.0018510590879629624
+    },
+    "ina219_0x41": {
+      "avg_power_mw": 25.47825678253113,
+      "avg_power_w": 0.02547825678253113,
+      "current_mean_a": 0.004967567567567568,
+      "duration_s": 30.584526,
+      "joules": 0.7792404069999997,
+      "power_sample_count": 185,
+      "sample_count": 185,
+      "voltage_mean_v": 5.2352,
+      "wh": 0.00021645566861111103,
+      "wh_per_1000": 0.001803797238425925
+    }
+  },
+  "phase": "meter-integrity-phase-a",
+  "port": "[device-path-redacted]",
+  "position": "position-1",
+  "protocol": "diagnostic",
+  "run_id": "phase-a-nano-dual-ina-20260705T003831Z",
+  "samples": [
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:36.589129+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.006199999999999999,
+        "power": 0.031999999999999994,
+        "voltage": 5.244
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:36.647834+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.006199999999999999,
+        "power": 0.031999999999999994,
+        "voltage": 5.232
+      }
+    },
+    {
+      "source": "bme280_0x77",
+      "timestamp": "2026-07-05T00:38:36.705847+00:00",
+      "unit_hints": {
+        "humidity": "%",
+        "pressure": "hPa",
+        "temperature": "degC"
+      },
+      "values": {
+        "humidity": 46.61836182453254,
+        "pressure": 1012.8549958461768,
+        "temperature": 28.5216796875
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:36.560328+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0061,
+        "power": 0.03192618,
+        "voltage": 5.2338
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:36.969270+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0069,
+        "power": 0.029999999999999995,
+        "voltage": 5.232
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:37.027743+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.006199999999999999,
+        "power": 0.031999999999999994,
+        "voltage": 5.232
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:37.085666+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.006699999999999999,
+        "power": 0.031999999999999994,
+        "voltage": 5.224
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:37.143673+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.006199999999999999,
+        "power": 0.031999999999999994,
+        "voltage": 5.228
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:36.969096+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0061,
+        "power": 0.03192557,
+        "voltage": 5.2337
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:37.202053+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.006499999999999999,
+        "power": 0.03599999999999999,
+        "voltage": 5.24
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:37.201898+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0061,
+        "power": 0.03192557,
+        "voltage": 5.2337
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:37.269813+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0069,
+        "power": 0.029999999999999995,
+        "voltage": 5.24
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:37.327937+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.006999999999999999,
+        "power": 0.031999999999999994,
+        "voltage": 5.224
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:37.385746+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0061,
+        "power": 0.03192496,
+        "voltage": 5.2336
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:37.394728+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0063,
+        "power": 0.029999999999999995,
+        "voltage": 5.224
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:37.452938+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0068,
+        "power": 0.031999999999999994,
+        "voltage": 5.236
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:37.519845+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005699999999999999,
+        "power": 0.03599999999999999,
+        "voltage": 5.236
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:37.579872+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0066,
+        "power": 0.029999999999999995,
+        "voltage": 5.228
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:37.637816+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0061,
+        "power": 0.031924350000000004,
+        "voltage": 5.2335
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:37.644302+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0059,
+        "power": 0.03599999999999999,
+        "voltage": 5.228
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:37.702889+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.006699999999999999,
+        "power": 0.031999999999999994,
+        "voltage": 5.232
+      }
+    },
+    {
+      "source": "bme280_0x77",
+      "timestamp": "2026-07-05T00:38:37.760883+00:00",
+      "unit_hints": {
+        "humidity": "%",
+        "pressure": "hPa",
+        "temperature": "degC"
+      },
+      "values": {
+        "humidity": 46.60052752997354,
+        "pressure": 1012.8549958461768,
+        "temperature": 28.5216796875
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:38.021386+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0066,
+        "power": 0.03599999999999999,
+        "voltage": 5.224
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:38.080704+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0063999999999999994,
+        "power": 0.029999999999999995,
+        "voltage": 5.228
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:38.139783+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.006699999999999999,
+        "power": 0.03599999999999999,
+        "voltage": 5.232
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:38.197678+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0059,
+        "power": 0.031999999999999994,
+        "voltage": 5.236
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:38.021155+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0061,
+        "power": 0.03192618,
+        "voltage": 5.2338
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:38.256945+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0059,
+        "power": 0.029999999999999995,
+        "voltage": 5.224
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:38.256791+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.006,
+        "power": 0.031402799999999995,
+        "voltage": 5.2338
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:38.323742+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.006699999999999999,
+        "power": 0.031999999999999994,
+        "voltage": 5.232
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:38.383838+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.006499999999999999,
+        "power": 0.031999999999999994,
+        "voltage": 5.228
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:38.442792+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0061,
+        "power": 0.03192923,
+        "voltage": 5.2343
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:38.448323+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005999999999999999,
+        "power": 0.031999999999999994,
+        "voltage": 5.236
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:38.508312+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005699999999999999,
+        "power": 0.029999999999999995,
+        "voltage": 5.224
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:38.569947+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0061,
+        "power": 0.03192984,
+        "voltage": 5.2344
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:38.573071+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0058,
+        "power": 0.03599999999999999,
+        "voltage": 5.248
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:38.633780+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.006199999999999999,
+        "power": 0.031999999999999994,
+        "voltage": 5.224
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:38.698159+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.006699999999999999,
+        "power": 0.031999999999999994,
+        "voltage": 5.244
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:38.758995+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005999999999999999,
+        "power": 0.031999999999999994,
+        "voltage": 5.244
+      }
+    },
+    {
+      "source": "bme280_0x77",
+      "timestamp": "2026-07-05T00:38:38.816764+00:00",
+      "unit_hints": {
+        "humidity": "%",
+        "pressure": "hPa",
+        "temperature": "degC"
+      },
+      "values": {
+        "humidity": 46.5945827443446,
+        "pressure": 1012.896357144622,
+        "temperature": 28.5216796875
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:39.077194+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.006199999999999999,
+        "power": 0.031999999999999994,
+        "voltage": 5.232
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:39.135675+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0063999999999999994,
+        "power": 0.029999999999999995,
+        "voltage": 5.232
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:39.193784+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.004399999999999999,
+        "power": 0.025999999999999995,
+        "voltage": 5.252
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:39.251616+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0053,
+        "power": 0.021999999999999995,
+        "voltage": 5.22
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:39.076957+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0061,
+        "power": 0.031931060000000004,
+        "voltage": 5.2346
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:39.077073+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0061,
+        "power": 0.031931060000000004,
+        "voltage": 5.2346
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:39.310103+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0053,
+        "power": 0.025999999999999995,
+        "voltage": 5.236
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:39.377713+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0056,
+        "power": 0.025999999999999995,
+        "voltage": 5.228
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:39.435873+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0050999999999999995,
+        "power": 0.025999999999999995,
+        "voltage": 5.236
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:39.435785+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0059,
+        "power": 0.030882959999999997,
+        "voltage": 5.2344
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:39.502661+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.004199999999999999,
+        "power": 0.025999999999999995,
+        "voltage": 5.24
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:39.560845+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005199999999999999,
+        "power": 0.021999999999999995,
+        "voltage": 5.232
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:39.621814+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0057,
+        "power": 0.029834940000000004,
+        "voltage": 5.2342
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:39.627213+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.004699999999999999,
+        "power": 0.025999999999999995,
+        "voltage": 5.252
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:39.686016+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005499999999999999,
+        "power": 0.029999999999999995,
+        "voltage": 5.248
+      }
+    },
+    {
+      "source": "bme280_0x77",
+      "timestamp": "2026-07-05T00:38:39.745846+00:00",
+      "unit_hints": {
+        "humidity": "%",
+        "pressure": "hPa",
+        "temperature": "degC"
+      },
+      "values": {
+        "humidity": 46.5945827443446,
+        "pressure": 1012.8842619128761,
+        "temperature": 28.5318359375
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:40.021195+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0046,
+        "power": 0.025999999999999995,
+        "voltage": 5.244
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:40.079689+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0048,
+        "power": 0.021999999999999995,
+        "voltage": 5.24
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:40.139774+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0049,
+        "power": 0.021999999999999995,
+        "voltage": 5.244
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:40.197697+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0053,
+        "power": 0.025999999999999995,
+        "voltage": 5.22
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:40.021016+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0053,
+        "power": 0.0277402,
+        "voltage": 5.234
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:40.257946+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.003999999999999999,
+        "power": 0.025999999999999995,
+        "voltage": 5.228
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:40.257817+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005,
+        "power": 0.026169500000000002,
+        "voltage": 5.2339
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:40.323402+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0046,
+        "power": 0.025999999999999995,
+        "voltage": 5.228
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:40.381955+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.004399999999999999,
+        "power": 0.025999999999999995,
+        "voltage": 5.248
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:40.381809+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.024597920000000002,
+        "voltage": 5.2336
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:40.448784+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0048,
+        "power": 0.025999999999999995,
+        "voltage": 5.22
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:40.507356+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0046,
+        "power": 0.025999999999999995,
+        "voltage": 5.232
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:40.567771+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.02459886,
+        "voltage": 5.2338
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:40.573380+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0053,
+        "power": 0.025999999999999995,
+        "voltage": 5.232
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:40.635865+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0045,
+        "power": 0.021999999999999995,
+        "voltage": 5.236
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:40.698261+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0049,
+        "power": 0.029999999999999995,
+        "voltage": 5.224
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:40.756833+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0043,
+        "power": 0.021999999999999995,
+        "voltage": 5.236
+      }
+    },
+    {
+      "source": "bme280_0x77",
+      "timestamp": "2026-07-05T00:38:40.814719+00:00",
+      "unit_hints": {
+        "humidity": "%",
+        "pressure": "hPa",
+        "temperature": "degC"
+      },
+      "values": {
+        "humidity": 46.58274300859338,
+        "pressure": 1012.8466570660833,
+        "temperature": 28.5318359375
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:41.084628+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0046,
+        "power": 0.021999999999999995,
+        "voltage": 5.252
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:41.153711+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005399999999999999,
+        "power": 0.025999999999999995,
+        "voltage": 5.22
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:41.212763+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005199999999999999,
+        "power": 0.021999999999999995,
+        "voltage": 5.24
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:41.270696+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005,
+        "power": 0.025999999999999995,
+        "voltage": 5.248
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:41.082312+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.02459651,
+        "voltage": 5.2333
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:41.329230+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0043,
+        "power": 0.021999999999999995,
+        "voltage": 5.22
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:41.329021+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.024597450000000003,
+        "voltage": 5.2335
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:41.387912+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.024596979999999997,
+        "voltage": 5.2334
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:41.396769+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0053,
+        "power": 0.021999999999999995,
+        "voltage": 5.224
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:41.455032+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0046,
+        "power": 0.029999999999999995,
+        "voltage": 5.236
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:41.521085+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0046,
+        "power": 0.021999999999999995,
+        "voltage": 5.236
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:41.579756+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005399999999999999,
+        "power": 0.021999999999999995,
+        "voltage": 5.248
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:41.643733+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.024597450000000003,
+        "voltage": 5.2335
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:41.646015+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0050999999999999995,
+        "power": 0.021999999999999995,
+        "voltage": 5.236
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:41.705205+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005,
+        "power": 0.025999999999999995,
+        "voltage": 5.244
+      }
+    },
+    {
+      "source": "bme280_0x77",
+      "timestamp": "2026-07-05T00:38:41.766295+00:00",
+      "unit_hints": {
+        "humidity": "%",
+        "pressure": "hPa",
+        "temperature": "degC"
+      },
+      "values": {
+        "humidity": 46.58279286462863,
+        "pressure": 1012.8705279789375,
+        "temperature": 28.5318359375
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:42.028027+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0043,
+        "power": 0.025999999999999995,
+        "voltage": 5.24
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:42.085698+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0049,
+        "power": 0.025999999999999995,
+        "voltage": 5.24
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:42.148643+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005,
+        "power": 0.025999999999999995,
+        "voltage": 5.232
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:42.206791+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0053,
+        "power": 0.021999999999999995,
+        "voltage": 5.244
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:42.027844+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.02464774,
+        "voltage": 5.2442
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:42.271163+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0048,
+        "power": 0.021999999999999995,
+        "voltage": 5.244
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:42.270975+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.024597920000000002,
+        "voltage": 5.2336
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:42.331968+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0058,
+        "power": 0.021999999999999995,
+        "voltage": 5.228
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:42.389989+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005199999999999999,
+        "power": 0.025999999999999995,
+        "voltage": 5.224
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:42.457896+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0046,
+        "power": 0.021999999999999995,
+        "voltage": 5.232
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:42.515849+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0046,
+        "power": 0.021999999999999995,
+        "voltage": 5.24
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:42.576853+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.024599330000000003,
+        "voltage": 5.2339
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:42.576962+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.024599330000000003,
+        "voltage": 5.2339
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:42.582455+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0046,
+        "power": 0.021999999999999995,
+        "voltage": 5.228
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:42.640842+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0040999999999999995,
+        "power": 0.025999999999999995,
+        "voltage": 5.228
+      }
+    },
+    {
+      "source": "bme280_0x77",
+      "timestamp": "2026-07-05T00:38:42.706813+00:00",
+      "unit_hints": {
+        "humidity": "%",
+        "pressure": "hPa",
+        "temperature": "degC"
+      },
+      "values": {
+        "humidity": 46.60057759742431,
+        "pressure": 1012.8478025818943,
+        "temperature": 28.5318359375
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:42.967079+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005499999999999999,
+        "power": 0.025999999999999995,
+        "voltage": 5.228
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:43.024637+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005199999999999999,
+        "power": 0.029999999999999995,
+        "voltage": 5.236
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:43.082727+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.004399999999999999,
+        "power": 0.021999999999999995,
+        "voltage": 5.232
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:43.140714+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.004699999999999999,
+        "power": 0.025999999999999995,
+        "voltage": 5.24
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:42.966940+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.0245998,
+        "voltage": 5.234
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:43.199214+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.004699999999999999,
+        "power": 0.021999999999999995,
+        "voltage": 5.228
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:43.199029+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.02460027,
+        "voltage": 5.2341
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:43.266782+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.004399999999999999,
+        "power": 0.021999999999999995,
+        "voltage": 5.248
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:43.324822+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005399999999999999,
+        "power": 0.021999999999999995,
+        "voltage": 5.24
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:43.385382+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.024601210000000002,
+        "voltage": 5.2343
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:43.391430+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0045,
+        "power": 0.025999999999999995,
+        "voltage": 5.24
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:43.449795+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0049,
+        "power": 0.025999999999999995,
+        "voltage": 5.24
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:43.516813+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0045,
+        "power": 0.021999999999999995,
+        "voltage": 5.228
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:43.574992+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0053,
+        "power": 0.025999999999999995,
+        "voltage": 5.232
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:43.574853+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.024600740000000003,
+        "voltage": 5.2342
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:43.641077+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0049,
+        "power": 0.021999999999999995,
+        "voltage": 5.228
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:43.700066+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005,
+        "power": 0.029999999999999995,
+        "voltage": 5.236
+      }
+    },
+    {
+      "source": "bme280_0x77",
+      "timestamp": "2026-07-05T00:38:43.757847+00:00",
+      "unit_hints": {
+        "humidity": "%",
+        "pressure": "hPa",
+        "temperature": "degC"
+      },
+      "values": {
+        "humidity": 46.60057759742431,
+        "pressure": 1012.8927605080254,
+        "temperature": 28.5369140625
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:44.024036+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0043,
+        "power": 0.025999999999999995,
+        "voltage": 5.248
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:44.081924+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0046,
+        "power": 0.025999999999999995,
+        "voltage": 5.236
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:44.141770+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0050999999999999995,
+        "power": 0.029999999999999995,
+        "voltage": 5.24
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:44.199706+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0048,
+        "power": 0.021999999999999995,
+        "voltage": 5.252
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:44.023884+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.02460168,
+        "voltage": 5.2344
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:44.258958+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0053,
+        "power": 0.021999999999999995,
+        "voltage": 5.248
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:44.258811+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.024600740000000003,
+        "voltage": 5.2342
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:44.325656+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0050999999999999995,
+        "power": 0.025999999999999995,
+        "voltage": 5.224
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:44.383765+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.004399999999999999,
+        "power": 0.025999999999999995,
+        "voltage": 5.244
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:44.441825+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.024600740000000003,
+        "voltage": 5.2342
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:44.450760+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005199999999999999,
+        "power": 0.021999999999999995,
+        "voltage": 5.224
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:44.509023+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0053,
+        "power": 0.021999999999999995,
+        "voltage": 5.24
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:44.567810+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.024601210000000002,
+        "voltage": 5.2343
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:44.575669+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005399999999999999,
+        "power": 0.025999999999999995,
+        "voltage": 5.228
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:44.635772+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.004399999999999999,
+        "power": 0.021999999999999995,
+        "voltage": 5.24
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:44.700537+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0046,
+        "power": 0.021999999999999995,
+        "voltage": 5.252
+      }
+    },
+    {
+      "source": "bme280_0x77",
+      "timestamp": "2026-07-05T00:38:44.758818+00:00",
+      "unit_hints": {
+        "humidity": "%",
+        "pressure": "hPa",
+        "temperature": "degC"
+      },
+      "values": {
+        "humidity": 46.57080349794915,
+        "pressure": 1012.8579396607015,
+        "temperature": 28.5318359375
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:45.018889+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0045,
+        "power": 0.025999999999999995,
+        "voltage": 5.228
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:45.076674+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0050999999999999995,
+        "power": 0.025999999999999995,
+        "voltage": 5.232
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:45.135154+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005,
+        "power": 0.021999999999999995,
+        "voltage": 5.224
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:45.193711+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0046,
+        "power": 0.029999999999999995,
+        "voltage": 5.244
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:45.134951+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.024601210000000002,
+        "voltage": 5.2343
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:45.135045+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.02460215,
+        "voltage": 5.2345
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:45.252261+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0053,
+        "power": 0.021999999999999995,
+        "voltage": 5.232
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:45.319849+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0049,
+        "power": 0.025999999999999995,
+        "voltage": 5.24
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:45.378997+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0043,
+        "power": 0.021999999999999995,
+        "voltage": 5.24
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:45.378863+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.02460168,
+        "voltage": 5.2344
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:45.444775+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005199999999999999,
+        "power": 0.025999999999999995,
+        "voltage": 5.228
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:45.502894+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0050999999999999995,
+        "power": 0.025999999999999995,
+        "voltage": 5.228
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:45.569938+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005399999999999999,
+        "power": 0.025999999999999995,
+        "voltage": 5.24
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:45.631977+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005399999999999999,
+        "power": 0.025999999999999995,
+        "voltage": 5.236
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:45.631825+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.02460215,
+        "voltage": 5.2345
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:45.694263+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0056,
+        "power": 0.021999999999999995,
+        "voltage": 5.252
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:45.752866+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.004399999999999999,
+        "power": 0.025999999999999995,
+        "voltage": 5.228
+      }
+    },
+    {
+      "source": "bme280_0x77",
+      "timestamp": "2026-07-05T00:38:45.810835+00:00",
+      "unit_hints": {
+        "humidity": "%",
+        "pressure": "hPa",
+        "temperature": "degC"
+      },
+      "values": {
+        "humidity": 46.570753754497886,
+        "pressure": 1012.85139921385,
+        "temperature": 28.5318359375
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:46.073831+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0050999999999999995,
+        "power": 0.029999999999999995,
+        "voltage": 5.232
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:46.131785+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005399999999999999,
+        "power": 0.025999999999999995,
+        "voltage": 5.244
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:46.190830+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0043,
+        "power": 0.021999999999999995,
+        "voltage": 5.252
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:46.249686+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.004699999999999999,
+        "power": 0.021999999999999995,
+        "voltage": 5.224
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:46.073754+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.02460168,
+        "voltage": 5.2344
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:46.308232+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005,
+        "power": 0.025999999999999995,
+        "voltage": 5.228
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:46.308001+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.02460215,
+        "voltage": 5.2345
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:46.368966+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.024601210000000002,
+        "voltage": 5.2343
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:46.375476+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0050999999999999995,
+        "power": 0.021999999999999995,
+        "voltage": 5.224
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:46.433800+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0045,
+        "power": 0.025999999999999995,
+        "voltage": 5.248
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:46.500745+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005,
+        "power": 0.025999999999999995,
+        "voltage": 5.224
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:46.558812+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005,
+        "power": 0.021999999999999995,
+        "voltage": 5.236
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:46.624185+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.02460168,
+        "voltage": 5.2344
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:46.624788+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0045,
+        "power": 0.021999999999999995,
+        "voltage": 5.236
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:46.682910+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005199999999999999,
+        "power": 0.021999999999999995,
+        "voltage": 5.228
+      }
+    },
+    {
+      "source": "bme280_0x77",
+      "timestamp": "2026-07-05T00:38:46.740823+00:00",
+      "unit_hints": {
+        "humidity": "%",
+        "pressure": "hPa",
+        "temperature": "degC"
+      },
+      "values": {
+        "humidity": 46.56490832626862,
+        "pressure": 1012.8788668733324,
+        "temperature": 28.5318359375
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:47.002065+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0049,
+        "power": 0.021999999999999995,
+        "voltage": 5.244
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:47.059679+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0049,
+        "power": 0.025999999999999995,
+        "voltage": 5.244
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:47.117736+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005499999999999999,
+        "power": 0.029999999999999995,
+        "voltage": 5.232
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:47.175668+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005,
+        "power": 0.025999999999999995,
+        "voltage": 5.228
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:47.001899+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.024601210000000002,
+        "voltage": 5.2343
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:47.234104+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005,
+        "power": 0.025999999999999995,
+        "voltage": 5.24
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:47.233923+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.02460168,
+        "voltage": 5.2344
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:47.301725+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005699999999999999,
+        "power": 0.021999999999999995,
+        "voltage": 5.228
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:47.359796+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0049,
+        "power": 0.025999999999999995,
+        "voltage": 5.228
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:47.417844+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.024601210000000002,
+        "voltage": 5.2343
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:47.426714+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0048,
+        "power": 0.029999999999999995,
+        "voltage": 5.236
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:47.484807+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0049,
+        "power": 0.025999999999999995,
+        "voltage": 5.232
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:47.551791+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.004399999999999999,
+        "power": 0.021999999999999995,
+        "voltage": 5.24
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:47.609994+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0045,
+        "power": 0.021999999999999995,
+        "voltage": 5.224
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:47.609836+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.0245998,
+        "voltage": 5.234
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:47.676748+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.004399999999999999,
+        "power": 0.021999999999999995,
+        "voltage": 5.236
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:47.734802+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0043,
+        "power": 0.025999999999999995,
+        "voltage": 5.244
+      }
+    },
+    {
+      "source": "bme280_0x77",
+      "timestamp": "2026-07-05T00:38:47.792709+00:00",
+      "unit_hints": {
+        "humidity": "%",
+        "pressure": "hPa",
+        "temperature": "degC"
+      },
+      "values": {
+        "humidity": 46.5351343167169,
+        "pressure": 1012.897502961901,
+        "temperature": 28.5318359375
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:48.058935+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0049,
+        "power": 0.021999999999999995,
+        "voltage": 5.244
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:48.119638+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005199999999999999,
+        "power": 0.025999999999999995,
+        "voltage": 5.232
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:48.179697+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.004399999999999999,
+        "power": 0.025999999999999995,
+        "voltage": 5.244
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:48.237631+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.004399999999999999,
+        "power": 0.021999999999999995,
+        "voltage": 5.236
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:48.058802+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.024599330000000003,
+        "voltage": 5.2339
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:48.296130+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0046,
+        "power": 0.029999999999999995,
+        "voltage": 5.228
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:48.295958+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.02459886,
+        "voltage": 5.2338
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:48.363731+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0045,
+        "power": 0.021999999999999995,
+        "voltage": 5.228
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:48.422041+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0045,
+        "power": 0.025999999999999995,
+        "voltage": 5.24
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:48.421871+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.02459886,
+        "voltage": 5.2338
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:48.488296+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0043,
+        "power": 0.021999999999999995,
+        "voltage": 5.236
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:48.547958+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0048,
+        "power": 0.025999999999999995,
+        "voltage": 5.248
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:48.620585+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0050999999999999995,
+        "power": 0.021999999999999995,
+        "voltage": 5.232
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:48.679774+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0049,
+        "power": 0.025999999999999995,
+        "voltage": 5.24
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:48.741679+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005199999999999999,
+        "power": 0.025999999999999995,
+        "voltage": 5.236
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:48.679419+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.02459886,
+        "voltage": 5.2338
+      }
+    },
+    {
+      "source": "bme280_0x77",
+      "timestamp": "2026-07-05T00:38:48.801025+00:00",
+      "unit_hints": {
+        "humidity": "%",
+        "pressure": "hPa",
+        "temperature": "degC"
+      },
+      "values": {
+        "humidity": 46.5528698581083,
+        "pressure": 1012.8909621898664,
+        "temperature": 28.5318359375
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:49.062771+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0050999999999999995,
+        "power": 0.021999999999999995,
+        "voltage": 5.244
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:49.120671+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0043,
+        "power": 0.025999999999999995,
+        "voltage": 5.228
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:49.179102+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0049,
+        "power": 0.021999999999999995,
+        "voltage": 5.232
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:49.237661+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0053,
+        "power": 0.025999999999999995,
+        "voltage": 5.228
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:49.178892+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.024599330000000003,
+        "voltage": 5.2339
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:49.179003+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.02459886,
+        "voltage": 5.2338
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:49.295979+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.004699999999999999,
+        "power": 0.025999999999999995,
+        "voltage": 5.224
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:49.363759+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0048,
+        "power": 0.025999999999999995,
+        "voltage": 5.232
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:49.422113+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005,
+        "power": 0.029999999999999995,
+        "voltage": 5.224
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:49.421915+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.024599330000000003,
+        "voltage": 5.2339
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:49.488564+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.004699999999999999,
+        "power": 0.021999999999999995,
+        "voltage": 5.228
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:49.547718+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0050999999999999995,
+        "power": 0.025999999999999995,
+        "voltage": 5.236
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:49.605780+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.02459886,
+        "voltage": 5.2338
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:49.613576+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0045,
+        "power": 0.025999999999999995,
+        "voltage": 5.236
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:49.671827+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0056,
+        "power": 0.021999999999999995,
+        "voltage": 5.232
+      }
+    },
+    {
+      "source": "bme280_0x77",
+      "timestamp": "2026-07-05T00:38:49.732933+00:00",
+      "unit_hints": {
+        "humidity": "%",
+        "pressure": "hPa",
+        "temperature": "degC"
+      },
+      "values": {
+        "humidity": 46.55881458259679,
+        "pressure": 1012.8711806962425,
+        "temperature": 28.5318359375
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:50.002165+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.003999999999999999,
+        "power": 0.021999999999999995,
+        "voltage": 5.22
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:50.060612+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0048,
+        "power": 0.025999999999999995,
+        "voltage": 5.244
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:50.119924+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0053,
+        "power": 0.021999999999999995,
+        "voltage": 5.232
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:50.181685+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0053,
+        "power": 0.025999999999999995,
+        "voltage": 5.252
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:50.001986+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.0245998,
+        "voltage": 5.234
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:50.240950+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0043,
+        "power": 0.025999999999999995,
+        "voltage": 5.244
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:50.240785+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.0245998,
+        "voltage": 5.234
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:50.307777+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0050999999999999995,
+        "power": 0.025999999999999995,
+        "voltage": 5.232
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:50.369823+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0049,
+        "power": 0.021999999999999995,
+        "voltage": 5.236
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:50.369712+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.024601210000000002,
+        "voltage": 5.2343
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:50.432278+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0050999999999999995,
+        "power": 0.021999999999999995,
+        "voltage": 5.232
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:50.492090+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0045,
+        "power": 0.021999999999999995,
+        "voltage": 5.248
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:50.557601+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005499999999999999,
+        "power": 0.021999999999999995,
+        "voltage": 5.236
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:50.619268+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0046,
+        "power": 0.025999999999999995,
+        "voltage": 5.236
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:50.619002+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.024602620000000002,
+        "voltage": 5.2346
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:50.682145+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.004699999999999999,
+        "power": 0.021999999999999995,
+        "voltage": 5.244
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:50.741792+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0048,
+        "power": 0.025999999999999995,
+        "voltage": 5.232
+      }
+    },
+    {
+      "source": "bme280_0x77",
+      "timestamp": "2026-07-05T00:38:50.799680+00:00",
+      "unit_hints": {
+        "humidity": "%",
+        "pressure": "hPa",
+        "temperature": "degC"
+      },
+      "values": {
+        "humidity": 46.54707355045002,
+        "pressure": 1012.8783739653518,
+        "temperature": 28.5318359375
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:51.060757+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005199999999999999,
+        "power": 0.025999999999999995,
+        "voltage": 5.228
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:51.119585+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0045,
+        "power": 0.029999999999999995,
+        "voltage": 5.236
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:51.178630+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005,
+        "power": 0.021999999999999995,
+        "voltage": 5.224
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:51.236572+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0050999999999999995,
+        "power": 0.021999999999999995,
+        "voltage": 5.224
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:51.060678+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.02460168,
+        "voltage": 5.2344
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:51.297140+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005399999999999999,
+        "power": 0.025999999999999995,
+        "voltage": 5.224
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:51.296941+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.02460168,
+        "voltage": 5.2344
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:51.356824+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.024599330000000003,
+        "voltage": 5.2339
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:51.362244+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005699999999999999,
+        "power": 0.021999999999999995,
+        "voltage": 5.236
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:51.420821+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0053,
+        "power": 0.021999999999999995,
+        "voltage": 5.248
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:51.487038+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0049,
+        "power": 0.025999999999999995,
+        "voltage": 5.24
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:51.545726+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0050999999999999995,
+        "power": 0.025999999999999995,
+        "voltage": 5.24
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:51.603834+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.02459839,
+        "voltage": 5.2337
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:51.612758+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.004699999999999999,
+        "power": 0.025999999999999995,
+        "voltage": 5.228
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:51.672850+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005499999999999999,
+        "power": 0.021999999999999995,
+        "voltage": 5.224
+      }
+    },
+    {
+      "source": "bme280_0x77",
+      "timestamp": "2026-07-05T00:38:51.734771+00:00",
+      "unit_hints": {
+        "humidity": "%",
+        "pressure": "hPa",
+        "temperature": "degC"
+      },
+      "values": {
+        "humidity": 46.55886420282789,
+        "pressure": 1012.8867129662093,
+        "temperature": 28.5267578125
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:51.996108+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0040999999999999995,
+        "power": 0.021999999999999995,
+        "voltage": 5.236
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:52.058571+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0050999999999999995,
+        "power": 0.025999999999999995,
+        "voltage": 5.24
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:52.116665+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005399999999999999,
+        "power": 0.029999999999999995,
+        "voltage": 5.244
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:52.174642+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0046,
+        "power": 0.025999999999999995,
+        "voltage": 5.244
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:51.995918+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.02459839,
+        "voltage": 5.2337
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:52.237104+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0053,
+        "power": 0.021999999999999995,
+        "voltage": 5.232
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:52.236922+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.024599330000000003,
+        "voltage": 5.2339
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:52.300188+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005199999999999999,
+        "power": 0.025999999999999995,
+        "voltage": 5.236
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:52.360901+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005199999999999999,
+        "power": 0.025999999999999995,
+        "voltage": 5.236
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:52.418785+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.02459886,
+        "voltage": 5.2338
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:52.425440+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.004699999999999999,
+        "power": 0.021999999999999995,
+        "voltage": 5.236
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:52.483892+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0046,
+        "power": 0.025999999999999995,
+        "voltage": 5.24
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:52.550150+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.004699999999999999,
+        "power": 0.029999999999999995,
+        "voltage": 5.24
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:52.609038+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.004699999999999999,
+        "power": 0.021999999999999995,
+        "voltage": 5.232
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:52.608879+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.0245998,
+        "voltage": 5.234
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:52.675729+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.004699999999999999,
+        "power": 0.021999999999999995,
+        "voltage": 5.228
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:52.733775+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0046,
+        "power": 0.021999999999999995,
+        "voltage": 5.244
+      }
+    },
+    {
+      "source": "bme280_0x77",
+      "timestamp": "2026-07-05T00:38:52.791722+00:00",
+      "unit_hints": {
+        "humidity": "%",
+        "pressure": "hPa",
+        "temperature": "degC"
+      },
+      "values": {
+        "humidity": 46.547024085346195,
+        "pressure": 1012.8909621898664,
+        "temperature": 28.5267578125
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:53.054085+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005199999999999999,
+        "power": 0.021999999999999995,
+        "voltage": 5.224
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:53.111612+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0053,
+        "power": 0.025999999999999995,
+        "voltage": 5.248
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:53.169611+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005199999999999999,
+        "power": 0.025999999999999995,
+        "voltage": 5.228
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:53.227614+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.004699999999999999,
+        "power": 0.021999999999999995,
+        "voltage": 5.232
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:53.053900+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.024599330000000003,
+        "voltage": 5.2339
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:53.285917+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0046,
+        "power": 0.025999999999999995,
+        "voltage": 5.26
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:53.285775+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.02459886,
+        "voltage": 5.2338
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:53.353397+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0050999999999999995,
+        "power": 0.021999999999999995,
+        "voltage": 5.252
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:53.412028+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0046,
+        "power": 0.025999999999999995,
+        "voltage": 5.232
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:53.411873+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.02459839,
+        "voltage": 5.2337
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:53.478169+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005,
+        "power": 0.021999999999999995,
+        "voltage": 5.228
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:53.536781+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.004699999999999999,
+        "power": 0.021999999999999995,
+        "voltage": 5.244
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:53.594819+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.024597920000000002,
+        "voltage": 5.2336
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:53.603689+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005,
+        "power": 0.021999999999999995,
+        "voltage": 5.236
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:53.661795+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0045,
+        "power": 0.029999999999999995,
+        "voltage": 5.24
+      }
+    },
+    {
+      "source": "bme280_0x77",
+      "timestamp": "2026-07-05T00:38:53.719902+00:00",
+      "unit_hints": {
+        "humidity": "%",
+        "pressure": "hPa",
+        "temperature": "degC"
+      },
+      "values": {
+        "humidity": 46.52324450653573,
+        "pressure": 1012.8765756479354,
+        "temperature": 28.5216796875
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:53.981097+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0045,
+        "power": 0.025999999999999995,
+        "voltage": 5.228
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:54.045561+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0045,
+        "power": 0.021999999999999995,
+        "voltage": 5.228
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:54.104696+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0048,
+        "power": 0.025999999999999995,
+        "voltage": 5.224
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:54.164616+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005,
+        "power": 0.025999999999999995,
+        "voltage": 5.224
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:53.980911+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.02459886,
+        "voltage": 5.2338
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:54.222929+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0048,
+        "power": 0.025999999999999995,
+        "voltage": 5.24
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:54.222806+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.02459839,
+        "voltage": 5.2337
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:54.290728+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0046,
+        "power": 0.021999999999999995,
+        "voltage": 5.232
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:54.348930+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0050999999999999995,
+        "power": 0.025999999999999995,
+        "voltage": 5.224
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:54.407805+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.02459886,
+        "voltage": 5.2338
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:54.415564+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0049,
+        "power": 0.021999999999999995,
+        "voltage": 5.224
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:54.473974+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005499999999999999,
+        "power": 0.021999999999999995,
+        "voltage": 5.228
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:54.540607+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.004399999999999999,
+        "power": 0.021999999999999995,
+        "voltage": 5.236
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:54.600638+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0050999999999999995,
+        "power": 0.025999999999999995,
+        "voltage": 5.236
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:54.659837+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.024597920000000002,
+        "voltage": 5.2336
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:54.665348+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005199999999999999,
+        "power": 0.025999999999999995,
+        "voltage": 5.232
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:54.724858+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0053,
+        "power": 0.025999999999999995,
+        "voltage": 5.236
+      }
+    },
+    {
+      "source": "bme280_0x77",
+      "timestamp": "2026-07-05T00:38:54.782711+00:00",
+      "unit_hints": {
+        "humidity": "%",
+        "pressure": "hPa",
+        "temperature": "degC"
+      },
+      "values": {
+        "humidity": 46.5291894168203,
+        "pressure": 1012.896357144622,
+        "temperature": 28.5318359375
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:55.043917+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0046,
+        "power": 0.021999999999999995,
+        "voltage": 5.228
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:55.101583+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.004399999999999999,
+        "power": 0.025999999999999995,
+        "voltage": 5.236
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:55.159617+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0049,
+        "power": 0.021999999999999995,
+        "voltage": 5.232
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:55.217560+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0046,
+        "power": 0.025999999999999995,
+        "voltage": 5.224
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:55.043767+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.0245998,
+        "voltage": 5.234
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:55.276072+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.004699999999999999,
+        "power": 0.025999999999999995,
+        "voltage": 5.252
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:55.275854+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.0245998,
+        "voltage": 5.234
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:55.343372+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0040999999999999995,
+        "power": 0.021999999999999995,
+        "voltage": 5.232
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:55.401819+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0050999999999999995,
+        "power": 0.021999999999999995,
+        "voltage": 5.228
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:55.401733+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.02460215,
+        "voltage": 5.2345
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:55.468281+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.004699999999999999,
+        "power": 0.021999999999999995,
+        "voltage": 5.224
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:55.526991+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0043,
+        "power": 0.025999999999999995,
+        "voltage": 5.232
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:55.588841+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.02460168,
+        "voltage": 5.2344
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:55.593092+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.004399999999999999,
+        "power": 0.025999999999999995,
+        "voltage": 5.244
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:55.653737+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0053,
+        "power": 0.029999999999999995,
+        "voltage": 5.236
+      }
+    },
+    {
+      "source": "bme280_0x77",
+      "timestamp": "2026-07-05T00:38:55.713949+00:00",
+      "unit_hints": {
+        "humidity": "%",
+        "pressure": "hPa",
+        "temperature": "degC"
+      },
+      "values": {
+        "humidity": 46.52324450653573,
+        "pressure": 1012.8621891119444,
+        "temperature": 28.5318359375
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:55.980979+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0050999999999999995,
+        "power": 0.025999999999999995,
+        "voltage": 5.244
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:56.038592+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0049,
+        "power": 0.025999999999999995,
+        "voltage": 5.24
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:56.096721+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005199999999999999,
+        "power": 0.029999999999999995,
+        "voltage": 5.236
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:56.163719+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005199999999999999,
+        "power": 0.025999999999999995,
+        "voltage": 5.248
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:55.980832+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.02460027,
+        "voltage": 5.2341
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:56.237850+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0045,
+        "power": 0.025999999999999995,
+        "voltage": 5.24
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:56.296654+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0048,
+        "power": 0.025999999999999995,
+        "voltage": 5.228
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:56.237750+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.024553270000000002,
+        "voltage": 5.2241
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:56.362764+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0046,
+        "power": 0.021999999999999995,
+        "voltage": 5.232
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:56.421894+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005499999999999999,
+        "power": 0.025999999999999995,
+        "voltage": 5.228
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:56.480377+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.004699999999999999,
+        "power": 0.021999999999999995,
+        "voltage": 5.244
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:56.480015+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.024599330000000003,
+        "voltage": 5.2339
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:56.547474+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.004399999999999999,
+        "power": 0.021999999999999995,
+        "voltage": 5.244
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:56.606853+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005199999999999999,
+        "power": 0.025999999999999995,
+        "voltage": 5.236
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:56.669455+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.024599330000000003,
+        "voltage": 5.2339
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:56.671948+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0050999999999999995,
+        "power": 0.021999999999999995,
+        "voltage": 5.244
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:56.731784+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005,
+        "power": 0.025999999999999995,
+        "voltage": 5.22
+      }
+    },
+    {
+      "source": "bme280_0x77",
+      "timestamp": "2026-07-05T00:38:56.790780+00:00",
+      "unit_hints": {
+        "humidity": "%",
+        "pressure": "hPa",
+        "temperature": "degC"
+      },
+      "values": {
+        "humidity": 46.52324450653573,
+        "pressure": 1012.8652926214684,
+        "temperature": 28.5216796875
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:57.051039+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0046,
+        "power": 0.021999999999999995,
+        "voltage": 5.244
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:57.108617+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005199999999999999,
+        "power": 0.025999999999999995,
+        "voltage": 5.248
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:57.166694+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005199999999999999,
+        "power": 0.025999999999999995,
+        "voltage": 5.248
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:57.224564+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005199999999999999,
+        "power": 0.025999999999999995,
+        "voltage": 5.228
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:57.050889+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.02459839,
+        "voltage": 5.2337
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:57.283364+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005399999999999999,
+        "power": 0.025999999999999995,
+        "voltage": 5.228
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:57.283123+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.02459886,
+        "voltage": 5.2338
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:57.350630+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0043,
+        "power": 0.025999999999999995,
+        "voltage": 5.228
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:57.408775+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0046,
+        "power": 0.025999999999999995,
+        "voltage": 5.224
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:57.466797+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.024597450000000003,
+        "voltage": 5.2335
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:57.475261+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.004399999999999999,
+        "power": 0.025999999999999995,
+        "voltage": 5.244
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:57.533808+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.004399999999999999,
+        "power": 0.025999999999999995,
+        "voltage": 5.244
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:57.591801+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.02459886,
+        "voltage": 5.2338
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:57.600602+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005,
+        "power": 0.021999999999999995,
+        "voltage": 5.224
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:57.659866+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0053,
+        "power": 0.025999999999999995,
+        "voltage": 5.248
+      }
+    },
+    {
+      "source": "bme280_0x77",
+      "timestamp": "2026-07-05T00:38:57.718910+00:00",
+      "unit_hints": {
+        "humidity": "%",
+        "pressure": "hPa",
+        "temperature": "degC"
+      },
+      "values": {
+        "humidity": 46.52319529851227,
+        "pressure": 1012.8765756479354,
+        "temperature": 28.5318359375
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:57.980951+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0053,
+        "power": 0.021999999999999995,
+        "voltage": 5.232
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:58.038582+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0046,
+        "power": 0.021999999999999995,
+        "voltage": 5.236
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:58.098641+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0043,
+        "power": 0.029999999999999995,
+        "voltage": 5.244
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:58.156898+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0048,
+        "power": 0.025999999999999995,
+        "voltage": 5.248
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:57.980785+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.02459839,
+        "voltage": 5.2337
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:58.220069+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0049,
+        "power": 0.021999999999999995,
+        "voltage": 5.228
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:58.219894+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.02459839,
+        "voltage": 5.2337
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:58.282271+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0045,
+        "power": 0.025999999999999995,
+        "voltage": 5.24
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:58.344778+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0053,
+        "power": 0.021999999999999995,
+        "voltage": 5.24
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:58.402775+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.02459839,
+        "voltage": 5.2337
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:58.407406+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.004199999999999999,
+        "power": 0.025999999999999995,
+        "voltage": 5.236
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:58.473902+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005199999999999999,
+        "power": 0.025999999999999995,
+        "voltage": 5.24
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:58.532607+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0053,
+        "power": 0.021999999999999995,
+        "voltage": 5.228
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:58.601368+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0056,
+        "power": 0.025999999999999995,
+        "voltage": 5.236
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:58.601108+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.024597920000000002,
+        "voltage": 5.2336
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:58.662792+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0050999999999999995,
+        "power": 0.021999999999999995,
+        "voltage": 5.236
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:58.721288+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0049,
+        "power": 0.025999999999999995,
+        "voltage": 5.22
+      }
+    },
+    {
+      "source": "bme280_0x77",
+      "timestamp": "2026-07-05T00:38:58.780724+00:00",
+      "unit_hints": {
+        "humidity": "%",
+        "pressure": "hPa",
+        "temperature": "degC"
+      },
+      "values": {
+        "humidity": 46.53503562231782,
+        "pressure": 1012.8767346819976,
+        "temperature": 28.5267578125
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:59.041093+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.004699999999999999,
+        "power": 0.029999999999999995,
+        "voltage": 5.252
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:59.102704+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005,
+        "power": 0.025999999999999995,
+        "voltage": 5.228
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:59.160641+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005,
+        "power": 0.021999999999999995,
+        "voltage": 5.236
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:59.218664+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0049,
+        "power": 0.025999999999999995,
+        "voltage": 5.244
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:59.040884+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.02459886,
+        "voltage": 5.2338
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:59.276939+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0048,
+        "power": 0.021999999999999995,
+        "voltage": 5.22
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:59.276780+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.024599330000000003,
+        "voltage": 5.2339
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:59.344753+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0050999999999999995,
+        "power": 0.025999999999999995,
+        "voltage": 5.228
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:59.402919+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0048,
+        "power": 0.025999999999999995,
+        "voltage": 5.224
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:59.402773+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.02460027,
+        "voltage": 5.2341
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:59.469772+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005,
+        "power": 0.025999999999999995,
+        "voltage": 5.232
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:59.529611+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005399999999999999,
+        "power": 0.029999999999999995,
+        "voltage": 5.24
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:59.588736+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.0245998,
+        "voltage": 5.234
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:59.594323+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005199999999999999,
+        "power": 0.025999999999999995,
+        "voltage": 5.224
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:38:59.653730+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005199999999999999,
+        "power": 0.025999999999999995,
+        "voltage": 5.24
+      }
+    },
+    {
+      "source": "bme280_0x77",
+      "timestamp": "2026-07-05T00:38:59.711899+00:00",
+      "unit_hints": {
+        "humidity": "%",
+        "pressure": "hPa",
+        "temperature": "degC"
+      },
+      "values": {
+        "humidity": 46.523146079853326,
+        "pressure": 1012.8652926214684,
+        "temperature": 28.5216796875
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:38:59.978983+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0053,
+        "power": 0.021999999999999995,
+        "voltage": 5.228
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:39:00.038670+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.004699999999999999,
+        "power": 0.025999999999999995,
+        "voltage": 5.244
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:39:00.096640+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0046,
+        "power": 0.025999999999999995,
+        "voltage": 5.228
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:39:00.155754+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0050999999999999995,
+        "power": 0.025999999999999995,
+        "voltage": 5.232
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:38:59.978820+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.02460027,
+        "voltage": 5.2341
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:39:00.215111+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0048,
+        "power": 0.025999999999999995,
+        "voltage": 5.228
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:39:00.214905+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.024599330000000003,
+        "voltage": 5.2339
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:39:00.281708+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0043,
+        "power": 0.021999999999999995,
+        "voltage": 5.232
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:39:00.342089+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0049,
+        "power": 0.025999999999999995,
+        "voltage": 5.224
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:39:00.403137+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.02459886,
+        "voltage": 5.2338
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:39:00.406143+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0053,
+        "power": 0.025999999999999995,
+        "voltage": 5.228
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:39:00.466807+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0046,
+        "power": 0.025999999999999995,
+        "voltage": 5.248
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:39:00.531476+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0049,
+        "power": 0.025999999999999995,
+        "voltage": 5.248
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:39:00.590104+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0049,
+        "power": 0.025999999999999995,
+        "voltage": 5.24
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:39:00.589901+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.024597920000000002,
+        "voltage": 5.2336
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:39:00.656223+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0043,
+        "power": 0.025999999999999995,
+        "voltage": 5.236
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:39:00.716898+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.004699999999999999,
+        "power": 0.021999999999999995,
+        "voltage": 5.24
+      }
+    },
+    {
+      "source": "bme280_0x77",
+      "timestamp": "2026-07-05T00:39:00.780719+00:00",
+      "unit_hints": {
+        "humidity": "%",
+        "pressure": "hPa",
+        "temperature": "degC"
+      },
+      "values": {
+        "humidity": 46.5351343167169,
+        "pressure": 1012.8695415865477,
+        "temperature": 28.5216796875
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:39:01.043158+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.004399999999999999,
+        "power": 0.025999999999999995,
+        "voltage": 5.224
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:39:01.101624+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005,
+        "power": 0.021999999999999995,
+        "voltage": 5.244
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:39:01.159560+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0049,
+        "power": 0.029999999999999995,
+        "voltage": 5.228
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:39:01.217579+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005399999999999999,
+        "power": 0.021999999999999995,
+        "voltage": 5.22
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:39:01.042847+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.02459886,
+        "voltage": 5.2338
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:39:01.275874+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0053,
+        "power": 0.025999999999999995,
+        "voltage": 5.224
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:39:01.275731+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.02459886,
+        "voltage": 5.2338
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:39:01.343671+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0048,
+        "power": 0.025999999999999995,
+        "voltage": 5.24
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:39:01.401791+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005199999999999999,
+        "power": 0.025999999999999995,
+        "voltage": 5.232
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:39:01.401687+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.0245998,
+        "voltage": 5.234
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:39:01.468656+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005499999999999999,
+        "power": 0.029999999999999995,
+        "voltage": 5.228
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:39:01.526710+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.004699999999999999,
+        "power": 0.025999999999999995,
+        "voltage": 5.236
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:39:01.584692+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.0245998,
+        "voltage": 5.234
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:39:01.593640+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0048,
+        "power": 0.021999999999999995,
+        "voltage": 5.232
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:39:01.652793+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005399999999999999,
+        "power": 0.025999999999999995,
+        "voltage": 5.248
+      }
+    },
+    {
+      "source": "bme280_0x77",
+      "timestamp": "2026-07-05T00:39:01.716084+00:00",
+      "unit_hints": {
+        "humidity": "%",
+        "pressure": "hPa",
+        "temperature": "degC"
+      },
+      "values": {
+        "humidity": 46.529090856279325,
+        "pressure": 1012.8891638718001,
+        "temperature": 28.5267578125
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:39:01.980938+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0050999999999999995,
+        "power": 0.025999999999999995,
+        "voltage": 5.22
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:39:02.038561+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0050999999999999995,
+        "power": 0.021999999999999995,
+        "voltage": 5.228
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:39:02.096668+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0046,
+        "power": 0.029999999999999995,
+        "voltage": 5.228
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:39:02.157612+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.004399999999999999,
+        "power": 0.025999999999999995,
+        "voltage": 5.248
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:39:01.980772+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.02459839,
+        "voltage": 5.2337
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:39:02.217115+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005499999999999999,
+        "power": 0.021999999999999995,
+        "voltage": 5.24
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:39:02.216915+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.02459886,
+        "voltage": 5.2338
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:39:02.283581+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005399999999999999,
+        "power": 0.021999999999999995,
+        "voltage": 5.24
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:39:02.341733+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005199999999999999,
+        "power": 0.025999999999999995,
+        "voltage": 5.232
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:39:02.399800+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.024596979999999997,
+        "voltage": 5.2334
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:39:02.408686+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.004699999999999999,
+        "power": 0.021999999999999995,
+        "voltage": 5.252
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:39:02.466893+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005,
+        "power": 0.025999999999999995,
+        "voltage": 5.22
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:39:02.533172+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005199999999999999,
+        "power": 0.021999999999999995,
+        "voltage": 5.228
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:39:02.591963+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0048,
+        "power": 0.025999999999999995,
+        "voltage": 5.244
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:39:02.591804+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.024597450000000003,
+        "voltage": 5.2335
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:39:02.658626+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005199999999999999,
+        "power": 0.025999999999999995,
+        "voltage": 5.228
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:39:02.716949+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0053,
+        "power": 0.025999999999999995,
+        "voltage": 5.232
+      }
+    },
+    {
+      "source": "bme280_0x77",
+      "timestamp": "2026-07-05T00:39:02.774687+00:00",
+      "unit_hints": {
+        "humidity": "%",
+        "pressure": "hPa",
+        "temperature": "degC"
+      },
+      "values": {
+        "humidity": 46.523146079853326,
+        "pressure": 1012.8899747141878,
+        "temperature": 28.5115234375
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:39:03.036091+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0053,
+        "power": 0.025999999999999995,
+        "voltage": 5.232
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:39:03.094630+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0053,
+        "power": 0.025999999999999995,
+        "voltage": 5.224
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:39:03.152683+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0043,
+        "power": 0.021999999999999995,
+        "voltage": 5.248
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:39:03.210631+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0050999999999999995,
+        "power": 0.025999999999999995,
+        "voltage": 5.228
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:39:03.035916+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.024597920000000002,
+        "voltage": 5.2336
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:39:03.269049+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005,
+        "power": 0.025999999999999995,
+        "voltage": 5.228
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:39:03.268836+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.024597920000000002,
+        "voltage": 5.2336
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:39:03.336717+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.004399999999999999,
+        "power": 0.021999999999999995,
+        "voltage": 5.22
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:39:03.394955+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005399999999999999,
+        "power": 0.021999999999999995,
+        "voltage": 5.232
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:39:03.394802+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.024597920000000002,
+        "voltage": 5.2336
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:39:03.461536+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0045,
+        "power": 0.025999999999999995,
+        "voltage": 5.228
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:39:03.519766+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0048,
+        "power": 0.029999999999999995,
+        "voltage": 5.228
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:39:03.586744+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.004699999999999999,
+        "power": 0.025999999999999995,
+        "voltage": 5.236
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:39:03.644976+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.004399999999999999,
+        "power": 0.021999999999999995,
+        "voltage": 5.248
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:39:03.644825+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.024597920000000002,
+        "voltage": 5.2336
+      }
+    },
+    {
+      "source": "bme280_0x77",
+      "timestamp": "2026-07-05T00:39:03.706325+00:00",
+      "unit_hints": {
+        "humidity": "%",
+        "pressure": "hPa",
+        "temperature": "degC"
+      },
+      "values": {
+        "humidity": 46.523146079853326,
+        "pressure": 1012.8760823505446,
+        "temperature": 28.5216796875
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:39:03.970021+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0046,
+        "power": 0.025999999999999995,
+        "voltage": 5.224
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:39:04.027548+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0046,
+        "power": 0.025999999999999995,
+        "voltage": 5.236
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:39:04.085703+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005399999999999999,
+        "power": 0.021999999999999995,
+        "voltage": 5.244
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:39:04.144564+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.004199999999999999,
+        "power": 0.025999999999999995,
+        "voltage": 5.244
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:39:03.969840+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.024596979999999997,
+        "voltage": 5.2334
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:39:04.203053+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005199999999999999,
+        "power": 0.021999999999999995,
+        "voltage": 5.232
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:39:04.202860+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.024596040000000003,
+        "voltage": 5.2332
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:39:04.270224+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.004199999999999999,
+        "power": 0.025999999999999995,
+        "voltage": 5.236
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:39:04.332744+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0049,
+        "power": 0.021999999999999995,
+        "voltage": 5.232
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:39:04.395985+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.004699999999999999,
+        "power": 0.025999999999999995,
+        "voltage": 5.236
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:39:04.395821+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.024595570000000004,
+        "voltage": 5.2331
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:39:04.454899+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.004399999999999999,
+        "power": 0.021999999999999995,
+        "voltage": 5.232
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:39:04.520512+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0053,
+        "power": 0.025999999999999995,
+        "voltage": 5.236
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:39:04.579724+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005,
+        "power": 0.025999999999999995,
+        "voltage": 5.22
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:39:04.637799+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.02459463,
+        "voltage": 5.2329
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:39:04.645463+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0045,
+        "power": 0.025999999999999995,
+        "voltage": 5.224
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:39:04.703923+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0050999999999999995,
+        "power": 0.025999999999999995,
+        "voltage": 5.228
+      }
+    },
+    {
+      "source": "bme280_0x77",
+      "timestamp": "2026-07-05T00:39:04.761809+00:00",
+      "unit_hints": {
+        "humidity": "%",
+        "pressure": "hPa",
+        "temperature": "degC"
+      },
+      "values": {
+        "humidity": 46.53503562231782,
+        "pressure": 1012.9042027578446,
+        "temperature": 28.5115234375
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:39:05.020824+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005,
+        "power": 0.021999999999999995,
+        "voltage": 5.232
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:39:05.078618+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005,
+        "power": 0.025999999999999995,
+        "voltage": 5.248
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:39:05.136681+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0053,
+        "power": 0.025999999999999995,
+        "voltage": 5.24
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:39:05.194571+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0049,
+        "power": 0.021999999999999995,
+        "voltage": 5.236
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:39:05.020648+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.024596040000000003,
+        "voltage": 5.2332
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:39:05.252841+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0053,
+        "power": 0.021999999999999995,
+        "voltage": 5.22
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:39:05.252710+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.024596040000000003,
+        "voltage": 5.2332
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:39:05.320214+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.004699999999999999,
+        "power": 0.025999999999999995,
+        "voltage": 5.232
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:39:05.378649+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.004399999999999999,
+        "power": 0.021999999999999995,
+        "voltage": 5.232
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:39:05.436692+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.024597450000000003,
+        "voltage": 5.2335
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:39:05.445610+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0045,
+        "power": 0.029999999999999995,
+        "voltage": 5.224
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:39:05.503765+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0050999999999999995,
+        "power": 0.021999999999999995,
+        "voltage": 5.244
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:39:05.570669+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.004699999999999999,
+        "power": 0.025999999999999995,
+        "voltage": 5.216
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:39:05.628896+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005,
+        "power": 0.025999999999999995,
+        "voltage": 5.232
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:39:05.628743+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.024597920000000002,
+        "voltage": 5.2336
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:39:05.695607+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0056,
+        "power": 0.025999999999999995,
+        "voltage": 5.228
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:39:05.753745+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005,
+        "power": 0.029999999999999995,
+        "voltage": 5.228
+      }
+    },
+    {
+      "source": "bme280_0x77",
+      "timestamp": "2026-07-05T00:39:05.811576+00:00",
+      "unit_hints": {
+        "humidity": "%",
+        "pressure": "hPa",
+        "temperature": "degC"
+      },
+      "values": {
+        "humidity": 46.53498625916511,
+        "pressure": 1012.9066532677393,
+        "temperature": 28.5166015625
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:39:06.073036+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.006699999999999999,
+        "power": 0.031999999999999994,
+        "voltage": 5.236
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:39:06.131592+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0069,
+        "power": 0.029999999999999995,
+        "voltage": 5.224
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:39:06.189535+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0060999999999999995,
+        "power": 0.031999999999999994,
+        "voltage": 5.236
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:39:06.247749+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.006199999999999999,
+        "power": 0.031999999999999994,
+        "voltage": 5.248
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:39:06.072758+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.02459839,
+        "voltage": 5.2337
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:39:06.072903+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0047,
+        "power": 0.024597920000000002,
+        "voltage": 5.2336
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:39:06.305744+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0053,
+        "power": 0.03599999999999999,
+        "voltage": 5.228
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:39:06.373837+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0063,
+        "power": 0.03599999999999999,
+        "voltage": 5.232
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:39:06.433431+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.006199999999999999,
+        "power": 0.031999999999999994,
+        "voltage": 5.24
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:39:06.433046+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005,
+        "power": 0.026167,
+        "voltage": 5.2334
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:39:06.498732+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0059,
+        "power": 0.031999999999999994,
+        "voltage": 5.248
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:39:06.558729+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0056,
+        "power": 0.031999999999999994,
+        "voltage": 5.224
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:39:06.619755+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0053,
+        "power": 0.02773596,
+        "voltage": 5.2332
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:39:06.623170+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.006199999999999999,
+        "power": 0.029999999999999995,
+        "voltage": 5.244
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:39:06.681781+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005699999999999999,
+        "power": 0.031999999999999994,
+        "voltage": 5.224
+      }
+    },
+    {
+      "source": "bme280_0x77",
+      "timestamp": "2026-07-05T00:39:06.739887+00:00",
+      "unit_hints": {
+        "humidity": "%",
+        "pressure": "hPa",
+        "temperature": "degC"
+      },
+      "values": {
+        "humidity": 46.54682611857676,
+        "pressure": 1012.9127001815225,
+        "temperature": 28.5166015625
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:39:06.999012+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.006199999999999999,
+        "power": 0.03599999999999999,
+        "voltage": 5.224
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:39:07.057605+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0063999999999999994,
+        "power": 0.031999999999999994,
+        "voltage": 5.228
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:39:07.115664+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0066,
+        "power": 0.03599999999999999,
+        "voltage": 5.232
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:39:07.173593+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0066,
+        "power": 0.029999999999999995,
+        "voltage": 5.228
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:39:06.998786+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.0057,
+        "power": 0.0298281,
+        "voltage": 5.233
+      }
+    },
+    {
+      "source": "ina219_0x41",
+      "timestamp": "2026-07-05T00:39:07.232360+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.005499999999999999,
+        "power": 0.03599999999999999,
+        "voltage": 5.236
+      }
+    },
+    {
+      "source": "fnb58",
+      "timestamp": "2026-07-05T00:39:07.231864+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.006,
+        "power": 0.031398600000000006,
+        "voltage": 5.2331
+      }
+    },
+    {
+      "source": "ina219_0x40",
+      "timestamp": "2026-07-05T00:39:07.299261+00:00",
+      "unit_hints": {
+        "current": "A",
+        "power": "W",
+        "voltage": "V"
+      },
+      "values": {
+        "current": 0.006199999999999999,
+        "power": 0.03599999999999999,
+        "voltage": 5.22
+      }
+    }
+  ],
+  "setup": "Nano 33, two INA219s in series, FNB58 upstream; user confirmed ready before capture",
+  "window_finished_at": "2026-07-05T00:39:07.358877+00:00",
+  "window_started_at": "2026-07-05T00:38:36.589047+00:00"
+}

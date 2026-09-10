@@ -1,0 +1,166 @@
+mlperf_tiny_version: v1.3
+mlperf_tiny_repo: https://github.com/mlcommons/tiny
+mlperf_tiny_tag: null
+mlperf_tiny_commit: 5dae3296bd899ed58a65311a8e6fd91d83f664ab
+retrieved_at: 2026-05-10T04:03:03Z
+version_note: >
+  MLCommons lists these benchmark definitions as available in Tiny v1.3, but
+  the public mlcommons/tiny repository exposes tags only through v1.1. The
+  reference artifacts are pinned to the exact public master commit above.
+tasks:
+  kws:
+    task: keyword_spotting
+    directory: kws
+    canonical_file: kws_ref_model.tflite
+    source_path: benchmark/training/keyword_spotting/trained_models/kws_ref_model.tflite
+    source_url: https://raw.githubusercontent.com/mlcommons/tiny/5dae3296bd899ed58a65311a8e6fd91d83f664ab/benchmark/training/keyword_spotting/trained_models/kws_ref_model.tflite
+    sha256: aeea436800704fce17b17292e4412630ad856e9d777c044c64ef748a880bd0ae
+    bytes: 53936
+    format: tflite
+    quantization: int8
+    input_shape: [1, 49, 10, 1]
+    output_shape: [1, 12]
+    tflm_c_array: ../tflm/kws_int8.cc
+    formats:
+      tflite:
+        path: kws/kws_ref_model.tflite
+        sha256: aeea436800704fce17b17292e4412630ad856e9d777c044c64ef748a880bd0ae
+        bytes: 53936
+      tflm_c_array:
+        path: ../tflm/kws_int8.cc
+        var_name: g_kws_int8_model_data
+      onnx:
+        path: ../onnx/kws_int8.onnx
+        sha256: d7eb060290aa1da24fe2d713d2d68007529531ab661ff55965fe66775181f1da
+        bytes: 73802
+        opset: 13
+        converter: tf2onnx-1.17.0
+    targets:
+      f401re:
+        status: FITS
+        target_ram_bytes: 98304
+        target_flash_bytes: 524288
+        estimated_arena_bytes: 36864
+        estimated_sram_bytes: 54404
+        estimated_flash_bytes: 153308
+        method: static_tensor_heuristic_v1
+      nano33:
+        status: FITS
+        target_ram_bytes: 262144
+        target_flash_bytes: 983040
+        estimated_arena_bytes: 36864
+        estimated_sram_bytes: 95712
+        estimated_flash_bytes: 215036
+        method: static_tensor_heuristic_v1
+      esp32s3:
+        status: FITS
+        target_ram_bytes: 327680
+        target_flash_bytes: 1048576
+        estimated_arena_bytes: 36864
+        estimated_sram_bytes: 76716
+        estimated_flash_bytes: 449777
+        method: static_tensor_heuristic_v1
+  ic:
+    task: image_classification
+    directory: ic
+    canonical_file: pretrainedResnet_quant.tflite
+    source_path: benchmark/training/image_classification/trained_models/pretrainedResnet_quant.tflite
+    source_url: https://raw.githubusercontent.com/mlcommons/tiny/5dae3296bd899ed58a65311a8e6fd91d83f664ab/benchmark/training/image_classification/trained_models/pretrainedResnet_quant.tflite
+    sha256: 3c002613d1b2475eb51dd78dfb85a546c8ae658dee71cf6ade43b022fe205415
+    bytes: 98496
+    format: tflite
+    quantization: int8
+    input_shape: [1, 32, 32, 3]
+    output_shape: [1, 10]
+    tflm_c_array: ../tflm/ic_int8.cc
+    formats:
+      tflite:
+        path: ic/pretrainedResnet_quant.tflite
+        sha256: 3c002613d1b2475eb51dd78dfb85a546c8ae658dee71cf6ade43b022fe205415
+        bytes: 98496
+      tflm_c_array:
+        path: ../tflm/ic_int8.cc
+        var_name: g_ic_int8_model_data
+      onnx:
+        path: ../onnx/ic_int8.onnx
+        sha256: 6ce9e5fab1590a8365ced31e467796e98bf92c0b29c732164f086053f75e5029
+        bytes: 112387
+        opset: 13
+        converter: tf2onnx-1.17.0
+    targets:
+      f401re:
+        status: FITS
+        target_ram_bytes: 98304
+        target_flash_bytes: 524288
+        estimated_arena_bytes: 57344
+        estimated_sram_bytes: 74884
+        estimated_flash_bytes: 197868
+        method: static_tensor_heuristic_v1
+      nano33:
+        status: FITS
+        target_ram_bytes: 262144
+        target_flash_bytes: 983040
+        estimated_arena_bytes: 57344
+        estimated_sram_bytes: 116192
+        estimated_flash_bytes: 259596
+        method: static_tensor_heuristic_v1
+      esp32s3:
+        status: FITS
+        target_ram_bytes: 327680
+        target_flash_bytes: 1048576
+        estimated_arena_bytes: 57344
+        estimated_sram_bytes: 97196
+        estimated_flash_bytes: 494337
+        method: static_tensor_heuristic_v1
+  ad:
+    task: anomaly_detection
+    directory: ad
+    canonical_file: ad01_int8.tflite
+    source_path: benchmark/training/anomaly_detection/trained_models/ad01_int8.tflite
+    source_url: https://raw.githubusercontent.com/mlcommons/tiny/5dae3296bd899ed58a65311a8e6fd91d83f664ab/benchmark/training/anomaly_detection/trained_models/ad01_int8.tflite
+    sha256: 87cf24194ef93d1d9b11a591d805526b98008e351655d29883c825c9c106ba24
+    bytes: 276976
+    format: tflite
+    quantization: int8
+    input_shape: [1, 640]
+    output_shape: [1, 640]
+    tflm_c_array: ../tflm/ad_int8.cc
+    formats:
+      tflite:
+        path: ad/ad01_int8.tflite
+        sha256: 87cf24194ef93d1d9b11a591d805526b98008e351655d29883c825c9c106ba24
+        bytes: 276976
+      tflm_c_array:
+        path: ../tflm/ad_int8.cc
+        var_name: g_ad_int8_model_data
+      onnx:
+        path: ../onnx/ad_int8.onnx
+        sha256: 7de136c8c472be09b00cb1047ea7dcb4e85b5d41f586b2e02721b46d2bac0f60
+        bytes: 285111
+        opset: 13
+        converter: tf2onnx-1.17.0
+    targets:
+      f401re:
+        status: FITS
+        target_ram_bytes: 98304
+        target_flash_bytes: 524288
+        estimated_arena_bytes: 12288
+        estimated_sram_bytes: 29828
+        estimated_flash_bytes: 376348
+        method: static_tensor_heuristic_v1
+      nano33:
+        status: FITS
+        target_ram_bytes: 262144
+        target_flash_bytes: 983040
+        estimated_arena_bytes: 12288
+        estimated_sram_bytes: 71136
+        estimated_flash_bytes: 438076
+        method: static_tensor_heuristic_v1
+      esp32s3:
+        status: FITS
+        target_ram_bytes: 327680
+        target_flash_bytes: 1048576
+        estimated_arena_bytes: 12288
+        estimated_sram_bytes: 52140
+        estimated_flash_bytes: 672817
+        method: static_tensor_heuristic_v1

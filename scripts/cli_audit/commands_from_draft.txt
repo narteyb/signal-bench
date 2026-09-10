@@ -1,0 +1,14 @@
+# Source: Post_1_TinyML_Reality_Check_Draft_v01.md
+# Path: <local-path> Drive/Downloads/Agoo AI Project Files/Post_1_TinyML_Reality_Check_Draft_v01.md
+#
+# Section: Reproduce this yourself — Install signal-bench
+pip install signal-bench
+
+# Section: Reproduce this yourself — Run keyword spotting on a connected ESP32-S3
+signal-bench run --target esp32s3 --task kws --n 20 --warmup 5
+
+# Section: Reproduce this yourself — Run the full MCU matrix
+signal-bench run --target mcu-matrix --task all --n 20 --warmup 5
+
+# Section: Reproduce this yourself — Export results to markdown
+signal-bench synth report --format markdown

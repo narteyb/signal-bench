@@ -1,0 +1,301 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "signal-bench"
+version = "0.1.0.dev0"
+description = "Edge AI benchmarking foundation."
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "Apache-2.0"}
+authors = [
+  {name = "Dan Brown", email = "dan@agoo-ai.com"},
+]
+dependencies = [
+  "click>=8.1",
+  "sqlalchemy>=2.0",
+  "alembic>=1.13",
+  "uuid_utils>=0.8",
+  "rich>=13.7",
+  "pydantic>=2.6",
+  "pyyaml>=6.0",
+  "pyserial-asyncio>=0.6",
+  "bleak>=0.21",
+  "adafruit-blinka>=9.1.0",
+  "adafruit-circuitpython-ina219>=3.5.2",
+  "adafruit-circuitpython-bme280>=2.6.32",
+  "hidapi>=0.15.0",
+  "requests>=2.31",
+  "huggingface_hub>=0.20",
+  "idna>=3.15",
+  "setuptools>=83",
+  "tomli>=2.0; python_version < '3.11'",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0",
+  "pytest-cov>=4.1",
+  "black>=24.0",
+  "ruff>=0.4",
+  "mypy>=1.10",
+  "pre-commit>=3.7",
+  "respx>=0.21",
+  "pytest-asyncio>=1.3.0",
+  "bandit>=1.9.4",
+  "pip-audit>=2.10.0",
+  "types-pyyaml",
+  "types-requests",
+  "ai-edge-litert>=2.1.4",
+  "numpy>=2.4.4",
+  "onnx>=1.22.0",
+  "tf2onnx>=1.17.0",
+  "onnxruntime<1.26",
+  "datasets>=2.0",
+  "aiohttp>=3.14.1",
+]
+experiments = [
+  "httpx>=0.27",
+  "modal>=1.4",
+]
+kws-prep = [
+  # TensorFlow is heavy (~600MB) but used only for KWS dataset prep — kept out of
+  # the `dev` extras so day-to-day signal-bench installs stay light. Pinning TF
+  # here keeps the MFCC pipeline byte-faithful to MLPerf Tiny's reference
+  # (`tf.signal.stft` + `tf.signal.mfccs_from_log_mel_spectrograms` exactly
+  # match upstream `kws_util.py` at commit 5dae3296...).
+  "tensorflow>=2.15",
+  "tensorflow-datasets>=4.9",
+  # TFDS's `etils` import path uses the `importlib_resources` backport name
+  # rather than stdlib `importlib.resources`; explicit pin keeps it available
+  # under Python 3.12 (where the backport is no longer pulled in transitively).
+  "importlib_resources>=6.0",
+  # TFDS's speech_commands builder lazy-imports pydub for audio decoding.
+  "pydub>=0.25",
+]
+ad-prep = [
+  # AD's reference preprocessing (MLPerf Tiny v1.2 `common.py::file_to_vector_array`
+  # at commit 5dae3296...) uses librosa's `melspectrogram(power=2.0)` + a
+  # dB-scaled log + a `[:, 50:250]` central-window slice + 5-frame context
+  # concatenation. Mirroring that pipeline in librosa keeps the published
+  # features byte-faithful to what `ad01_int8.tflite` was trained on. soundfile
+  # is librosa's preferred WAV reader and is pulled transitively, but we pin it
+  # explicitly so the WAV-read path is documented.
+  "librosa>=0.10",
+  "msgpack>=1.2.1",
+  "soundfile>=0.12",
+]
+
+[project.scripts]
+signal-bench = "signal_bench_cli.__main__:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/signal_bench", "src/signal_bench_cli"]
+
+[tool.hatch.build.targets.wheel.force-include]
+"src/signal_bench/protocols/n3.yaml" = "signal_bench/protocols/n3.yaml"
+
+[tool.black]
+line-length = 100
+target-version = ["py311"]
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = ["D203", "D213", "COM812", "ISC001"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**/*.py" = [
+  "ANN001",
+  "ANN101",
+  "ANN201",
+  "D100",
+  "D103",
+  "DTZ001",
+  "N806",
+  "PLR2004",
+  "S101",
+  "S603",
+  "S607",
+  "S608",
+  "SLF001",
+]
+"tests/fixtures/mock_serial.py" = ["ANN401"]
+"experiments/**/*.py" = [
+  "C901",
+  "ANN101",
+  "D107",
+  "DTZ011",
+  "E501",
+  "EM101",
+  "EM102",
+  "N806",
+  "PERF401",
+  "PLC0415",
+  "PLR0913",
+  "PLR0915",
+  "PLR2004",
+  "S603",
+  "S607",
+  "T201",
+  "TCH002",
+  "TCH003",
+  "TRY003",
+  "TRY300",
+]
+"src/signal_bench/migrations/**/*.py" = ["D100", "D400", "D415", "INP001"]
+"src/signal_bench/adapters/base.py" = ["D413", "TCH003"]
+"src/signal_bench/adapters/exceptions.py" = ["N818"]
+"src/signal_bench/eval/full_eval.py" = ["PLR0913", "PLR0915"]
+"src/signal_bench/schema.py" = ["TCH003"]
+"src/signal_bench/synth/_partial.py" = ["PLR0911"]
+"src/signal_bench/telemetry/sources/fnirsi_usb_hid.py" = ["ANN401"]
+"src/signal_bench_cli/commands/init.py" = ["FBT001"]
+"src/signal_bench_cli/commands/telemetry.py" = [
+  "BLE001",
+  "C901",
+  "FBT001",
+  "PLR0912",
+  "PLR0913",
+  "PLR0915",
+]
+"src/signal_bench/phase1/*.py" = [
+  "D107",
+  "FBT003",
+  "N818",
+  "PERF401",
+  "PLR0913",
+  "PLR2004",
+  "S603",
+  "TC001",
+  "TC003",
+]
+"docs/writing-an-adapter/skeleton.py" = ["INP001"]
+"tools/check_test_coverage.py" = ["INP001", "PLC0415", "PLR0911", "PLR2004", "S603", "S607", "T201"]
+"tools/validate_onnx_models.py" = ["INP001", "PLC0415", "T201"]
+"tools/validate_tflm_models.py" = ["INP001", "PLC0415", "T201"]
+"scripts/*.py" = [
+  "ANN401",
+  "ARG001",
+  "ASYNC240",
+  "BLE001",
+  "C901",
+  "D101",
+  "D102",
+  "D103",
+  "D105",
+  "D107",
+  "E402",
+  "E501",
+  "EM101",
+  "EM102",
+  "EXE001",
+  "FBT001",
+  "N801",
+  "PERF401",
+  "PLC0415",
+  "PLR0911",
+  "PLR0913",
+  "PLR0915",
+  "PLR2004",
+  "PLW2901",
+  "PT018",
+  "RET504",
+  "S101",
+  "S301",
+  "S310",
+  "S603",
+  "S607",
+  "S608",
+  "SIM401",
+  "SLF001",
+  "T201",
+  "TC001",
+  "TC003",
+  "TRY003",
+  "TRY300",
+]
+"scripts/**/*.py" = [
+  "ANN401",
+  "ARG001",
+  "ASYNC240",
+  "BLE001",
+  "C901",
+  "D101",
+  "D102",
+  "D103",
+  "D105",
+  "D107",
+  "E402",
+  "E501",
+  "EM101",
+  "EM102",
+  "EXE001",
+  "FBT001",
+  "N801",
+  "PERF401",
+  "PLC0415",
+  "PLR0911",
+  "PLR0913",
+  "PLR0915",
+  "PLR2004",
+  "PLW2901",
+  "PT018",
+  "RET504",
+  "S101",
+  "S301",
+  "S310",
+  "S603",
+  "S607",
+  "S608",
+  "SIM401",
+  "SLF001",
+  "T201",
+  "TC001",
+  "TC003",
+  "TRY003",
+  "TRY300",
+]
+
+[tool.ruff.lint.isort]
+known-first-party = ["experiments", "signal_bench", "signal_bench_cli"]
+
+[tool.ruff.lint.flake8-pytest-style]
+fixture-parentheses = false
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+mypy_path = "src"
+files = ["src/signal_bench"]
+
+[[tool.mypy.overrides]]
+module = ["signal_bench_cli.*", "tests.*"]
+strict = false
+
+[[tool.mypy.overrides]]
+module = ["pynvml"]
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "--cov=signal_bench --cov-report=term-missing --cov-fail-under=80"
+markers = [
+  "hardware: tests that require physical hardware to be attached (skipped in CI)",
+  "hardware_fnb58: tests that require a paired FNIRSI FNB58 BLE power meter",
+  "smoke: fast end-to-end smoke checks for newly introduced surfaces",
+]
+
+[tool.coverage.run]
+omit = [
+  "src/signal_bench/adapters/__init__.py",
+  "src/signal_bench/adapters/base.py",
+  "src/signal_bench/adapters/exceptions.py",
+  "src/signal_bench/adapters/mcu/__init__.py",
+  "src/signal_bench/adapters/mcu/config.py",
+  "src/signal_bench/adapters/mcu/frames.py",
+  "src/signal_bench/adapters/mcu/task.py",
+]

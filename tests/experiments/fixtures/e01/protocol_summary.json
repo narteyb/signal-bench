@@ -1,0 +1,43 @@
+{
+  "model": {
+    "name": "nemotron-3-nano:4b",
+    "hash": "6cc467f054393a55e98a74098abde0c762ffb6d1d8cd64becf30458f38886197",
+    "quantization": "Q4_K_M"
+  },
+  "targets": {
+    "m1-max-64gb": {
+      "kind": "local",
+      "cpu": "Apple M1 Max (10-core)",
+      "accelerator": "Apple Neural Engine + Metal GPU",
+      "ram_mb": 65536,
+      "storage_mb": 2000000,
+      "os_name": "macOS",
+      "os_version": "15.4.1 (24E263)",
+      "runtime_version": "ollama version 0.6.8",
+      "extra": {"ollama_version": "ollama version 0.6.8", "metal_supported": true}
+    },
+    "modal-a10g": {
+      "kind": "modal",
+      "cpu": "N/A (cloud)",
+      "accelerator": "NVIDIA A10G (24GB)",
+      "ram_mb": 49152,
+      "storage_mb": 100000,
+      "os_name": "Linux (Modal container)",
+      "os_version": "Linux modal-worker 6.8.0 x86_64 GNU/Linux",
+      "runtime_version": "modal container ollama",
+      "extra": {"modal_app": "signal-bench-e01-llm", "instance_type": "A10G"}
+    }
+  },
+  "runs": {
+    "m1-max-64gb": {
+      "short": {"p50_ms": 1286.0, "p95_ms": 1477.3, "p99_ms": 1494.9, "mean_tok_s": 37.72, "tokens_in": 17, "tokens_out": 48},
+      "medium": {"p50_ms": 3527.5, "p95_ms": 4128.6, "p99_ms": 4254.8, "mean_tok_s": 39.97, "tokens_in": 96, "tokens_out": 141},
+      "long": {"p50_ms": 5063.2, "p95_ms": 6020.8, "p99_ms": 6299.1, "mean_tok_s": 30.44, "tokens_in": 612, "tokens_out": 154}
+    },
+    "modal-a10g": {
+      "short": {"p50_ms": 676.8, "p95_ms": 684.7, "p99_ms": 689.2, "mean_tok_s": 73.83, "tokens_in": 17, "tokens_out": 50},
+      "medium": {"p50_ms": 1444.6, "p95_ms": 1503.5, "p99_ms": 1551.0, "mean_tok_s": 103.24, "tokens_in": 96, "tokens_out": 149},
+      "long": {"p50_ms": 1647.5, "p95_ms": 1655.4, "p99_ms": 1657.1, "mean_tok_s": 97.16, "tokens_in": 612, "tokens_out": 160}
+    }
+  }
+}

@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1200, initial-scale=1" />
+    <title>TinyML Reality Check OG</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&family=Outfit:wght@800;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --midnight: #0d1117;
+        --signal-green: #00d4aa;
+        --amber: #e8c444;
+        --coral: #ff6b6b;
+        --slate: #c9d1d9;
+        --smoke: #8b949e;
+        --bone: #f0f6fc;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        width: 1200px;
+        height: 630px;
+        overflow: hidden;
+        background: var(--midnight);
+      }
+
+      body {
+        color: var(--bone);
+        font-family: Inter, system-ui, sans-serif;
+      }
+
+      .canvas {
+        position: relative;
+        width: 1200px;
+        height: 630px;
+        padding: 60px;
+        background: var(--midnight);
+      }
+
+      .brand,
+      .wordmark,
+      .report-label,
+      .title,
+      .subtitle {
+        font-family: Outfit, Inter, system-ui, sans-serif;
+        font-weight: 900;
+      }
+
+      .brand {
+        position: absolute;
+        top: 58px;
+        left: 60px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        color: var(--signal-green);
+      }
+
+      .wordmark {
+        font-size: 28px;
+        letter-spacing: 0.08em;
+        line-height: 1;
+      }
+
+      .logo {
+        width: 52px;
+        height: 48px;
+      }
+
+      .report-label {
+        position: absolute;
+        top: 66px;
+        right: 60px;
+        color: var(--slate);
+        font-size: 16px;
+        letter-spacing: 0.14em;
+        line-height: 1;
+      }
+
+      .headline {
+        position: absolute;
+        left: 60px;
+        top: 185px;
+        width: 760px;
+      }
+
+      .title {
+        margin: 0;
+        color: var(--bone);
+        font-size: 76px;
+        letter-spacing: 0;
+        line-height: 1.03;
+      }
+
+      .subtitle {
+        margin-top: 22px;
+        color: var(--signal-green);
+        font-size: 43px;
+        letter-spacing: 0;
+        line-height: 1.05;
+      }
+
+      .curve {
+        position: absolute;
+        left: 60px;
+        bottom: 56px;
+        width: 220px;
+        height: 86px;
+      }
+
+      .url {
+        position: absolute;
+        right: 60px;
+        bottom: 61px;
+        color: var(--smoke);
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="canvas" aria-label="TinyML Reality Check: The Floor of the Curve">
+      <div class="brand">
+        <svg class="logo" viewBox="0 0 56 52" role="img" aria-label="Agoo AI signal mark">
+          <circle cx="10" cy="26" r="4.6" fill="var(--signal-green)" />
+          <path d="M18 20 A10 10 0 0 1 18 32" fill="none" stroke="var(--signal-green)" stroke-width="3.2" stroke-linecap="round" />
+          <path d="M24 15 A17 17 0 0 1 24 37" fill="none" stroke="var(--signal-green)" stroke-width="3" stroke-linecap="round" opacity="0.88" />
+          <path d="M30 10 A24 24 0 0 1 30 42" fill="none" stroke="var(--signal-green)" stroke-width="2.8" stroke-linecap="round" opacity="0.72" />
+          <path d="M36 7 A30 30 0 0 1 36 45" fill="none" stroke="var(--slate)" stroke-width="2.6" stroke-linecap="round" opacity="0.58" />
+          <path d="M42 4 A36 36 0 0 1 42 48" fill="none" stroke="var(--slate)" stroke-width="2.3" stroke-linecap="round" opacity="0.42" />
+          <path d="M48 2 A42 42 0 0 1 48 50" fill="none" stroke="var(--smoke)" stroke-width="2" stroke-linecap="round" opacity="0.32" />
+        </svg>
+        <div class="wordmark">AGOO AI</div>
+      </div>
+
+      <div class="report-label">SIGNAL REPORT</div>
+
+      <section class="headline">
+        <h1 class="title">TinyML Reality Check</h1>
+        <div class="subtitle">The Floor of the Curve</div>
+      </section>
+
+      <svg class="curve" viewBox="0 0 220 86" aria-hidden="true">
+        <path d="M10 70 H210" stroke="var(--slate)" stroke-width="1.2" opacity="0.2" />
+        <path d="M10 48 H210" stroke="var(--slate)" stroke-width="1.2" opacity="0.13" />
+        <path d="M10 26 H210" stroke="var(--slate)" stroke-width="1.2" opacity="0.09" />
+        <path d="M24 61 C74 54 104 37 146 30 S188 20 206 14" fill="none" stroke="var(--signal-green)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+        <circle cx="24" cy="61" r="8" fill="var(--midnight)" stroke="var(--signal-green)" stroke-width="4" />
+        <circle cx="119" cy="34" r="8" fill="var(--midnight)" stroke="var(--signal-green)" stroke-width="4" />
+        <circle cx="206" cy="14" r="8" fill="var(--midnight)" stroke="var(--signal-green)" stroke-width="4" />
+      </svg>
+
+      <div class="url">agoo-ai.com/blog</div>
+    </main>
+  </body>
+</html>

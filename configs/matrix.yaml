@@ -1,0 +1,123 @@
+schema_version: 1
+name: post-1-tinyml-matrix
+version: 1.0.0
+description: "Post 1 baseline matrix: three TinyML tasks across MCU, SBC, local, and cloud targets."
+created: "2026-05-10"
+
+tasks:
+  - kws
+  - ic
+  - ad
+
+targets:
+  - f401re
+  - nano33
+  - esp32s3
+  - pi5
+  - jetson
+  - m1max
+  - modal
+
+defaults:
+  iterations: 100
+  warmup_iterations: 10
+  required_runs: 3
+  latency_budget_ms: null
+  accuracy_threshold: null
+  energy_budget_uwh: null
+
+cells:
+  - task: kws
+    target: f401re
+    accuracy_threshold: 0.81
+    latency_budget_ms: 100
+  - task: kws
+    target: nano33
+    accuracy_threshold: 0.81
+    latency_budget_ms: 80
+  - task: kws
+    target: esp32s3
+    accuracy_threshold: 0.81
+    latency_budget_ms: 50
+  - task: kws
+    target: pi5
+    accuracy_threshold: 0.81
+    latency_budget_ms: 10
+  - task: kws
+    target: jetson
+    accuracy_threshold: 0.81
+    latency_budget_ms: 5
+  - task: kws
+    target: m1max
+    accuracy_threshold: 0.81
+    latency_budget_ms: 2
+  - task: kws
+    target: modal
+    accuracy_threshold: 0.81
+    latency_budget_ms: 2
+
+  - task: ic
+    target: f401re
+    accuracy_threshold: 0.765
+    latency_budget_ms: 500
+  - task: ic
+    target: nano33
+    accuracy_threshold: 0.765
+    latency_budget_ms: 300
+  - task: ic
+    target: esp32s3
+    accuracy_threshold: 0.765
+    latency_budget_ms: 150
+  - task: ic
+    target: pi5
+    accuracy_threshold: 0.765
+    latency_budget_ms: 20
+  - task: ic
+    target: jetson
+    accuracy_threshold: 0.765
+    latency_budget_ms: 10
+  - task: ic
+    target: m1max
+    accuracy_threshold: 0.765
+    latency_budget_ms: 5
+  - task: ic
+    target: modal
+    accuracy_threshold: 0.765
+    latency_budget_ms: 5
+
+  - task: ad
+    target: f401re
+    accuracy_threshold: 0.765
+    latency_budget_ms: 200
+  - task: ad
+    target: nano33
+    accuracy_threshold: 0.765
+    latency_budget_ms: 150
+  - task: ad
+    target: esp32s3
+    accuracy_threshold: 0.765
+    latency_budget_ms: 75
+  - task: ad
+    target: pi5
+    accuracy_threshold: 0.765
+    latency_budget_ms: 10
+  - task: ad
+    target: jetson
+    accuracy_threshold: 0.765
+    latency_budget_ms: 5
+  - task: ad
+    target: m1max
+    accuracy_threshold: 0.765
+    latency_budget_ms: 3
+  - task: ad
+    target: modal
+    accuracy_threshold: 0.765
+    latency_budget_ms: 3
+
+exclusions: []
+
+phase_5_overrides:
+  ic:
+    f401re:
+      arena_kb_override: 60
+      notes: IC/F401RE is the tightest SRAM cell from T2.5; verify allocator success first.

@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>signal-bench chart demo</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+      body { font-family: system-ui, sans-serif; margin: 2rem; }
+      section { margin-bottom: 2rem; max-width: 960px; }
+      canvas { width: 100%; max-height: 420px; }
+    </style>
+  </head>
+  <body>
+    <h1>signal-bench chart demo</h1>
+    <section><h2>Hardware Curve</h2><canvas id="hardware-curve"></canvas></section>
+    <section><h2>Wh Comparison</h2><canvas id="wh-comparison"></canvas></section>
+    <section><h2>Variance Illustration</h2><canvas id="variance-illustration"></canvas></section>
+    <script>
+      const charts = __CHART_JSON__;
+      for (const [id, config] of Object.entries(charts)) {
+        new Chart(document.getElementById(id), config);
+      }
+    </script>
+  </body>
+</html>
