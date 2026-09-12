@@ -127,6 +127,8 @@ class Comparison:
     lower: float
     upper: float
     degrees_of_freedom: float
+    ambient_a: str
+    ambient_b: str
 
 
 def main() -> int:
@@ -500,8 +502,8 @@ def _render_estimates(cells: tuple[Cell, ...]) -> str:
         return "\n".join(lines)
     lines.extend(
         [
-            "| Task | Metric | Target A | Target B | Boundary | n A | n B | Ratio | 95% interval | df |",
-            "|---|---|---|---|---|---:|---:|---:|---|---:|",
+            "| Task | Metric | Target A | Target B | Boundary | Ambient A | Ambient B | n A | n B | Ratio | 95% interval | df |",
+            "|---|---|---|---|---|---|---|---:|---:|---:|---|---:|",
         ]
     )
     for comparison in comparisons:
@@ -514,6 +516,8 @@ def _render_estimates(cells: tuple[Cell, ...]) -> str:
                     comparison.target_a,
                     comparison.target_b,
                     f"`{comparison.boundary}`",
+                    comparison.ambient_a,
+                    comparison.ambient_b,
                     str(comparison.n_a),
                     str(comparison.n_b),
                     _number(comparison.ratio),
@@ -534,6 +538,7 @@ def _render_findings(
 ) -> str:
     all_selected = [session for cell in cells for session in cell.sessions]
     boundary_counts = Counter(session.boundary for session in all_selected)
+    by_key = {(cell.task, cell.target): cell for cell in cells}
     cell_medians = {
         (cell.task, cell.target): (
             median([s.latency_ms for s in cell.sessions if s.latency_ms is not None]),
@@ -628,12 +633,16 @@ def _render_findings(
             "",
             "These medians are shown to answer the Report No. 1 question directly. They combine the three published sessions in each cell exactly as Report No. 1 did; the boundary analysis above explains why they are not sufficient for the stronger cross-board claim.",
             "",
-            "| Task | F401RE latency (ms) | Nano 33 latency (ms) | ESP32-S3 latency (ms) | F401RE energy (Wh/1000) | Nano 33 energy (Wh/1000) | ESP32-S3 energy (Wh/1000) |",
-            "|---|---:|---:|---:|---:|---:|---:|",
+            "| Task | F401RE latency (ms) | Nano 33 latency (ms) | ESP32-S3 latency (ms) | F401RE energy (Wh/1000) | Nano 33 energy (Wh/1000) | ESP32-S3 energy (Wh/1000) | Ambient for sessions behind row |",
+            "|---|---:|---:|---:|---:|---:|---:|---|",
         ]
     )
     for task in TASKS:
         values = [cell_medians[(task, target)] for target in TARGETS]
+        ambient = "<br>".join(
+            f"{target}: {_cell_ambient(by_key[(task, target)])}"
+            for target in TARGETS
+        )
         lines.append(
             "| "
             + " | ".join(
@@ -641,6 +650,7 @@ def _render_findings(
                     task.upper(),
                     *[_number(pair[0]) for pair in values],
                     *[_number(pair[1]) for pair in values],
+                    ambient,
                 ]
             )
             + " |",
@@ -703,6 +713,8 @@ def _comparisons(cells: tuple[Cell, ...]) -> tuple[Comparison, ...]:
                                 boundary,
                                 [float(value) for value in value_a if value is not None],
                                 [float(value) for value in value_b if value is not None],
+                                _cell_ambient(cell_a),
+                                _cell_ambient(cell_b),
                             )
                         )
     return tuple(comparisons)
@@ -716,6 +728,8 @@ def _comparison(
     boundary: str,
     values_a: list[float],
     values_b: list[float],
+    ambient_a: str,
+    ambient_b: str,
 ) -> Comparison:
     logs_a = [math.log(value) for value in values_a]
     logs_b = [math.log(value) for value in values_b]
@@ -745,6 +759,8 @@ def _comparison(
         math.exp(log_ratio - margin),
         math.exp(log_ratio + margin),
         degrees_of_freedom,
+        ambient_a,
+        ambient_b,
     )
 
 
@@ -855,6 +871,13 @@ def _ambient(session: Session) -> str:
     temperature = _range_text(session.ambient_temperature_c, "°C")
     humidity = _range_text(session.ambient_humidity_pct, "%RH")
     return f"{temperature}; {humidity}"
+
+
+def _cell_ambient(cell: Cell) -> str:
+    return "<br>".join(
+        f"session {index}: {_ambient(session)}"
+        for index, session in enumerate(cell.sessions, start=1)
+    )
 
 
 def _range_text(value: tuple[float, float] | None, unit: str) -> str:
