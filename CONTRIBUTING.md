@@ -45,6 +45,14 @@ uv run signal-bench telemetry test --duration 5 --no-fnb58 --quiet
 uv run signal-bench run --task kws --target mock --runs 20
 ```
 
+## Unpublished analysis work
+
+Generated analysis, findings, specifications, and any material describing
+unpublished work are written to `~/Downloads/signal-bench-working/`, outside
+the repository. They enter the repository only after Dan has reviewed and
+approved them for publication. Commit guidance for code and already-approved
+publication material does not authorize committing unreviewed analysis output.
+
 ## What to contribute
 
 - **Target adapters.** New device-under-test support starts in
