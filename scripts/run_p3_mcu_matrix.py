@@ -557,6 +557,10 @@ def main() -> int:
     parser.add_argument("--session-label", help="Optional session label stored in run metadata.")
     parser.add_argument("--rerun-reason", help="Optional rerun reason stored in run metadata.")
     parser.add_argument(
+        "--power-boundary",
+        help="Required for measurement runs: operator-recorded power boundary and meter placement.",
+    )
+    parser.add_argument(
         "--f401re-power-connector",
         help="F401RE topology: board power connector or rail used for the metered supply.",
     )
@@ -582,6 +586,7 @@ def main() -> int:
 
     _apply_port_overrides(args.port)
     _validate_topology_args(args)
+    _validate_power_boundary_arg(args)
     os.environ.setdefault("BLINKA_MCP2221", "1")
     os.environ.setdefault("SIGNAL_BENCH_REAL_I2C", "1")
     os.environ.setdefault("FNB58_TRANSPORT", "ble")
@@ -645,6 +650,16 @@ def _validate_topology_args(args: argparse.Namespace) -> None:
     if missing:
         formatted = ", ".join("--" + item.replace("_", "-") for item in missing)
         raise SystemExit(f"F401RE measurement runs require explicit topology: {formatted}")
+
+
+def _validate_power_boundary_arg(args: argparse.Namespace) -> None:
+    if args.build_only:
+        return
+    if not args.power_boundary or not args.power_boundary.strip():
+        raise SystemExit(
+            "Measurement runs require a recorded power boundary: "
+            "pass --power-boundary with the meter placement and included hardware."
+        )
 
 
 def _f401re_topology_from_args(
@@ -739,6 +754,7 @@ async def _run_cell(
         session_label=args.session_label,
         rerun_reason=args.rerun_reason,
         topology=_f401re_topology_from_args(args, target_config),
+        power_boundary=args.power_boundary,
     )
     telemetry = TelemetryOrchestrator(session_factory)
     adapter = _adapter_for_cell(target_config, project_dir, flash=False)
@@ -1056,7 +1072,9 @@ def _create_run(
     session_label: str | None,
     rerun_reason: str | None,
     topology: dict[str, Any] | None,
+    power_boundary: str | None,
 ) -> None:
+    boundary_description = _require_power_boundary(power_boundary)
     extra = {
         "protocol": "n3",
         "model_lineage": lineage,
@@ -1065,6 +1083,12 @@ def _create_run(
         "footprint": build["footprint"],
         "tflm_library": "Chirale_TensorFLowLite 2.0.0",
         "adapter": "CommandMCUAdapter",
+        "boundary_state": {
+            "power_boundary": boundary_description,
+            "recorded_by": "operator",
+            "authoritative_meter": "ina219",
+            "cross_check_meter": "fnb58" if fnb58_enabled else None,
+        },
     }
     if session_label:
         extra["session_label"] = session_label
@@ -1073,6 +1097,7 @@ def _create_run(
         extra["rerun_reason"] = rerun_reason
     boundary_state = _boundary_state(target_config, fnb58_enabled=fnb58_enabled)
     if boundary_state is not None:
+        boundary_state["power_boundary"] = boundary_description
         if topology is not None:
             boundary_state |= topology
         extra["boundary_state"] = boundary_state
@@ -1098,6 +1123,12 @@ def _create_run(
             ),
         )
         session.commit()
+
+
+def _require_power_boundary(power_boundary: str | None) -> str:
+    if not power_boundary or not power_boundary.strip():
+        raise ValueError("a nonblank power boundary is required before a run can be recorded")
+    return power_boundary.strip()
 
 
 def _boundary_state(target_config: TargetConfig, *, fnb58_enabled: bool) -> dict[str, Any] | None:
@@ -1155,6 +1186,12 @@ def _finish_run(
     results: list[InferenceResult],
 ) -> None:
     with session_factory() as session:
+        run = session.get(Run, run_id)
+        if run is None:
+            raise RuntimeError(f"cannot complete missing run {run_id}")
+        boundary_state = (run.extra or {}).get("boundary_state") if isinstance(run.extra, dict) else None
+        boundary = boundary_state.get("power_boundary") if isinstance(boundary_state, dict) else None
+        _require_power_boundary(boundary)
         session.execute(
             update(Run)
             .where(Run.run_id == run_id)
