@@ -38,13 +38,18 @@ onnx_conversion:
   tensorflow_version: 2.21.0
   onnx_version: 1.21.0
   onnxruntime_version: 1.25.1
+  python_version: 3.12.3
+  uv_version: 0.10.7
+  environment_file: ../../onnx-conversion-requirements.txt
+  protobuf_version: 7.36.1
+  numpy_version: 2.5.3
   opset: 13
   source_format: tflite
   source_path: ad/ad01_int8.tflite
   output_path: ../onnx/ad_int8.onnx
-  output_sha256: 7de136c8c472be09b00cb1047ea7dcb4e85b5d41f586b2e02721b46d2bac0f60
-  output_bytes: 285111
-  conversion_date: 2026-05-10
+  output_sha256: 6131f5b7b2428c83fc5417dcba98adc5fa99bfc10db7b7c6af689459ab44bbb1
+  output_bytes: 278240
+  conversion_date: 2026-09-11
   cross_format_validation:
     max_abs_diff: 0
     mean_abs_diff: 0.0

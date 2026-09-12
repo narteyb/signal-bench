@@ -4,7 +4,10 @@
 
 T2.4 converted the three Post 1 INT8 TFLite reference models into generic ONNX
 models for Pi 5, Jetson Orin Nano, M1 Max, and Modal A10G execution. Conversion
-used `tf2onnx` 1.17.0 with TensorFlow 2.21.0 and opset 13. The failed fallback
+used the pinned environment and canonicalization step in
+`models/onnx-conversion-requirements.txt` and `tools/canonicalize_onnx.py`:
+CPython 3.12.3, tf2onnx 1.17.0, TensorFlow 2.21.0, ONNX 1.21.0, ONNX Runtime
+1.25.1, and opset 13. The failed fallback
 path was `tflite2onnx` 0.4.1, which could not convert the KWS model because its
 quantized convolution uses per-channel quantization while that converter only
 supports per-tensor quantization for the relevant tensor path.
@@ -19,7 +22,7 @@ tolerance is max absolute difference <= 1 in int8 output space.
 ## KWS
 
 `models/onnx/kws_int8.onnx` is 73,802 bytes with SHA-256
-`d7eb060290aa1da24fe2d713d2d68007529531ab661ff55965fe66775181f1da`. The ONNX
+`c3c8900765c752402579a7eb199f380ef74e087bd0f2bac29899f0035a2975e0`. The ONNX
 model exposes input `input_1` with shape `(1, 49, 10, 1)` and type
 `tensor(int8)`, and output `Identity` with shape `(1, 12)` and type
 `tensor(int8)`. ONNX Runtime inference succeeded. The cross-format check against
@@ -27,8 +30,8 @@ LiteRT/TFLite produced max abs diff `0`, mean abs diff `0.0`.
 
 ## IC
 
-`models/onnx/ic_int8.onnx` is 112,387 bytes with SHA-256
-`6ce9e5fab1590a8365ced31e467796e98bf92c0b29c732164f086053f75e5029`. The ONNX
+`models/onnx/ic_int8.onnx` is 91,671 bytes with SHA-256
+`f180650819ce87f83472d03ca5f44689d0c925be034e612e791c463d0e87d66b`. The ONNX
 model exposes input `input_1_int8` with shape `(1, 32, 32, 3)` and type
 `tensor(int8)`, and output `Identity_int8` with shape `(1, 10)` and type
 `tensor(int8)`. ONNX Runtime inference succeeded. The cross-format check
@@ -37,8 +40,8 @@ int8 tolerance and should be treated as normal runtime rounding variance.
 
 ## AD
 
-`models/onnx/ad_int8.onnx` is 285,111 bytes with SHA-256
-`7de136c8c472be09b00cb1047ea7dcb4e85b5d41f586b2e02721b46d2bac0f60`. The ONNX
+`models/onnx/ad_int8.onnx` is 278,240 bytes with SHA-256
+`6131f5b7b2428c83fc5417dcba98adc5fa99bfc10db7b7c6af689459ab44bbb1`. The ONNX
 model exposes input `input_1` with shape `(1, 640)` and type `tensor(int8)`, and
 output `Identity` with shape `(1, 640)` and type `tensor(int8)`. ONNX Runtime
 inference succeeded. The cross-format check against LiteRT/TFLite produced max

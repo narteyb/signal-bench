@@ -38,13 +38,18 @@ onnx_conversion:
   tensorflow_version: 2.21.0
   onnx_version: 1.21.0
   onnxruntime_version: 1.25.1
+  python_version: 3.12.3
+  uv_version: 0.10.7
+  environment_file: ../../onnx-conversion-requirements.txt
+  protobuf_version: 7.36.1
+  numpy_version: 2.5.3
   opset: 13
   source_format: tflite
   source_path: kws/kws_ref_model.tflite
   output_path: ../onnx/kws_int8.onnx
-  output_sha256: d7eb060290aa1da24fe2d713d2d68007529531ab661ff55965fe66775181f1da
-  output_bytes: 73802
-  conversion_date: 2026-05-10
+  output_sha256: c3c8900765c752402579a7eb199f380ef74e087bd0f2bac29899f0035a2975e0
+  output_bytes: 38178
+  conversion_date: 2026-09-11
   cross_format_validation:
     max_abs_diff: 0
     mean_abs_diff: 0.0
