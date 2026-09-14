@@ -26,8 +26,14 @@ from sqlalchemy import create_engine, select, update
 from sqlalchemy.orm import Session, sessionmaker
 
 from signal_bench import __version__
-from signal_bench.adapters.exceptions import MeasureError, PrepareError
+from signal_bench.adapters.exceptions import MeasureError
 from signal_bench.adapters.mcu import CommandMCUAdapter, MCUAdapterConfig
+from signal_bench.campaign.launch_gates import (
+    COVERAGE_MIN,
+    REQUIRED_INSTRUMENTS,
+    acceptance_reasons,
+    validate_boundary,
+)
 from signal_bench.ids import new_id
 from signal_bench.schema import Result, Run, Target, Task, TelemetrySample
 from signal_bench.tasks import get_task
@@ -70,6 +76,8 @@ TARGET_CONFIGS: dict[str, dict[str, Any]] = {
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--boundary-json", type=Path, required=True)
+    parser.add_argument("--campaign-id", required=True)
     parser.add_argument("--target", choices=TARGETS, required=True)
     parser.add_argument("--task", choices=TASKS, default="kws")
     parser.add_argument("--serial-port", required=True)
@@ -90,10 +98,6 @@ def main() -> int:
     parser.add_argument("--fnb58-address", default="")
     parser.add_argument("--bme280-address", default="0x77")
     parser.add_argument("--ina219-address", default="0x40")
-    parser.add_argument("--power-connector", required=True)
-    parser.add_argument("--usb-routing", required=True)
-    parser.add_argument("--debug-state", default="not applicable")
-    parser.add_argument("--jp5-position", default="not applicable")
     parser.add_argument("--topology-note", action="append", default=[])
     parser.add_argument("--physical-routing-verified", action="store_true")
     parser.add_argument("--supply-setpoint-v", type=float)
@@ -103,18 +107,39 @@ def main() -> int:
     parser.add_argument("--operator-note", action="append", default=[])
     args = parser.parse_args()
 
-    if not args.no_fnb58 and not args.fnb58_address:
-        parser.error("--fnb58-address is required unless --no-fnb58 is set")
+    try:
+        args.structured_boundary = validate_boundary(
+            json.loads(args.boundary_json.read_text()), args.target
+        )
+    except (OSError, ValueError) as exc:
+        parser.error(str(exc))
+    if not args.physical_routing_verified:
+        parser.error(
+            "--physical-routing-verified is required after checking the structured boundary"
+        )
+    if not args.campaign_id.strip():
+        parser.error("--campaign-id must be nonblank")
+    if args.no_fnb58:
+        parser.error("v21 requires INA219, FNB58 and BME280; --no-fnb58 is not allowed")
+    if not args.fnb58_address:
+        parser.error("--fnb58-address is required for v21")
+
+    if not math.isfinite(args.measurement_s) or args.measurement_s <= 0:
+        parser.error("--measurement-s must be finite and positive")
+    if args.max_iterations < 20 or args.probe_iterations < 1:
+        parser.error("--max-iterations must be >=20 and --probe-iterations >=1")
 
     summary = asyncio.run(_run(args))
     args.output_root.mkdir(parents=True, exist_ok=True)
     output_path = args.output_root / f"{summary['run_id']}.json"
     output_path.write_text(json.dumps(summary, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     print(json.dumps({"run_record": str(output_path), **summary}, sort_keys=True))
-    return 0
+    return 0 if summary["status"] == "completed" else 2
 
 
 async def _run(args: argparse.Namespace) -> dict[str, Any]:
+    validate_boundary(args.structured_boundary, args.target)
+    _check_campaign_boundary(args)
     target_config = TARGET_CONFIGS[args.target]
     project_dir = FIRMWARE_ROOT / f"{args.target}-{args.task}"
     env = str(target_config["env"])
@@ -166,7 +191,7 @@ async def _run(args: argparse.Namespace) -> dict[str, Any]:
                 raise MeasureError("probe produced no successful inference results")
             probe_mean_us = statistics.fmean(probe_durations)
             iterations = max(
-                1,
+                20,
                 min(args.max_iterations, math.ceil(args.measurement_s * 1_000_000 / probe_mean_us)),
             )
         finally:
@@ -188,24 +213,75 @@ async def _run(args: argparse.Namespace) -> dict[str, Any]:
         )
         telemetry = TelemetryOrchestrator(session_factory)
         adapter = _adapter(args, project_dir, env, flash=False)
-        results = []
-        try:
-            await adapter.prepare(run_id)
-            await telemetry.start_run(run_id, _telemetry_sources(args))
-            _mark_measurement_started(session_factory, run_id)
-            results.extend([result async for result in adapter.measure(task_spec, iterations)])
-        except (MeasureError, PrepareError) as exc:
-            _mark_failed(session_factory, run_id, str(exc))
-            raise
-        finally:
-            telemetry_state = await telemetry.stop_run()
-            await adapter.teardown()
+        results, duration_s, telemetry_state, tooling_error = await _capture(
+            adapter,
+            telemetry,
+            session_factory,
+            run_id,
+            args,
+            task_spec,
+            iterations,
+        )
 
         _write_results(session_factory, run_id, results)
-        _finish_run(session_factory, run_id, results)
-        return _summary(session_factory, run_id, args, build, telemetry_state.partial)
+        _finish_run(
+            session_factory,
+            run_id,
+            results,
+            duration_s=duration_s,
+            expected_samples=(telemetry_state.expected_samples if telemetry_state else {}),
+            capture_duration_s=(telemetry_state.capture_duration_s if telemetry_state else 0.0),
+            tooling_error=tooling_error,
+        )
+        return _summary(
+            session_factory,
+            run_id,
+            args,
+            build,
+            telemetry_state.partial if telemetry_state else True,
+        )
     finally:
         engine.dispose()
+
+
+async def _capture(
+    adapter: CommandMCUAdapter,
+    telemetry: TelemetryOrchestrator,
+    session_factory: sessionmaker[Session],
+    run_id: str,
+    args: argparse.Namespace,
+    task_spec: Any,
+    iterations: int,
+) -> tuple[list[Any], float, Any, str | None]:
+    results = []
+    duration_s = 0.0
+    tooling_error = None
+    telemetry_state = None
+    try:
+        await adapter.prepare(run_id)
+        await telemetry.start_run(run_id, _telemetry_sources(args))
+        _mark_measurement_started(session_factory, run_id)
+        measured_start = time.monotonic()
+        try:
+            async for result in adapter.measure(task_spec, iterations):
+                results.append(result)
+        finally:
+            duration_s = time.monotonic() - measured_start
+    except Exception as exc:
+        tooling_error = f"{type(exc).__name__}: {exc}"
+    finally:
+        try:
+            telemetry_state = await telemetry.stop_run()
+            if telemetry_state.failed_sources:
+                tooling_error = f"{tooling_error or ''}; failed telemetry sources: {telemetry_state.failed_sources}"
+        except Exception as exc:
+            tooling_error = f"{tooling_error or ''}; telemetry stop: {type(exc).__name__}: {exc}"
+        try:
+            await adapter.teardown()
+        except Exception as exc:
+            tooling_error = f"{tooling_error or ''}; adapter teardown: {type(exc).__name__}: {exc}"
+
+    return results, duration_s, telemetry_state, tooling_error
 
 
 def _adapter(
@@ -432,7 +508,8 @@ def _create_run(
     iterations: int,
 ) -> None:
     extra = {
-        "protocol": "launch-tier-reproduction",
+        "protocol": "launch-tier-reproduction-v21",
+        "campaign_id": args.campaign_id,
         "measurement_window_s": args.measurement_s,
         "probe_iterations": args.probe_iterations,
         "firmware_project": str(project_dir.relative_to(ROOT)),
@@ -460,12 +537,13 @@ def _create_run(
             "notes": list(args.operator_note),
         },
         "boundary_state": {
+            "power_boundary": args.structured_boundary,
             "authoritative_meter": "ina219",
             "cross_check_meter": None if args.no_fnb58 else "fnb58",
-            "power_connector_used": args.power_connector,
-            "usb_vbus_routing": args.usb_routing,
-            "debug_interface_state": args.debug_state,
-            "jp5_position": args.jp5_position,
+            "power_connector_used": args.structured_boundary["input_pin"],
+            "usb_vbus_routing": args.structured_boundary["usb_vbus"],
+            "debug_interface_state": "inside_boundary",
+            "jp5_position": args.structured_boundary["jumpers"].get("jp5", "not_applicable"),
             "notes": list(args.topology_note),
         },
     }
@@ -526,26 +604,88 @@ def _write_results(
 
 
 def _finish_run(
-    session_factory: sessionmaker[Session], run_id: str, results: Sequence[Any]
+    session_factory: sessionmaker[Session],
+    run_id: str,
+    results: Sequence[Any],
+    *,
+    duration_s: float,
+    expected_samples: dict[str, int],
+    capture_duration_s: float,
+    tooling_error: str | None = None,
 ) -> None:
     with session_factory() as session:
         run = session.get(Run, run_id)
         if run is None:
             raise RuntimeError(f"cannot complete missing run {run_id}")
-        ambient = _ambient_summary(session, run_id)
         extra = dict(run.extra or {})
-        extra["ambient"] = ambient
-        session.execute(
-            update(Run)
-            .where(Run.run_id == run_id)
-            .values(
-                finished_at=dt.datetime.now(dt.UTC),
-                status="completed",
-                measurement_count=len(results),
-                extra=extra,
-            ),
+        ambient = _ambient_summary(session, run_id)
+        coverage = _persisted_coverage(session, run_id, expected_samples)
+        recorded = session.scalars(select(Result).where(Result.run_id == run_id)).all()
+        errors = sum(bool((result.extra or {}).get("error")) for result in recorded)
+        target = session.get(Target, run.target_id)
+        reasons = acceptance_reasons(
+            boundary=extra.get("boundary_state", {}).get("power_boundary"),
+            target=target.name if target else "",
+            duration_s=duration_s,
+            successful_iterations=len(recorded) - errors,
+            iteration_errors=errors,
+            ambient=ambient,
+            coverage=coverage,
+            tooling_error=tooling_error,
         )
+        extra["ambient"] = ambient
+        extra["acceptance"] = {
+            "protocol": "v21",
+            "accepted": not reasons,
+            "reasons": reasons,
+            "measured_duration_s": duration_s,
+            "successful_iterations": len(recorded) - errors,
+            "iteration_errors": errors,
+            "coverage": coverage,
+            "telemetry_capture_duration_s": capture_duration_s,
+        }
+        run.extra = extra
+        run.finished_at = dt.datetime.now(dt.UTC)
+        run.status = "rejected" if reasons else "completed"
+        run.measurement_count = len(recorded) - errors
         session.commit()
+
+
+def _persisted_coverage(
+    session: Session,
+    run_id: str,
+    expected: dict[str, int],
+) -> dict[str, Any]:
+    metrics = {
+        "ina219": ("voltage", "current", "power"),
+        "fnb58": ("voltage", "current", "power"),
+        "bme280": ("temperature", "humidity", "pressure"),
+    }
+    coverage = {}
+    for source in REQUIRED_INSTRUMENTS:
+        samples = session.scalars(
+            select(TelemetrySample).where(
+                TelemetrySample.run_id == run_id,
+                TelemetrySample.source == source,
+            )
+        ).all()
+        stamps = [
+            {
+                sample.timestamp
+                for sample in samples
+                if sample.metric == metric and math.isfinite(sample.value)
+            }
+            for metric in metrics[source]
+        ]
+        received = len(set.intersection(*stamps))
+        denominator = expected.get(source, 0)
+        coverage[source] = {
+            "received": received,
+            "expected": denominator,
+            "fraction": min(1.0, received / denominator) if denominator > 0 else None,
+            "threshold": COVERAGE_MIN,
+        }
+    return coverage
 
 
 def _ambient_summary(session: Session, run_id: str) -> dict[str, Any]:
@@ -556,30 +696,49 @@ def _ambient_summary(session: Session, run_id: str) -> dict[str, Any]:
             TelemetrySample.source == "bme280",
             TelemetrySample.metric.in_(("temperature", "humidity")),
         )
-        .order_by(TelemetrySample.metric, TelemetrySample.timestamp)
+        .order_by(TelemetrySample.timestamp)
     ).all()
-    by_metric: dict[str, list[TelemetrySample]] = {"temperature": [], "humidity": []}
-    for sample in samples:
-        by_metric[str(sample.metric)].append(sample)
-    missing = [metric for metric, values in by_metric.items() if len(values) < 2]
-    if missing:
-        raise RuntimeError(
-            "cannot complete run without BME280 ambient start/end values: "
-            + ", ".join(missing),
-        )
-    summary: dict[str, Any] = {}
-    for metric, values in by_metric.items():
-        summary_key = "temperature_c" if metric == "temperature" else "humidity_pct"
-        summary[summary_key] = {
-            "start": values[0].value,
-            "end": values[-1].value,
-            "minimum": min(sample.value for sample in values),
-            "maximum": max(sample.value for sample in values),
-            "start_at": values[0].timestamp.isoformat(),
-            "end_at": values[-1].timestamp.isoformat(),
+    summary = {}
+    for metric, key in (("temperature", "temperature_c"), ("humidity", "humidity_pct")):
+        all_values = [sample for sample in samples if sample.metric == metric]
+        values = [sample for sample in all_values if math.isfinite(sample.value)]
+        summary[key] = {
             "sample_count": len(values),
+            "invalid_count": len(all_values) - len(values),
+            "start": values[0].value if values else None,
+            "end": values[-1].value if values else None,
+            "minimum": min(sample.value for sample in values) if values else None,
+            "maximum": max(sample.value for sample in values) if values else None,
+            "mean": statistics.fmean(sample.value for sample in values) if values else None,
+            "start_at": values[0].timestamp.isoformat() if values else None,
+            "end_at": values[-1].timestamp.isoformat() if values else None,
         }
     return summary
+
+
+def _check_campaign_boundary(args: argparse.Namespace) -> None:
+    """Compare structured records before any flash or hardware acquisition."""
+    if not args.db.exists():
+        return
+    engine = create_engine(f"sqlite:///{args.db}")
+    try:
+        with Session(engine) as session:
+            for run in session.scalars(select(Run)).all():
+                extra = run.extra or {}
+                if extra.get("campaign_id") != args.campaign_id:
+                    continue
+                boundary = extra.get("boundary_state", {}).get("power_boundary")
+                if not isinstance(boundary, dict):
+                    raise SystemExit(
+                        "boundary: previous campaign record lacks structured boundary; campaign stopped"
+                    )
+                scope = ("shunt_rail", "interface_inside_boundary")
+                if any(boundary.get(key) != args.structured_boundary[key] for key in scope):
+                    raise SystemExit("boundary: capture scope changed; campaign stopped")
+                if boundary.get("board") == args.target and boundary != args.structured_boundary:
+                    raise SystemExit("boundary: board routing/jumpers changed; campaign stopped")
+    finally:
+        engine.dispose()
 
 
 def _mark_failed(session_factory: sessionmaker[Session], run_id: str, error: str) -> None:
@@ -642,6 +801,7 @@ def _summary(
         "telemetry_config": (run.extra or {}).get("telemetry_config") if run else {},
         "operator_observations": (run.extra or {}).get("operator_observations") if run else {},
         "ambient": (run.extra or {}).get("ambient") if run else {},
+        "acceptance": (run.extra or {}).get("acceptance") if run else {},
         "firmware_footprint": _parse_footprint(build["output"]),
     }
 
