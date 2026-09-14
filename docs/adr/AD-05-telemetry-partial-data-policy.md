@@ -29,8 +29,10 @@ for real measurement windows.
 
 The threshold is validated as `0.0 < threshold <= 1.0`. Sources may override the
 global threshold with `partial_coverage_threshold`; the real INA219 and BME280
-hardware sources currently use `0.75` to reflect the measured MCP2221A/I2C
-throughput envelope, while sources without an override use the global default.
+hardware sources use `0.85` for the MCU campaign, while sources without an
+override use the global default. The campaign threshold is kept separate from
+the global default so a campaign can require a stricter minimum without
+changing unrelated telemetry consumers.
 The final decision emits `telemetry_partial_decided` with per-source coverage,
 sample counts, and reason strings. The `runs` table stores those reason strings
 in `partial_reasons`, for example: `fnb58: coverage=72%, threshold=90%,

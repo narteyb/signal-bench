@@ -324,10 +324,16 @@ uv run signal-bench telemetry test --duration 30 --no-fnb58
 Expected Gate 1 I2C sample floors over 30 seconds:
 
 - `ina219`: at least 180 grouped samples, 540 scalar rows.
-- `bme280`: at least 30 grouped samples, 90 scalar rows.
+- `bme280`: at least 6 grouped samples, 18 scalar rows.
 
-These floors are intentionally below the configured 8 Hz / 1 Hz rates to allow
-USB-I2C scheduler jitter.
+The INA219 remains configured for 8 Hz. The real BME280 ambient source is
+configured for 0.2 Hz (one grouped read every five seconds); session start and
+end ambient readings remain required, and the in-session samples support the
+ambient-range gate. Blocking I2C reads run outside the asyncio event loop, and
+the INA219 and BME280 share one locked MCP2221A connection.
+
+These floors are intentionally below the configured 8 Hz / 0.2 Hz rates to
+allow USB-I2C scheduler jitter.
 
 If the FNB58 is paired, omit `--no-fnb58` and provide `FNB58_ADDRESS` or
 `--fnb58-address`.

@@ -12,8 +12,8 @@ The breakout is connected to the host machine through an Adafruit MCP2221A USB-I
 | I2C address | `0x40` | `src/signal_bench/telemetry/sources/ina219.py::Ina219Config.address` |
 | Source tag | `ina219` | `src/signal_bench/telemetry/sources/ina219.py::Ina219Source.source_name` |
 | Requested sample rate | `8.0 Hz` grouped samples | `src/signal_bench/telemetry/sources/ina219.py::Ina219Config.sample_rate_hz` |
-| Partial coverage threshold | `0.75` | `src/signal_bench/telemetry/sources/ina219.py::Ina219Source.partial_coverage_threshold` |
-| MCP2221A bridge mode | Blinka I2C bus: `busio.I2C(board.SCL, board.SDA)` | `src/signal_bench/telemetry/sources/ina219.py::_create_default_i2c_bus` |
+| Partial coverage threshold | `0.85` | `src/signal_bench/telemetry/sources/ina219.py::Ina219Source.partial_coverage_threshold` |
+| MCP2221A bridge mode | Shared Blinka I2C bus at `400 kHz`, protected by one process-wide lock | `src/signal_bench/telemetry/i2c.py` |
 | MCP2221A environment | `BLINKA_MCP2221=1`, with `SIGNAL_BENCH_REAL_I2C=1` for real sources | `docs/telemetry-setup.md` |
 | Shunt resistance | `0.1 ohm` | Adafruit CircuitPython INA219 driver default invoked by `module.INA219(i2c_bus, addr=address)`; `set_calibration_32V_2A()` |
 | Calibration profile | `32 V / 2 A` profile; actual max current `3.2 A` with 0.1 ohm shunt | Adafruit CircuitPython INA219 driver default |
