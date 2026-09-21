@@ -149,6 +149,22 @@ def test_export_single_run_with_latency_and_energy(session: Session, tmp_path: P
     assert yaml.safe_load((tmp_path / "matrix.yml").read_text())["generated_from_runs"] == 1
 
 
+def test_energy_denominator_uses_same_untrimmed_run_results_as_integral(
+    session: Session,
+) -> None:
+    durations = [1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 100.0]
+    _seed_run(session, durations_ms=durations)
+
+    run = _first_run(export_matrix(_config(), session, output_path=None))
+
+    # IQR still removes the outlying latency result, but the energy integral
+    # spans all ten measured results. Its denominator must therefore remain 10.
+    assert run["latency_stats"]["n_samples"] == 9
+    assert run["energy_stats"]["wh_per_1000"] == pytest.approx(
+        150.0 / 3600.0 / len(durations) * 1000,
+    )
+
+
 def test_export_surfaces_telemetry_partial(session: Session) -> None:
     _seed_run(
         session,

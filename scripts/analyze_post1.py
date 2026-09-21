@@ -274,7 +274,10 @@ def _session_from_row(
     measured = [float(result[0]) for result in result_rows][int(row["warmup_count"]) :]
     retained, outliers = apply_outlier_policy(measured, "iqr") if measured else ([], [])
     latency_ms = median(retained) if retained else None
-    energy = _energy_summary(connection, row, len(retained))
+    # The INA219 integral covers the whole measured run; IQR trimming is only
+    # for latency statistics. Keep its normalization denominator on the same
+    # post-warmup result set represented by that energy integral.
+    energy = _energy_summary(connection, row, len(measured))
     ambient = _range_pair(connection, row["run_id"], BME280_SOURCE, "temperature")
     humidity = _range_pair(connection, row["run_id"], BME280_SOURCE, "humidity")
     return Session(
@@ -650,7 +653,7 @@ def _render_findings(
             "",
             "## What a session comprises",
             "",
-            "For each selected run, the session value is the median of measured `results.duration_ms` rows after the recorded warm-up count, using the repository exporter's deterministic IQR policy. The table shows raw measured rows and retained rows. The energy value is trapezoidal integration of retained INA219 power telemetry, normalized to 1,000 retained results. Per-inference energy attribution is not used. All selected sessions record zero warm-up rows in this database; the script still applies the stored warm-up count rather than assuming zero.",
+            "For each selected run, the session value is the median of measured `results.duration_ms` rows after the recorded warm-up count, using the repository exporter's deterministic IQR policy. The table shows raw measured rows and retained rows. Energy is the trapezoidal INA219 integral across the measured run interval, normalized to 1,000 post-warmup result rows; IQR trimming applies to latency only. Per-inference energy attribution is not used. All selected sessions record zero warm-up rows in this database; the script still applies the stored warm-up count rather than assuming zero.",
             "",
             "The run records retain timestamps, result counts, corpus/protocol status, software version, runtime name/version, model hash, quantization, telemetry completeness, and selected boundary metadata. Ambient temperature and humidity ranges are taken from BME280 samples. They do not record a sitting identifier, cooldown/reset boundary between sessions, host version, compiler/toolchain version, or a complete per-session power-configuration record for the non-F401RE boards. Those fields remain unrecorded rather than being inferred.",
             "",

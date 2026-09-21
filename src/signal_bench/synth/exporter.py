@@ -196,6 +196,7 @@ def _build_run_data(
         outlier_policy=outlier_policy,
         warnings=warnings,
     )
+    measured_result_count = max(len(_query_results(db_session, run.run_id)) - run.warmup_count, 0)
     energy_quarantined = _energy_quarantined(run)
     repeat_quarantined = _repeat_quarantined(run)
     energy_stats = None
@@ -206,7 +207,10 @@ def _build_run_data(
             db_session,
             run,
             duration_s=duration_s,
-            inference_count=_latency_sample_count(latency_stats),
+            # Energy integrates the full run interval, so normalize by every
+            # post-warmup inference in that interval. IQR filtering is a
+            # latency-summary policy and must not change this denominator.
+            inference_count=measured_result_count,
             power_source=power_source,
             power_metric=power_metric,
             warnings=warnings,
@@ -373,12 +377,6 @@ def _energy_to_dict(stats: EnergyStats, inference_count: int) -> dict[str, Any]:
         "min_power_w": stats.min_power_w,
         "max_power_w": stats.max_power_w,
     }
-
-
-def _latency_sample_count(latency_stats: dict[str, Any] | None) -> int:
-    if latency_stats is None:
-        return 0
-    return int(latency_stats["n_samples"])
 
 
 def _run_duration_s(run: Run) -> float | None:
