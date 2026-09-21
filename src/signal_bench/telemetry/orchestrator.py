@@ -40,7 +40,6 @@ RATE_WINDOW_S = 5.0
 RATE_LOW_THRESHOLD_FRACTION = 0.5
 RATE_LOW_DURATION_S = 3.0
 SOURCE_DISCONNECTED_DURATION_S = 2.0
-SOURCE_DISCONNECTED_INTERVALS = 2.5
 RATE_MONITOR_INTERVAL_S = 1.0
 WRITE_LAG_QUEUE_FRACTION = 0.8
 STALE_SAMPLE_THRESHOLD_S = 60.0
@@ -267,9 +266,6 @@ class TelemetryOrchestrator:
                 "partial": decision.partial,
                 "criterion": "coverage_below_threshold",
                 "threshold_frac": get_partial_coverage_threshold(),
-                "per_source_thresholds": {
-                    source.name: _source_partial_threshold(source) for source in self._sources
-                },
                 "per_source_coverage": decision.per_source_coverage,
                 "expected_samples": decision.expected_samples,
                 "received_samples": decision.received_samples,
@@ -806,9 +802,8 @@ class TelemetryOrchestrator:
                 continue
             elapsed_s = max(0.0, now - self._run_started_monotonic)
             last_sample_at = self._last_sample_monotonic.get(source.name)
-            disconnect_threshold_s = _source_disconnect_threshold(source.sample_rate_hz)
             if (
-                elapsed_s >= disconnect_threshold_s
+                elapsed_s >= SOURCE_DISCONNECTED_DURATION_S
                 and last_sample_at is None
                 and source.name not in self._disconnect_emitted
             ):
@@ -822,7 +817,7 @@ class TelemetryOrchestrator:
                     context={
                         "reason": "no_samples_seen",
                         "elapsed_s": round(elapsed_s, 3),
-                        "threshold_s": round(disconnect_threshold_s, 3),
+                        "threshold_s": SOURCE_DISCONNECTED_DURATION_S,
                     },
                 )
                 self._record_source_failure(source.name)
@@ -830,7 +825,7 @@ class TelemetryOrchestrator:
 
             if (
                 last_sample_at is not None
-                and now - last_sample_at >= disconnect_threshold_s
+                and now - last_sample_at >= SOURCE_DISCONNECTED_DURATION_S
                 and source.name not in self._disconnect_emitted
             ):
                 self._disconnect_emitted.add(source.name)
@@ -843,7 +838,7 @@ class TelemetryOrchestrator:
                     context={
                         "reason": "no_recent_samples",
                         "silence_s": round(now - last_sample_at, 3),
-                        "threshold_s": round(disconnect_threshold_s, 3),
+                        "threshold_s": SOURCE_DISCONNECTED_DURATION_S,
                     },
                 )
                 self._record_source_failure(source.name)
@@ -974,16 +969,6 @@ def get_partial_coverage_threshold() -> float:
         )
         raise ValueError(msg)
     return threshold
-
-
-def _source_disconnect_threshold(sample_rate_hz: float) -> float:
-    """Return a silence window that respects a source's configured cadence."""
-    if sample_rate_hz <= 0.0:
-        return SOURCE_DISCONNECTED_DURATION_S
-    return max(
-        SOURCE_DISCONNECTED_DURATION_S,
-        SOURCE_DISCONNECTED_INTERVALS / sample_rate_hz,
-    )
 
 
 def _source_partial_threshold(source: TelemetrySource) -> float:

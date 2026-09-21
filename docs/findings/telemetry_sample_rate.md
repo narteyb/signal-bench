@@ -60,16 +60,13 @@ INA219 is configured to request 8.0 grouped samples per second. The Gate-1 clean
 
 FNB58 over BLE is configured around the observed 4 Hz measurement-frame cadence. The Gate-1 clean capture achieved 3.996 Hz from real BLE timestamps. It remains a wall-side, window-averaged cross-check and is not the authoritative per-inference energy source.
 
-BME280 was previously configured for 1.0 Hz and achieved 0.999 Hz. The MCU
-campaign now uses 0.2 Hz (one grouped read every five seconds), which is
-sufficient for ambient context and the session-range gate without competing
-with high-rate power attribution.
+BME280 is configured for 1.0 Hz and achieved 0.999 Hz. It is suitable for ambient temperature, humidity, and pressure context, not high-rate power attribution.
 
 No adapter in this recon configures explicit oversampling or averaging in the signal-bench source layer; INA219 and BME280 use the Adafruit driver defaults, and FNB58 uses decoded BLE measurement frames from the meter.
 
 ## Publishable Methodology Text
 
-Rail-side voltage/current/power was sampled as grouped INA219 readings over an MCP2221A USB-I2C bridge; the adapter requested 8.0 Hz and the Gate-1 clean run achieved 6.88 Hz from 207 distinct sample instants over 29.94 s. Wall-side voltage/current/power was sampled from the FNIRSI FNB58 over BLE at 4.00 Hz, from 121 distinct measurement frames over 30.03 s, and was used only as a window-averaged cross-check. Ambient temperature/humidity/pressure was sampled from the BME280 at 1.00 Hz in that historical Gate-1 run, from 30 distinct readings over 29.04 s; the MCU campaign now uses 0.2 Hz.
+Rail-side voltage/current/power was sampled as grouped INA219 readings over an MCP2221A USB-I2C bridge; the adapter requested 8.0 Hz and the Gate-1 clean run achieved 6.88 Hz from 207 distinct sample instants over 29.94 s. Wall-side voltage/current/power was sampled from the FNIRSI FNB58 over BLE at 4.00 Hz, from 121 distinct measurement frames over 30.03 s, and was used only as a window-averaged cross-check. Ambient temperature/humidity/pressure was sampled from the BME280 at 1.00 Hz, from 30 distinct readings over 29.04 s.
 
 ## Acceptance Wording
 
@@ -81,7 +78,7 @@ The current configured rates remain appropriate for coverage expectations:
 
 - INA219: `8.0 Hz`
 - FNB58 BLE: `4.0 Hz`
-- BME280 historical Gate-1 rate: `1.0 Hz`; MCU campaign rate: `0.2 Hz`
+- BME280: `1.0 Hz`
 
 One doc mismatch surfaced during R1: `docs/adr/AD-05-telemetry-partial-data-policy.md` says hardware sources currently use the global partial-data threshold, but the current INA219 and BME280 configs define source-specific `partial_coverage_threshold = 0.75`. This does not change the sample-rate finding, but the ADR should be updated in a separate documentation cleanup.
 

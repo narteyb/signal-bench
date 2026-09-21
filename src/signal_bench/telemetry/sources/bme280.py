@@ -6,14 +6,12 @@ from __future__ import annotations
 import asyncio
 import datetime as dt
 import importlib
-import threading
 import time
 from dataclasses import dataclass
 from typing import TYPE_CHECKING, Any, Self, cast
 
 from signal_bench.telemetry.base import TelemetrySample, TelemetrySource
 from signal_bench.telemetry.exceptions import SourceDataError, SourceStartError
-from signal_bench.telemetry.i2c import I2CConnection, default_i2c_connection
 
 if TYPE_CHECKING:
     from collections.abc import AsyncIterator, Callable
@@ -26,7 +24,7 @@ class Bme280Config:
     """Configuration for a real BME280 ambient sensor."""
 
     name: str = "bme280"
-    sample_rate_hz: float = 0.2
+    sample_rate_hz: float = 1.0
     address: int = 0x77
 
 
@@ -34,15 +32,14 @@ class Bme280Source(TelemetrySource):
     """Read ambient temperature, humidity, and pressure from a BME280 over I2C."""
 
     source_name = "bme280"
-    sample_rate_hz = 0.2
-    partial_coverage_threshold = 0.85
+    sample_rate_hz = 1.0
+    partial_coverage_threshold = 0.75
 
     def __init__(
         self: Self,
         config: Bme280Config | None = None,
         *,
         i2c_bus: object | None = None,
-        i2c_connection: I2CConnection | None = None,
         sensor: object | None = None,
         sensor_factory: Callable[[object, int], object] | None = None,
     ) -> None:
@@ -55,14 +52,7 @@ class Bme280Source(TelemetrySource):
         self._config = config or Bme280Config()
         self.source_name = self._config.name
         self.sample_rate_hz = self._config.sample_rate_hz
-        if i2c_bus is not None and i2c_connection is not None:
-            msg = "provide i2c_bus or i2c_connection, not both"
-            raise ValueError(msg)
-        self._i2c_connection = i2c_connection
         self._i2c_bus = i2c_bus
-        self._i2c_lock = (
-            i2c_connection.lock if i2c_connection is not None else threading.RLock()
-        )
         self._sensor = sensor
         self._sensor_factory = sensor_factory
         self._started = False
@@ -98,7 +88,7 @@ class Bme280Source(TelemetrySource):
         period_s = 1.0 / self.sample_rate_hz
         next_sample_at = time.monotonic()
         while not self._stopping:
-            yield await asyncio.to_thread(self._read_grouped_sample)
+            yield self._read_grouped_sample()
             next_sample_at += period_s
             sleep_s = next_sample_at - time.monotonic()
             if sleep_s > 0:
@@ -112,7 +102,8 @@ class Bme280Source(TelemetrySource):
             return
         try:
             if self._sensor is None:
-                bus = self._resolve_i2c_bus()
+                bus = self._i2c_bus if self._i2c_bus is not None else _create_default_i2c_bus()
+                self._i2c_bus = bus
                 factory = self._sensor_factory or _create_bme280_sensor
                 self._sensor = factory(bus, self._config.address)
             self._read_values()
@@ -157,26 +148,14 @@ class Bme280Source(TelemetrySource):
             msg = "BME280 sensor is not initialized"
             raise SourceStartError(msg)
         try:
-            with self._i2c_lock:
-                sensor_obj = cast("Any", sensor)
-                temperature = _as_float(sensor_obj.temperature)
-                humidity = _as_float(sensor_obj.relative_humidity)
-                pressure = _as_float(sensor_obj.pressure)
+            sensor_obj = cast("Any", sensor)
+            temperature = _as_float(sensor_obj.temperature)
+            humidity = _as_float(sensor_obj.relative_humidity)
+            pressure = _as_float(sensor_obj.pressure)
         except Exception as exc:
             msg = "BME280 read failed"
             raise SourceDataError(msg) from exc
         return {"temperature": temperature, "humidity": humidity, "pressure": pressure}
-
-    def _resolve_i2c_bus(self: Self) -> object:
-        if self._i2c_connection is None and self._i2c_bus is None:
-            self._i2c_connection = default_i2c_connection()
-        if self._i2c_connection is not None:
-            self._i2c_bus = self._i2c_connection.bus
-            self._i2c_lock = self._i2c_connection.lock
-        if self._i2c_bus is None:
-            msg = "BME280 I2C bus is not initialized"
-            raise SourceStartError(msg)
-        return self._i2c_bus
 
 
 def _module_available(module_name: str) -> bool:
@@ -188,8 +167,9 @@ def _module_available(module_name: str) -> bool:
 
 
 def _create_default_i2c_bus() -> object:
-    """Return the shared default I2C bus for compatibility with older callers."""
-    return default_i2c_connection().bus
+    board = cast("Any", importlib.import_module("board"))
+    busio = cast("Any", importlib.import_module("busio"))
+    return busio.I2C(board.SCL, board.SDA)
 
 
 def _create_bme280_sensor(i2c_bus: object, address: int) -> object:
