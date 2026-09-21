@@ -59,15 +59,15 @@ hardware_curve:
     data:
     - x: F401RE
       y: 158.926
-      wh_per_1000: 0.021381733
+      wh_per_1000: 0.02138173289191419
       accuracy: 0.8832310838445808
     - x: Nano 33
-      y: 224.177
-      wh_per_1000: 0.002631484
+      y: 224.222
+      wh_per_1000: 0.002366554372571872
       accuracy: 0.8832310838445808
     - x: ESP32-S3
-      y: 106.4955
-      wh_per_1000: 0.01357263
+      y: 106.496
+      wh_per_1000: 0.013221435833756132
       accuracy: 0.8832310838445808
     - null
     - null
@@ -78,16 +78,16 @@ hardware_curve:
     color: var(--amber)
     data:
     - x: F401RE
-      y: 755.41425
-      wh_per_1000: 0.071801844
+      y: 755.418
+      wh_per_1000: 0.07136006152927117
       accuracy_note: not included in A01 full eval
     - x: Nano 33
-      y: 1232.60625
-      wh_per_1000: 0.014185168
+      y: 1232.6125
+      wh_per_1000: 0.01369833535575047
       accuracy_note: not included in A01 full eval
     - x: ESP32-S3
       y: 551.062
-      wh_per_1000: 0.068578136
+      wh_per_1000: 0.06763141712022572
       accuracy_note: not included in A01 full eval
     - null
     - null
@@ -99,15 +99,15 @@ hardware_curve:
     data:
     - x: F401RE
       y: 8.136
-      wh_per_1000: 0.001295447
+      wh_per_1000: 0.0012954467852312104
       accuracy: 0.8496875
     - x: Nano 33
-      y: 12.4205
-      wh_per_1000: 0.000188939
+      y: 12.421
+      wh_per_1000: 0.00018891270552967557
       accuracy: 0.8496875
     - x: ESP32-S3
       y: 11.723
-      wh_per_1000: 0.001434546
+      wh_per_1000: 0.0014381879511469657
       accuracy: 0.8496875
     - null
     - null
@@ -117,10 +117,8 @@ hardware_curve:
   - type: continuation
     label: Future tiers continue the curve
     position: x_axis_right
-  caption: 'The curve starts at the MCU floor: three boards, three workloads, and
-    real Tier 1 latency, energy, and accuracy metadata. Future-tier labels are
-    shown on the axis only; no Pi 5, Hailo, Jetson, or M1 Max values are plotted
-    in Post 1.'
+  caption: Three-session canonical cell medians. Latency and energy use the same selected
+    sessions; energy is full-window energy normalized by all post-warmup results.
 energy_comparison_tier1:
   chart_type: bar
   chartjs_type: bar
@@ -146,23 +144,23 @@ energy_comparison_tier1:
     task: kws
     color: var(--signal-green)
     data:
-    - 0.021381733
-    - 0.002631484
-    - 0.01357263
+    - 0.02138173289191419
+    - 0.002366554372571872
+    - 0.013221435833756132
   - label: IC
     task: ic
     color: var(--amber)
     data:
-    - 0.071801844
-    - 0.014185168
-    - 0.068578136
+    - 0.07136006152927117
+    - 0.01369833535575047
+    - 0.06763141712022572
   - label: AD
     task: ad
     color: var(--coral)
     data:
-    - 0.001295447
-    - 0.000188939
-    - 0.001434546
+    - 0.0012954467852312104
+    - 0.00018891270552967557
+    - 0.0014381879511469657
   annotations: []
   caption: Energy is normalized to Wh/1000 inferences over the inference window. The
     log axis is intentional.
@@ -210,7 +208,7 @@ variance_illustration:
         p99: 224.251
         min: 224.195
         max: 224.252
-      energy_wh_per_1000: 0.002729146
+      energy_wh_per_1000: 0.002362934765708
       avg_power_w: 0.037564
       telemetry_counts:
         bme280:
@@ -235,7 +233,7 @@ variance_illustration:
         p99: 224.23622
         min: 224.194
         max: 224.238
-      energy_wh_per_1000: 0.002429957
+      energy_wh_per_1000: 0.002378978659674
       avg_power_w: 0.037668
       telemetry_counts:
         bme280:
@@ -256,7 +254,7 @@ variance_illustration:
         p99: 224.16114
         min: 224.094
         max: 224.167
-      energy_wh_per_1000: 0.002664703
+      energy_wh_per_1000: 0.002366554372572
       avg_power_w: 0.038018
       telemetry_counts:
         bme280:
@@ -309,10 +307,10 @@ variance_illustration:
         min_observed: 158.868
         max_observed: 158.992
       energy_wh_per_1000:
-        mean: 0.021345605
-        p50: 0.021381733
-        stddev_across_runs: 0.000211786
-        variance_pct: 0.9922
+        mean: 0.021345605163641333
+        p50: 0.021381732891914
+        stddev_across_runs: 0.00021178552768004864
+        variance_pct: 0.9921739208443238
       avg_power_w:
         mean: 0.461914
         p50: 0.462305
@@ -327,7 +325,7 @@ variance_illustration:
         p99: 158.98199
         min: 158.868
         max: 158.987
-      energy_wh_per_1000: 0.021537003
+      energy_wh_per_1000: 0.021537002990924002
       avg_power_w: 0.465825
       telemetry_counts:
         bme280:
@@ -352,7 +350,7 @@ variance_illustration:
         p99: 158.98698
         min: 158.879
         max: 158.992
-      energy_wh_per_1000: 0.021381733
+      energy_wh_per_1000: 0.021381732891914
       avg_power_w: 0.462305
       telemetry_counts:
         bme280:
@@ -377,7 +375,7 @@ variance_illustration:
         p99: 158.985
         min: 158.879
         max: 158.986
-      energy_wh_per_1000: 0.02111808
+      energy_wh_per_1000: 0.021118079608086
       avg_power_w: 0.457613
       telemetry_counts:
         bme280:
@@ -412,10 +410,10 @@ variance_illustration:
         min_observed: 224.094
         max_observed: 224.252
       energy_wh_per_1000:
-        mean: 0.002607935
-        p50: 0.002664703
-        stddev_across_runs: 0.000157466
-        variance_pct: 6.0379
+        mean: 0.002369489265984667
+        p50: 0.002366554372572
+        stddev_across_runs: 8.414976702632352e-06
+        variance_pct: 0.3551388404005037
       avg_power_w:
         mean: 0.03775
         p50: 0.037668
@@ -430,7 +428,7 @@ variance_illustration:
         p99: 224.251
         min: 224.195
         max: 224.252
-      energy_wh_per_1000: 0.002729146
+      energy_wh_per_1000: 0.002362934765708
       avg_power_w: 0.037564
       telemetry_counts:
         bme280:
@@ -455,7 +453,7 @@ variance_illustration:
         p99: 224.23622
         min: 224.194
         max: 224.238
-      energy_wh_per_1000: 0.002429957
+      energy_wh_per_1000: 0.002378978659674
       avg_power_w: 0.037668
       telemetry_counts:
         bme280:
@@ -476,7 +474,7 @@ variance_illustration:
         p99: 224.16114
         min: 224.094
         max: 224.167
-      energy_wh_per_1000: 0.002664703
+      energy_wh_per_1000: 0.002366554372572
       avg_power_w: 0.038018
       telemetry_counts:
         bme280:
@@ -507,10 +505,10 @@ variance_illustration:
         min_observed: 106.476
         max_observed: 106.538
       energy_wh_per_1000:
-        mean: 0.013717013
-        p50: 0.01357263
-        stddev_across_runs: 0.000280723
-        variance_pct: 2.0465
+        mean: 0.01323000177761
+        p50: 0.013221435833756
+        stddev_across_runs: 5.7905743799147316e-05
+        variance_pct: 0.4376850795072832
       avg_power_w:
         mean: 0.442076
         p50: 0.4427
@@ -525,7 +523,7 @@ variance_illustration:
         p99: 106.518
         min: 106.479
         max: 106.518
-      energy_wh_per_1000: 0.01357263
+      energy_wh_per_1000: 0.013221435833756
       avg_power_w: 0.444141
       telemetry_counts:
         bme280:
@@ -550,7 +548,7 @@ variance_illustration:
         p99: 106.51609
         min: 106.476
         max: 106.517
-      energy_wh_per_1000: 0.013537866
+      energy_wh_per_1000: 0.013176856153704
       avg_power_w: 0.439387
       telemetry_counts:
         bme280:
@@ -571,7 +569,7 @@ variance_illustration:
         p99: 106.53617
         min: 106.491
         max: 106.538
-      energy_wh_per_1000: 0.014040542
+      energy_wh_per_1000: 0.01329171334537
       avg_power_w: 0.4427
       telemetry_counts:
         bme280:
@@ -602,10 +600,10 @@ variance_illustration:
         min_observed: 755.336
         max_observed: 755.513
       energy_wh_per_1000:
-        mean: 0.071838467
-        p50: 0.071801844
-        stddev_across_runs: 0.000280734
-        variance_pct: 0.3908
+        mean: 0.07132256161190766
+        p50: 0.07136006152927099
+        stddev_across_runs: 0.0002759480700737258
+        variance_pct: 0.38690151312183785
       avg_power_w:
         mean: 0.34091
         p50: 0.341233
@@ -620,7 +618,7 @@ variance_illustration:
         p99: 755.50109
         min: 755.336
         max: 755.502
-      energy_wh_per_1000: 0.072135714
+      energy_wh_per_1000: 0.07136006152927099
       avg_power_w: 0.341233
       telemetry_counts:
         bme280:
@@ -645,7 +643,7 @@ variance_illustration:
         p99: 755.50026
         min: 755.34
         max: 755.513
-      energy_wh_per_1000: 0.071801844
+      energy_wh_per_1000: 0.07102978126344099
       avg_power_w: 0.339434
       telemetry_counts:
         bme280:
@@ -670,7 +668,7 @@ variance_illustration:
         p99: 755.49216
         min: 755.342
         max: 755.494
-      energy_wh_per_1000: 0.071577842
+      energy_wh_per_1000: 0.071577842043011
       avg_power_w: 0.342063
       telemetry_counts:
         bme280:
@@ -705,10 +703,10 @@ variance_illustration:
         min_observed: 1231.541
         max_observed: 1233.287
       energy_wh_per_1000:
-        mean: 0.014120332
-        p50: 0.014185168
-        stddev_across_runs: 0.00037566
-        variance_pct: 2.6604
+        mean: 0.013684797946218666
+        p50: 0.01369833535575
+        stddev_across_runs: 4.019257094714194e-05
+        variance_pct: 0.2937023338239919
       avg_power_w:
         mean: 0.039784
         p50: 0.03979
@@ -723,7 +721,7 @@ variance_illustration:
         p99: 1233.25414
         min: 1232.213
         max: 1233.287
-      energy_wh_per_1000: 0.014459354
+      energy_wh_per_1000: 0.01369833535575
       avg_power_w: 0.03979
       telemetry_counts:
         bme280:
@@ -748,7 +746,7 @@ variance_illustration:
         p99: 1233.0635
         min: 1231.541
         max: 1233.068
-      energy_wh_per_1000: 0.013716474
+      energy_wh_per_1000: 0.013716473963675
       avg_power_w: 0.039595
       telemetry_counts:
         bme280:
@@ -769,7 +767,7 @@ variance_illustration:
         p99: 1233.22676
         min: 1231.699
         max: 1233.269
-      energy_wh_per_1000: 0.014185168
+      energy_wh_per_1000: 0.013639584519231
       avg_power_w: 0.039966
       telemetry_counts:
         bme280:
@@ -800,10 +798,10 @@ variance_illustration:
         min_observed: 551.047
         max_observed: 551.087
       energy_wh_per_1000:
-        mean: 0.068638274
-        p50: 0.068578136
-        stddev_across_runs: 0.000507077
-        variance_pct: 0.7388
+        mean: 0.067682510552944
+        p50: 0.06763141712022601
+        stddev_across_runs: 0.00029559284954890015
+        variance_pct: 0.43673446379870245
       avg_power_w:
         mean: 0.439012
         p50: 0.440024
@@ -818,7 +816,7 @@ variance_illustration:
         p99: 551.08
         min: 551.047
         max: 551.08
-      energy_wh_per_1000: 0.068163948
+      energy_wh_per_1000: 0.06763141712022601
       avg_power_w: 0.440024
       telemetry_counts:
         bme280:
@@ -843,7 +841,7 @@ variance_illustration:
         p99: 551.07715
         min: 551.048
         max: 551.08
-      energy_wh_per_1000: 0.068578136
+      energy_wh_per_1000: 0.067415795009416
       avg_power_w: 0.43661
       telemetry_counts:
         bme280:
@@ -864,7 +862,7 @@ variance_illustration:
         p99: 551.087
         min: 551.055
         max: 551.087
-      energy_wh_per_1000: 0.069172739
+      energy_wh_per_1000: 0.06800031952919
       avg_power_w: 0.440403
       telemetry_counts:
         bme280:
@@ -895,10 +893,10 @@ variance_illustration:
         min_observed: 8.086
         max_observed: 8.186
       energy_wh_per_1000:
-        mean: 0.001300346
-        p50: 0.001295447
-        stddev_across_runs: 0.000013404
-        variance_pct: 1.0308
+        mean: 0.001300345597226
+        p50: 0.001295446785231
+        stddev_across_runs: 1.3404498127786123e-05
+        variance_pct: 1.0308411976309726
       avg_power_w:
         mean: 0.384446
         p50: 0.384272
@@ -913,7 +911,7 @@ variance_illustration:
         p99: 8.181
         min: 8.086
         max: 8.184
-      energy_wh_per_1000: 0.00129008
+      energy_wh_per_1000: 0.00129007958735
       avg_power_w: 0.380984
       telemetry_counts:
         bme280:
@@ -938,7 +936,7 @@ variance_illustration:
         p99: 8.181
         min: 8.086
         max: 8.184
-      energy_wh_per_1000: 0.00131551
+      energy_wh_per_1000: 0.001315510419097
       avg_power_w: 0.388083
       telemetry_counts:
         bme280:
@@ -963,7 +961,7 @@ variance_illustration:
         p99: 8.181
         min: 8.086
         max: 8.184
-      energy_wh_per_1000: 0.001295447
+      energy_wh_per_1000: 0.001295446785231
       avg_power_w: 0.384272
       telemetry_counts:
         bme280:
@@ -998,10 +996,10 @@ variance_illustration:
         min_observed: 12.396
         max_observed: 12.46
       energy_wh_per_1000:
-        mean: 0.000188763
-        p50: 0.000188939
-        stddev_across_runs: 3.46e-07
-        variance_pct: 0.1833
+        mean: 0.000188714221827
+        p50: 0.00018891270553
+        stddev_across_runs: 3.664493080616695e-07
+        variance_pct: 0.1941821366264619
       avg_power_w:
         mean: 0.037027
         p50: 0.037019
@@ -1016,7 +1014,7 @@ variance_illustration:
         p99: 12.448
         min: 12.396
         max: 12.46
-      energy_wh_per_1000: 0.000188939
+      energy_wh_per_1000: 0.000188938612885
       avg_power_w: 0.037019
       telemetry_counts:
         bme280:
@@ -1041,7 +1039,7 @@ variance_illustration:
         p99: 12.448
         min: 12.397
         max: 12.448
-      energy_wh_per_1000: 0.000188986
+      energy_wh_per_1000: 0.00018891270553
       avg_power_w: 0.036858
       telemetry_counts:
         bme280:
@@ -1062,7 +1060,7 @@ variance_illustration:
         p99: 12.448
         min: 12.396
         max: 12.448
-      energy_wh_per_1000: 0.000188364
+      energy_wh_per_1000: 0.000188291347066
       avg_power_w: 0.037205
       telemetry_counts:
         bme280:
@@ -1093,10 +1091,10 @@ variance_illustration:
         min_observed: 11.712
         max_observed: 11.73
       energy_wh_per_1000:
-        mean: 0.001436449
-        p50: 0.001438716
-        stddev_across_runs: 5.315e-06
-        variance_pct: 0.37
+        mean: 0.0014356677714286667
+        p50: 0.001438187951147
+        stddev_across_runs: 6.015413701903489e-06
+        variance_pct: 0.4189976136273791
       avg_power_w:
         mean: 0.422459
         p50: 0.422943
@@ -1111,7 +1109,7 @@ variance_illustration:
         p99: 11.727
         min: 11.712
         max: 11.73
-      energy_wh_per_1000: 0.001440255
+      energy_wh_per_1000: 0.001440013189811
       avg_power_w: 0.424801
       telemetry_counts:
         bme280:
@@ -1136,7 +1134,7 @@ variance_illustration:
         p99: 11.727
         min: 11.712
         max: 11.73
-      energy_wh_per_1000: 0.001430376
+      energy_wh_per_1000: 0.001428802173328
       avg_power_w: 0.419632
       telemetry_counts:
         bme280:
@@ -1157,7 +1155,7 @@ variance_illustration:
         p99: 11.727
         min: 11.712
         max: 11.728
-      energy_wh_per_1000: 0.001438716
+      energy_wh_per_1000: 0.001438187951147
       avg_power_w: 0.422943
       telemetry_counts:
         bme280:

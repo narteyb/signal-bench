@@ -21,6 +21,18 @@ syndicate_to_medium: true
 syndicate_to_linkedin: true
 ---
 
+**Correction — 21 September 2026**
+
+An error in how energy was normalised has been corrected and the figures in this post updated.
+
+Energy per 1,000 inferences was divided by the number of results remaining after outlier trimming, rather than by all measured results. Where trimming removed a result, the reported energy was too high — by up to 15.5% on an individual session.
+
+The measurements were not affected. The raw telemetry was correct throughout; the error was in the reporting path. It has been fixed in the signal-bench repository, with a test that prevents it recurring.
+
+**What changed:** absolute energy figures, and the energy ratios between boards. The Nano 33 BLE Sense's advantage now reads 4.9× to 9.0× rather than 4.8× to 8.0×.
+
+**What did not:** latency figures, latency rankings, accuracy, and the finding that the Nano used the least energy on all three workloads.
+
 ## 1. Hook
 
 All nine Tier 1 MCU cells are closed at 3/3 published A03 runs, with status OK and telemetry_partial=false for every headline run.
@@ -52,9 +64,9 @@ This report measures keyword spotting, image classification, and anomaly detecti
 
 | Task | F401RE | Nano 33 BLE Sense Rev2 | ESP32-S3 |
 | --- | ---: | ---: | ---: |
-| KWS | 158.926 ms<br>0.021382 Wh/1000 | 224.177 ms<br>0.002631 Wh/1000 | 106.496 ms<br>0.013573 Wh/1000 |
-| IC | 755.414 ms<br>0.071802 Wh/1000 | 1232.606 ms<br>0.014185 Wh/1000 | 551.062 ms<br>0.068578 Wh/1000 |
-| AD | 8.136 ms<br>0.001295 Wh/1000 | 12.421 ms<br>0.000189 Wh/1000 | 11.723 ms<br>0.001435 Wh/1000 |
+| KWS | 158.926 ms<br>0.021382 Wh/1000 | 224.222 ms<br>0.002367 Wh/1000 | 106.496 ms<br>0.013221 Wh/1000 |
+| IC | 755.418 ms<br>0.071360 Wh/1000 | 1232.6125 ms<br>0.013698 Wh/1000 | 551.062 ms<br>0.067631 Wh/1000 |
+| AD | 8.136 ms<br>0.001295 Wh/1000 | 12.421 ms<br>0.000189 Wh/1000 | 11.723 ms<br>0.001438 Wh/1000 |
 
 Post 1 covers the 9-cell Tier 1 matrix:
 
@@ -71,9 +83,9 @@ The table reports each cell as p50 latency and p50 Wh/1000 from the canonical A0
 
 ## 4. The Headline Metric
 
-- KWS: F401RE 0.021382 Wh/1000; Nano 33 0.002631 Wh/1000; ESP32-S3 0.013573 Wh/1000.
-- IC: F401RE 0.071802 Wh/1000; Nano 33 0.014185 Wh/1000; ESP32-S3 0.068578 Wh/1000.
-- AD: F401RE 0.001295 Wh/1000; Nano 33 0.000189 Wh/1000; ESP32-S3 0.001435 Wh/1000.
+- KWS: F401RE 0.021382 Wh/1000; Nano 33 0.002367 Wh/1000; ESP32-S3 0.013221 Wh/1000.
+- IC: F401RE 0.071360 Wh/1000; Nano 33 0.013698 Wh/1000; ESP32-S3 0.067631 Wh/1000.
+- AD: F401RE 0.001295 Wh/1000; Nano 33 0.000189 Wh/1000; ESP32-S3 0.001438 Wh/1000.
 
 The published headline set uses 27 boundary-consistent A03 runs. The raw DB still carries diagnostic and quarantined rows: F401RE/IC baseline energy from 2026-05-25 is excluded for a pre-discipline power boundary, F401RE KWS/AD May 25 low-boundary rows and May 29 unrecorded-topology rows are excluded from the published repeat sets, and Nano33 session-3 anomaly rows are excluded for energy only. Those rows remain visible in the matrix YAML provenance.
 
@@ -126,25 +138,25 @@ ESP32-S3 is fastest on KWS (106.496 ms) and IC (551.062 ms). F401RE is fastest o
 <!-- chart: energy_comparison_tier1 -->
 Chart config: `data/charts/wh-comparison-tier1.json`.
 
-Nano 33 is the lowest-energy target on KWS (0.002631 Wh/1000), IC (0.014185 Wh/1000), and AD (0.000189 Wh/1000). It does not match the latency winner on any task: ESP32-S3 wins KWS and IC latency, while F401RE wins AD latency.
+Nano 33 is the lowest-energy target on KWS (0.002367 Wh/1000), IC (0.013698 Wh/1000), and AD (0.000189 Wh/1000). It does not match the latency winner on any task: ESP32-S3 wins KWS and IC latency, while F401RE wins AD latency.
 
 ### 5.3 KWS Narrative
 
 F401RE: 158.926 ms p50, 158.987 ms p99, 0.021382 Wh/1000, energy CV 0.99%, OK across 3/3 boundary-consistent published A03 runs spanning three distinct days.
 
-Nano 33 BLE Sense Rev2: 224.177 ms p50, 224.236 ms p99, 0.002631 Wh/1000, variance 0.02%, OK across 3/3 published A03 runs.
+Nano 33 BLE Sense Rev2: 224.222 ms p50, 224.236 ms p99, 0.002367 Wh/1000, variance 0.02%, OK across 3/3 published A03 runs.
 
-ESP32-S3: 106.496 ms p50, 106.518 ms p99, 0.013573 Wh/1000, variance 0.01%, OK across 3/3 published A03 runs.
+ESP32-S3: 106.496 ms p50, 106.518 ms p99, 0.013221 Wh/1000, variance 0.01%, OK across 3/3 published A03 runs.
 
-KWS is the cleanest example of metric disagreement: ESP32-S3 is fastest at 106.496 ms, but Nano 33 is lowest energy at 0.002631 Wh/1000. The fresh F401RE KWS documented-boundary sessions are stable across the three-day rerun, with 0.99% energy CV.
+KWS is the cleanest example of metric disagreement: ESP32-S3 is fastest at 106.496 ms, but Nano 33 is lowest energy at 0.002367 Wh/1000. The fresh F401RE KWS documented-boundary sessions are stable across the three-day rerun, with 0.99% energy CV.
 
 ### 5.4 IC Narrative
 
-F401RE: 755.414 ms p50, 755.500 ms p99, 0.071802 Wh/1000, variance 0.00%, OK across 3/3 published A03 runs.
+F401RE: 755.418 ms p50, 755.500 ms p99, 0.071360 Wh/1000, variance 0.00%, OK across 3/3 published A03 runs.
 
-Nano 33 BLE Sense Rev2: 1232.606 ms p50, 1233.227 ms p99, 0.014185 Wh/1000, variance 0.01%, OK across 3/3 published A03 runs.
+Nano 33 BLE Sense Rev2: 1232.6125 ms p50, 1233.227 ms p99, 0.013698 Wh/1000, variance 0.01%, OK across 3/3 published A03 runs.
 
-ESP32-S3: 551.062 ms p50, 551.080 ms p99, 0.068578 Wh/1000, variance 0.00%, OK across 3/3 published A03 runs.
+ESP32-S3: 551.062 ms p50, 551.080 ms p99, 0.067631 Wh/1000, variance 0.00%, OK across 3/3 published A03 runs.
 
 IC/F401RE is the tightest SRAM case but still fits. The inventory records 74,884 bytes (73.13 KiB, 1 KiB = 1024 bytes) estimated SRAM against the 98,304-byte F401RE SRAM limit, leaving 23,420 bytes (22.87 KiB) margin; the May 25 baseline is energy-quarantined only, not evidence that IC failed or was out of scope.
 
@@ -154,7 +166,7 @@ F401RE: 8.136 ms p50, 8.181 ms p99, 0.001295 Wh/1000, energy CV 1.03%, OK across
 
 Nano 33 BLE Sense Rev2: 12.421 ms p50, 12.448 ms p99, 0.000189 Wh/1000, variance 0.08%, OK across 3/3 published A03 runs.
 
-ESP32-S3: 11.723 ms p50, 11.727 ms p99, 0.001435 Wh/1000, variance 0.00%, OK across 3/3 published A03 runs.
+ESP32-S3: 11.723 ms p50, 11.727 ms p99, 0.001438 Wh/1000, variance 0.00%, OK across 3/3 published A03 runs.
 
 AD is the file-size trap: the model file is large for this tier, but the runtime arena is small enough that all three MCU targets fit once weights are treated as Flash-resident data instead of SRAM-resident working memory.
 
@@ -203,7 +215,7 @@ Three patterns are worth carrying out of the Tier 1 matrix and into your own wor
 
 The first takeaway is the one that changes how you read a model card: model size is not SRAM size. The AD model looks like the scary one because its `.tflite` file is 276,976 bytes, but the static budget check shows all nine MCU cells fit once model bytes are treated as Flash-resident constant data. SRAM pressure comes from the tensor arena, stack, heap, and runtime state. The evidence is the T2.5 budget matrix and the Phase 5 inventory: IC/F401RE uses 74,884 bytes (73.13 KiB, 1 KiB = 1024 bytes) estimated SRAM against a 98,304-byte SRAM limit, leaving 23,420 bytes (22.87 KiB) margin. When evaluating a TinyML model for an MCU, check arena bytes before you panic over weight bytes, and read the linker report before changing models. The caveat is real: this is a static-graph TFLM finding. If your runtime copies weights into RAM, uses dynamic shapes, or keeps extra input buffers alive, redo the accounting.
 
-The second takeaway is the one that decides product tradeoffs: latency and energy are related, but they are not the same ranking. A target can finish an inference faster and still burn more energy per 1000 inferences if idle power, peripheral load, or runtime overhead changes the shape of the run. The evidence comes from reading the hardware curve beside the Wh comparison chart, especially KWS, where ESP32-S3 is fastest at 106.496 ms while Nano 33 is lowest energy at 0.002631 Wh/1000, and IC, where Nano 33 uses about 4.8x less Wh/1000 than ESP32-S3 while being slower. When the device is battery-constrained, optimize Wh per 1000 inferences first and latency second, then verify the result under realistic deployment duty cycle. When the device is interaction-constrained, reverse the order. The caveat is scope: if two boards are close on both metrics, the cleaner engineering choice may be the board with better tooling, supply, or sensor integration.
+The second takeaway is the one that decides product tradeoffs: latency and energy are related, but they are not the same ranking. A target can finish an inference faster and still burn more energy per 1000 inferences if idle power, peripheral load, or runtime overhead changes the shape of the run. The evidence comes from reading the hardware curve beside the Wh comparison chart, especially KWS, where ESP32-S3 is fastest at 106.496 ms while Nano 33 is lowest energy at 0.002367 Wh/1000, and IC, where Nano 33 uses about 4.9× less Wh/1000 than ESP32-S3 while being slower. When the device is battery-constrained, optimize Wh per 1000 inferences first and latency second, then verify the result under realistic deployment duty cycle. When the device is interaction-constrained, reverse the order. The caveat is scope: if two boards are close on both metrics, the cleaner engineering choice may be the board with better tooling, supply, or sensor integration.
 
 The third takeaway is methodological: measurement conditions are part of the result. A benchmark number without sample count, variance, telemetry coverage, and ambient context is not wrong, but it is incomplete. The useful output is not "KWS took X microseconds." The useful output is "KWS on Nano 33 took 224.222 ms p50 with 0.053 ms run-to-run stddev (0.02%), under the recorded power and environmental conditions." When you publish TinyML results, report the run conditions. When you read them, look for those fields before comparing devices. The caveat is practical: early prototyping does not need a full telemetry rig. But once a number is used to make a board choice, a battery claim, or a customer-facing promise, the conditions belong in the report.
 

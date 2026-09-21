@@ -10,9 +10,9 @@
 
 | Task | F401RE | Nano 33 | ESP32-S3 | Pi 5 | Jetson Orin Nano | M1 Max | Modal A10G |
 |---|---|---|---|---|---|---|---|
-| kws | OK<br>158926.0 us<br>21.38 mWh | OK<br>224177.0 us<br>2.6315 mWh | OK<br>106495.5 us<br>13.57 mWh | NO_DATA | NO_DATA | NO_DATA | NO_DATA |
-| ic | OK<br>755414.2 us<br>71.80 mWh | OK<br>1232606.2 us<br>14.19 mWh | OK<br>551062.0 us<br>68.58 mWh | NO_DATA | NO_DATA | NO_DATA | NO_DATA |
-| ad | OK<br>8136.0 us<br>1.2954 mWh | OK<br>12420.5 us<br>0.1889 mWh | OK<br>11723.0 us<br>1.4345 mWh | NO_DATA | NO_DATA | NO_DATA | NO_DATA |
+| kws | OK<br>158926.0 us<br>21.382 mWh | OK<br>224222.0 us<br>2.3666 mWh | OK<br>106496.0 us<br>13.221 mWh | NO_DATA | NO_DATA | NO_DATA | NO_DATA |
+| ic | OK<br>755418.0 us<br>71.36 mWh | OK<br>1232612.5 us<br>13.698 mWh | OK<br>551062.0 us<br>67.631 mWh | NO_DATA | NO_DATA | NO_DATA | NO_DATA |
+| ad | OK<br>8136.0 us<br>1.2954 mWh | OK<br>12421.0 us<br>0.18891 mWh | OK<br>11723.0 us<br>1.4382 mWh | NO_DATA | NO_DATA | NO_DATA | NO_DATA |
 
 ## Per-Cell Detail
 
@@ -48,7 +48,7 @@
 - Partial reasons: `ina219: coverage=38%, threshold=75%, samples=6/16`; `bme280: coverage=50%, threshold=75%, samples=1/2`
 - Partial inference warnings: `1`
 - Latency: median `158924.0` us, mean `158926.0` us, p95 `158958.2` us, p99 `158961.2` us, stddev `35.04` us, variance `0.0220%`
-- Energy: `0.0001` Wh total, `28.17` mWh/1000, avg power `0.4035` W, coverage `29.17%`
+- Energy: `0.0001` Wh total, `28.1737` mWh/1000, avg power `0.4035` W, coverage `29.17%`
 - Warnings: `energy estimate uses fewer than 10 power samples`
 
 #### Run `019e71d7-9146-7c70-9034-a703f581fd72`
@@ -81,7 +81,7 @@
 - Iterations: `202` measured, `0` warmup
 - Telemetry partial: `False`
 - Latency: median `158923.0` us, mean `158930.9` us, p95 `158972.0` us, p99 `158982.0` us, stddev `24.17` us, variance `0.0152%`
-- Energy: `0.0044` Wh total, `21.54` mWh/1000, avg power `0.4663` W, coverage `88.70%`
+- Energy: `0.0044` Wh total, `21.5370` mWh/1000, avg power `0.4663` W, coverage `88.70%`
 
 #### Run `019f3d83-32b9-74d0-b483-b8f81725204e`
 
@@ -143,7 +143,7 @@
 - Iterations: `202` measured, `0` warmup
 - Telemetry partial: `False`
 - Latency: median `158926.0` us, mean `158932.0` us, p95 `158981.0` us, p99 `158987.0` us, stddev `25.11` us, variance `0.0158%`
-- Energy: `0.0043` Wh total, `21.38` mWh/1000, avg power `0.4631` W, coverage `98.18%`
+- Energy: `0.0043` Wh total, `21.3817` mWh/1000, avg power `0.4631` W, coverage `98.18%`
 
 #### Run `019f43e6-85da-76c2-a654-e834f3f159a7`
 
@@ -153,7 +153,7 @@
 - Iterations: `202` measured, `0` warmup
 - Telemetry partial: `False`
 - Latency: median `158927.5` us, mean `158931.7` us, p95 `158973.0` us, p99 `158985.0` us, stddev `24.61` us, variance `0.0155%`
-- Energy: `0.0043` Wh total, `21.12` mWh/1000, avg power `0.4573` W, coverage `98.24%`
+- Energy: `0.0043` Wh total, `21.1181` mWh/1000, avg power `0.4573` W, coverage `98.24%`
 ### kws/nano33
 
 - Status: `OK`
@@ -172,7 +172,7 @@
 - Iterations: `313` measured, `0` warmup
 - Telemetry partial: `False`
 - Latency: median `224226.0` us, mean `224221.8` us, p95 `224233.7` us, p99 `224243.6` us, stddev `11.15` us, variance `0.0050%`
-- Energy: `0.0007` Wh total, `2.5983` mWh/1000, avg power `0.0379` W, coverage `92.61%`
+- Energy: `0.0007` Wh total, `2.3824` mWh/1000, avg power `0.0379` W, coverage `92.61%`
 
 #### Run `019e5da7-ef3e-7830-94a8-2ef6f6845b8e`
 
@@ -182,7 +182,7 @@
 - Iterations: `313` measured, `0` warmup
 - Telemetry partial: `False`
 - Latency: median `224226.0` us, mean `224224.9` us, p95 `224241.5` us, p99 `224251.0` us, stddev `10.53` us, variance `0.0047%`
-- Energy: `0.0007` Wh total, `2.7291` mWh/1000, avg power `0.0376` W, coverage `94.48%`
+- Energy: `0.0007` Wh total, `2.3629` mWh/1000, avg power `0.0376` W, coverage `94.48%`
 
 #### Run `019e674c-cd81-7243-9470-a0d817a5b26d`
 
@@ -192,7 +192,7 @@
 - Iterations: `143` measured, `0` warmup
 - Telemetry partial: `False`
 - Latency: median `224222.0` us, mean `224220.0` us, p95 `224233.0` us, p99 `224236.2` us, stddev `10.05` us, variance `0.0045%`
-- Energy: `0.0003` Wh total, `2.4300` mWh/1000, avg power `0.0377` W, coverage `95.85%`
+- Energy: `0.0003` Wh total, `2.3790` mWh/1000, avg power `0.0377` W, coverage `95.85%`
 
 #### Run `019e7548-0873-7571-99dd-e67e5eb23723`
 
@@ -237,7 +237,7 @@
 - Iterations: `143` measured, `0` warmup
 - Telemetry partial: `False`
 - Latency: median `224132.0` us, mean `224131.0` us, p95 `224149.0` us, p99 `224161.1` us, stddev `12.96` us, variance `0.0058%`
-- Energy: `0.0003` Wh total, `2.6647` mWh/1000, avg power `0.0380` W, coverage `95.03%`
+- Energy: `0.0003` Wh total, `2.3666` mWh/1000, avg power `0.0380` W, coverage `95.03%`
 ### kws/esp32s3
 
 - Status: `OK`
@@ -253,7 +253,7 @@
 - Iterations: `657` measured, `0` warmup
 - Telemetry partial: `False`
 - Latency: median `106495.0` us, mean `106496.6` us, p95 `106512.0` us, p99 `106518.0` us, stddev `8.1393` us, variance `0.0076%`
-- Energy: `0.0087` Wh total, `13.57` mWh/1000, avg power `0.4441` W, coverage `92.28%`
+- Energy: `0.0087` Wh total, `13.2214` mWh/1000, avg power `0.4441` W, coverage `92.28%`
 
 #### Run `019e653b-a89f-72b2-a648-adc974d864fc`
 
@@ -263,7 +263,7 @@
 - Iterations: `300` measured, `0` warmup
 - Telemetry partial: `False`
 - Latency: median `106495.5` us, mean `106495.8` us, p95 `106511.0` us, p99 `106516.1` us, stddev `8.3175` us, variance `0.0078%`
-- Energy: `0.0040` Wh total, `13.54` mWh/1000, avg power `0.4394` W, coverage `95.72%`
+- Energy: `0.0040` Wh total, `13.1769` mWh/1000, avg power `0.4394` W, coverage `95.72%`
 
 #### Run `019e71e7-8c70-7521-907f-5825a87931ad`
 
@@ -273,7 +273,7 @@
 - Iterations: `300` measured, `0` warmup
 - Telemetry partial: `False`
 - Latency: median `106510.0` us, mean `106512.3` us, p95 `106532.0` us, p99 `106536.2` us, stddev `10.75` us, variance `0.0101%`
-- Energy: `0.0040` Wh total, `14.04` mWh/1000, avg power `0.4427` W, coverage `95.73%`
+- Energy: `0.0040` Wh total, `13.2917` mWh/1000, avg power `0.4427` W, coverage `95.73%`
 ### kws/pi5
 
 - Status: `NO_DATA`
@@ -342,7 +342,7 @@ No runs exported for this cell.
 - Iterations: `93` measured, `0` warmup
 - Telemetry partial: `False`
 - Latency: median `755410.5` us, mean `755416.5` us, p95 `755465.8` us, p99 `755501.1` us, stddev `31.78` us, variance `0.0042%`
-- Energy: `0.0066` Wh total, `72.14` mWh/1000, avg power `0.3412` W, coverage `92.62%`
+- Energy: `0.0066` Wh total, `71.3601` mWh/1000, avg power `0.3412` W, coverage `92.62%`
 
 #### Run `019e759a-52b9-71e0-8769-486b450e2244`
 
@@ -352,7 +352,7 @@ No runs exported for this cell.
 - Iterations: `93` measured, `0` warmup
 - Telemetry partial: `False`
 - Latency: median `755423.0` us, mean `755418.9` us, p95 `755463.3` us, p99 `755500.3` us, stddev `32.64` us, variance `0.0043%`
-- Energy: `0.0066` Wh total, `71.80` mWh/1000, avg power `0.3394` W, coverage `94.58%`
+- Energy: `0.0066` Wh total, `71.0298` mWh/1000, avg power `0.3394` W, coverage `94.58%`
 
 #### Run `019e75fe-9c3b-7061-9423-2831fac5798d`
 
@@ -362,7 +362,7 @@ No runs exported for this cell.
 - Iterations: `93` measured, `0` warmup
 - Telemetry partial: `False`
 - Latency: median `755418.0` us, mean `755417.9` us, p95 `755467.2` us, p99 `755492.2` us, stddev `30.57` us, variance `0.0040%`
-- Energy: `0.0067` Wh total, `71.58` mWh/1000, avg power `0.3421` W, coverage `93.91%`
+- Energy: `0.0067` Wh total, `71.5778` mWh/1000, avg power `0.3421` W, coverage `93.91%`
 ### ic/nano33
 
 - Status: `OK`
@@ -380,7 +380,7 @@ No runs exported for this cell.
 - Iterations: `57` measured, `0` warmup
 - Telemetry partial: `False`
 - Latency: median `1232811.5` us, mean `1232771.1` us, p95 `1233188.1` us, p99 `1233254.1` us, stddev `256.1` us, variance `0.0208%`
-- Energy: `0.0008` Wh total, `14.46` mWh/1000, avg power `0.0398` W, coverage `95.25%`
+- Energy: `0.0008` Wh total, `13.6983` mWh/1000, avg power `0.0398` W, coverage `95.25%`
 
 #### Run `019e674a-f6b6-7092-a5d0-b84111bc0858`
 
@@ -390,7 +390,7 @@ No runs exported for this cell.
 - Iterations: `26` measured, `0` warmup
 - Telemetry partial: `False`
 - Latency: median `1232612.5` us, mean `1232611.2` us, p95 `1233048.8` us, p99 `1233063.5` us, stddev `383.0` us, variance `0.0311%`
-- Energy: `0.0004` Wh total, `13.72` mWh/1000, avg power `0.0396` W, coverage `96.07%`
+- Energy: `0.0004` Wh total, `13.7165` mWh/1000, avg power `0.0396` W, coverage `96.07%`
 
 #### Run `019e7545-f8a5-75e0-a20d-857ae690429e`
 
@@ -411,7 +411,7 @@ No runs exported for this cell.
 - Iterations: `26` measured, `0` warmup
 - Telemetry partial: `False`
 - Latency: median `1232600.0` us, mean `1232580.0` us, p95 `1233090.0` us, p99 `1233226.8` us, stddev `359.9` us, variance `0.0292%`
-- Energy: `0.0004` Wh total, `14.19` mWh/1000, avg power `0.0400` W, coverage `93.28%`
+- Energy: `0.0004` Wh total, `13.6396` mWh/1000, avg power `0.0400` W, coverage `93.28%`
 ### ic/esp32s3
 
 - Status: `OK`
@@ -427,7 +427,7 @@ No runs exported for this cell.
 - Iterations: `128` measured, `0` warmup
 - Telemetry partial: `False`
 - Latency: median `551062.0` us, mean `551062.0` us, p95 `551073.0` us, p99 `551080.0` us, stddev `6.7835` us, variance `0.0012%`
-- Energy: `0.0087` Wh total, `68.16` mWh/1000, avg power `0.4400` W, coverage `90.76%`
+- Energy: `0.0087` Wh total, `67.6314` mWh/1000, avg power `0.4400` W, coverage `90.76%`
 
 #### Run `019e653a-5889-71d1-8252-562d3a20e2e2`
 
@@ -437,7 +437,7 @@ No runs exported for this cell.
 - Iterations: `59` measured, `0` warmup
 - Telemetry partial: `False`
 - Latency: median `551060.0` us, mean `551061.6` us, p95 `551074.2` us, p99 `551077.2` us, stddev `6.8514` us, variance `0.0012%`
-- Energy: `0.0040` Wh total, `68.58` mWh/1000, avg power `0.4366` W, coverage `94.49%`
+- Energy: `0.0040` Wh total, `67.4158` mWh/1000, avg power `0.4366` W, coverage `94.49%`
 
 #### Run `019e71e6-290e-70a0-a30c-fc3b5f797aba`
 
@@ -447,7 +447,7 @@ No runs exported for this cell.
 - Iterations: `59` measured, `0` warmup
 - Telemetry partial: `False`
 - Latency: median `551074.5` us, mean `551073.3` us, p95 `551086.0` us, p99 `551087.0` us, stddev `7.8249` us, variance `0.0014%`
-- Energy: `0.0040` Wh total, `69.17` mWh/1000, avg power `0.4404` W, coverage `94.49%`
+- Energy: `0.0040` Wh total, `68.0003` mWh/1000, avg power `0.4404` W, coverage `94.49%`
 ### ic/pi5
 
 - Status: `NO_DATA`
@@ -613,7 +613,7 @@ No runs exported for this cell.
 - Iterations: `2576` measured, `0` warmup
 - Telemetry partial: `False`
 - Latency: median `12421.0` us, mean `12422.1` us, p95 `12447.0` us, p99 `12448.0` us, stddev `16.33` us, variance `0.1314%`
-- Energy: `0.0005` Wh total, `0.1890` mWh/1000, avg power `0.0369` W, coverage `96.09%`
+- Energy: `0.0005` Wh total, `0.1889` mWh/1000, avg power `0.0369` W, coverage `96.09%`
 
 #### Run `019e7543-37c3-7e32-bd60-339408178788`
 
@@ -634,7 +634,7 @@ No runs exported for this cell.
 - Iterations: `2577` measured, `0` warmup
 - Telemetry partial: `False`
 - Latency: median `12404.0` us, mean `12415.8` us, p95 `12447.0` us, p99 `12448.0` us, stddev `15.56` us, variance `0.1253%`
-- Energy: `0.0005` Wh total, `0.1884` mWh/1000, avg power `0.0372` W, coverage `95.23%`
+- Energy: `0.0005` Wh total, `0.1883` mWh/1000, avg power `0.0372` W, coverage `95.23%`
 ### ad/esp32s3
 
 - Status: `OK`
@@ -652,7 +652,7 @@ No runs exported for this cell.
 - Iterations: `5965` measured, `0` warmup
 - Telemetry partial: `False`
 - Latency: median `11723.0` us, mean `11721.6` us, p95 `11726.0` us, p99 `11727.0` us, stddev `3.4023` us, variance `0.0290%`
-- Energy: `0.0086` Wh total, `1.4403` mWh/1000, avg power `0.4248` W, coverage `91.44%`
+- Energy: `0.0086` Wh total, `1.4400` mWh/1000, avg power `0.4248` W, coverage `91.44%`
 
 #### Run `019e6532-b4fd-7310-8cf7-4eda7c26f834`
 
@@ -672,7 +672,7 @@ No runs exported for this cell.
 - Iterations: `2727` measured, `0` warmup
 - Telemetry partial: `False`
 - Latency: median `11723.0` us, mean `11721.7` us, p95 `11726.0` us, p99 `11727.0` us, stddev `3.4568` us, variance `0.0295%`
-- Energy: `0.0039` Wh total, `1.4304` mWh/1000, avg power `0.4196` W, coverage `94.22%`
+- Energy: `0.0039` Wh total, `1.4288` mWh/1000, avg power `0.4196` W, coverage `94.22%`
 
 #### Run `019e71e4-ab8b-70a3-a4f0-b894ceb098bf`
 
@@ -682,7 +682,7 @@ No runs exported for this cell.
 - Iterations: `2727` measured, `0` warmup
 - Telemetry partial: `False`
 - Latency: median `11723.0` us, mean `11721.8` us, p95 `11726.0` us, p99 `11727.0` us, stddev `3.3854` us, variance `0.0289%`
-- Energy: `0.0039` Wh total, `1.4387` mWh/1000, avg power `0.4229` W, coverage `94.23%`
+- Energy: `0.0039` Wh total, `1.4382` mWh/1000, avg power `0.4229` W, coverage `94.23%`
 ### ad/pi5
 
 - Status: `NO_DATA`

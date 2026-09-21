@@ -112,7 +112,7 @@ Expected proof points include:
 ```text
 Post 1 no-hardware verification succeeded.
 | published median latency | kws/f401re | - | 158.926 | 158.926 |
-| published Wh/1000 figure | kws/nano33 | - | 2.63148419911307 | 2.63148419911307 |
+| published mWh/1000 figure | kws/nano33 | - | 2.366554372571872 | 2.366554372571872 |
 | published variance figure | ad/f401re | 019f3676-d96e-7f10-9907-3586f4f15606 | 0.313283690900598 | 0.313283690900598 |
 ```
 
