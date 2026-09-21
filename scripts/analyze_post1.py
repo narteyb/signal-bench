@@ -261,7 +261,7 @@ def _session_from_row(
     instrument_sources = tuple(
         sorted(
             str(source)
-            for (source,) in connection.execute(
+            for source, in connection.execute(
                 "select distinct source from telemetry_samples where run_id=?",
                 (row["run_id"],),
             ).fetchall()
