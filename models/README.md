@@ -39,17 +39,16 @@ the digest and byte count with this table and
 
 ## 2. Convert TFLite to ONNX
 
-The conversion environment is CPython `3.12.3` with uv `0.10.7`, TensorFlow
-`2.21.0`, `tf2onnx` `1.17.0`, ONNX `1.21.0`, and ONNX Runtime `1.25.1`, using
-opset `13`. The complete environment, including the serializer and runtime
-dependencies that affect the bytes, is pinned in
-`models/onnx-conversion-requirements.txt`.
+The recorded conversion environment is TensorFlow `2.21.0`, `tf2onnx`
+`1.17.0`, ONNX `1.21.0`, and ONNX Runtime `1.25.1`, using opset `13`.
+For example, create an isolated Python 3.12 environment and install those
+exact versions:
 
 ```bash
-uv --version  # expected: 0.10.7
-uv venv --python 3.12.3 /tmp/signal-bench-models
+uv venv --python 3.12 /tmp/signal-bench-models
 uv pip install --python /tmp/signal-bench-models/bin/python \
-  -r models/onnx-conversion-requirements.txt
+  "tensorflow==2.21.0" "tf2onnx==1.17.0" "onnx==1.21.0" \
+  "onnxruntime==1.25.1"
 ```
 
 Activate that environment, then run:
@@ -61,28 +60,19 @@ python -m tf2onnx.convert --tflite models/reference/ic/pretrainedResnet_quant.tf
   --output models/onnx/ic_int8.onnx --opset 13
 python -m tf2onnx.convert --tflite models/reference/ad/ad01_int8.tflite \
   --output models/onnx/ad_int8.onnx --opset 13
-python tools/canonicalize_onnx.py --in-place models/onnx/kws_int8.onnx
-python tools/canonicalize_onnx.py --in-place models/onnx/ic_int8.onnx
-python tools/canonicalize_onnx.py --in-place models/onnx/ad_int8.onnx
 ```
 
 Expected ONNX outputs:
 
 | Task | Path | Bytes | SHA-256 |
 | --- | --- | ---: | --- |
-| KWS | `models/onnx/kws_int8.onnx` | 38,178 | `c3c8900765c752402579a7eb199f380ef74e087bd0f2bac29899f0035a2975e0` |
-| IC | `models/onnx/ic_int8.onnx` | 91,671 | `f180650819ce87f83472d03ca5f44689d0c925be034e612e791c463d0e87d66b` |
-| AD | `models/onnx/ad_int8.onnx` | 278,240 | `6131f5b7b2428c83fc5417dcba98adc5fa99bfc10db7b7c6af689459ab44bbb1` |
+| KWS | `models/onnx/kws_int8.onnx` | 73,802 | `d7eb060290aa1da24fe2d713d2d68007529531ab661ff55965fe66775181f1da` |
+| IC | `models/onnx/ic_int8.onnx` | 112,387 | `6ce9e5fab1590a8365ced31e467796e98bf92c0b29c732164f086053f75e5029` |
+| AD | `models/onnx/ad_int8.onnx` | 285,111 | `7de136c8c472be09b00cb1047ea7dcb4e85b5d41f586b2e02721b46d2bac0f60` |
 
-The canonicalization step removes generated names and normalizes protobuf
-serialization so repeated conversions in the pinned environment have stable
-bytes. These byte-level checksums are still specific to the pinned environment
-and canonicalization tool. A different Python, protobuf, ONNX, or related
-serializer version can produce a semantically equivalent ONNX graph with
-different bytes; treat a mismatch as unverified until the pinned environment
-and canonicalization step are used. The ONNX files are generic opset-13
-outputs, not provider-specific optimized artifacts. Validate the TFLite/ONNX
-pair and regenerate the tracked TFLM C arrays with:
+The ONNX files are generic opset-13 outputs, not provider-specific optimized
+artifacts. Validate the TFLite/ONNX pair and regenerate the tracked TFLM C
+arrays with:
 
 ```bash
 uv run --extra dev python tools/validate_onnx_models.py

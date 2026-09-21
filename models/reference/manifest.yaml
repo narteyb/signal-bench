@@ -31,11 +31,10 @@ tasks:
         var_name: g_kws_int8_model_data
       onnx:
         path: ../onnx/kws_int8.onnx
-        sha256: c3c8900765c752402579a7eb199f380ef74e087bd0f2bac29899f0035a2975e0
-        bytes: 38178
+        sha256: d7eb060290aa1da24fe2d713d2d68007529531ab661ff55965fe66775181f1da
+        bytes: 73802
         opset: 13
         converter: tf2onnx-1.17.0
-        environment: models/onnx-conversion-requirements.txt
     targets:
       f401re:
         status: FITS
@@ -84,11 +83,10 @@ tasks:
         var_name: g_ic_int8_model_data
       onnx:
         path: ../onnx/ic_int8.onnx
-        sha256: f180650819ce87f83472d03ca5f44689d0c925be034e612e791c463d0e87d66b
-        bytes: 91671
+        sha256: 6ce9e5fab1590a8365ced31e467796e98bf92c0b29c732164f086053f75e5029
+        bytes: 112387
         opset: 13
         converter: tf2onnx-1.17.0
-        environment: models/onnx-conversion-requirements.txt
     targets:
       f401re:
         status: FITS
@@ -137,11 +135,10 @@ tasks:
         var_name: g_ad_int8_model_data
       onnx:
         path: ../onnx/ad_int8.onnx
-        sha256: 6131f5b7b2428c83fc5417dcba98adc5fa99bfc10db7b7c6af689459ab44bbb1
-        bytes: 278240
+        sha256: 7de136c8c472be09b00cb1047ea7dcb4e85b5d41f586b2e02721b46d2bac0f60
+        bytes: 285111
         opset: 13
         converter: tf2onnx-1.17.0
-        environment: models/onnx-conversion-requirements.txt
     targets:
       f401re:
         status: FITS
