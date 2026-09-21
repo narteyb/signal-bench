@@ -75,8 +75,6 @@ class OrchestratorState:
     failed_sources: list[str] = field(default_factory=list)
     partial_reasons: list[str] = field(default_factory=list)
     partial: bool = False
-    expected_samples: dict[str, int] = field(default_factory=dict)
-    capture_duration_s: float = 0.0
 
 
 class TelemetryOrchestrator:
@@ -253,10 +251,6 @@ class TelemetryOrchestrator:
             await self._writer_task
 
         decision = self._decide_telemetry_partial()
-        self._state.expected_samples = dict(decision.expected_samples)
-        self._state.capture_duration_s = max(
-            0.0, self._run_stopping_monotonic - self._run_started_monotonic
-        )
         await self._update_run_partial(decision)
         self._state.failed_sources = sorted(self._failed_sources)
         self._state.partial_reasons = decision.reasons
