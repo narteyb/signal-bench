@@ -33,10 +33,6 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--db", type=Path, default=DEFAULT_DB)
     parser.add_argument("--session-label")
-    parser.add_argument(
-        "--power-boundary",
-        help="Required for measurement runs: operator-recorded power boundary and meter placement.",
-    )
     parser.add_argument("--targets", nargs="+", default=["all-mcu"])
     parser.add_argument("--tasks", nargs="+", choices=TASKS)
     parser.add_argument("--port", action="append", default=[], metavar="TARGET=PORT")
@@ -79,8 +75,6 @@ def main() -> int:
             str(args.measurement_s),
             "--sample-count",
             str(args.sample_count),
-            "--power-boundary",
-            args.power_boundary or "",
         ]
         for override in args.port:
             command.extend(["--port", override])
