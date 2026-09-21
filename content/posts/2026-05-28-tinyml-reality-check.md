@@ -65,7 +65,7 @@ This report measures keyword spotting, image classification, and anomaly detecti
 | Task | F401RE | Nano 33 BLE Sense Rev2 | ESP32-S3 |
 | --- | ---: | ---: | ---: |
 | KWS | 158.926 ms<br>0.021382 Wh/1000 | 224.222 ms<br>0.002367 Wh/1000 | 106.496 ms<br>0.013221 Wh/1000 |
-| IC | 755.418 ms<br>0.071360 Wh/1000 | 1232.6125 ms<br>0.013698 Wh/1000 | 551.062 ms<br>0.067631 Wh/1000 |
+| IC | 755.418 ms<br>0.071360 Wh/1000 | 1232.613 ms<br>0.013698 Wh/1000 | 551.062 ms<br>0.067631 Wh/1000 |
 | AD | 8.136 ms<br>0.001295 Wh/1000 | 12.421 ms<br>0.000189 Wh/1000 | 11.723 ms<br>0.001438 Wh/1000 |
 
 Post 1 covers the 9-cell Tier 1 matrix:
@@ -154,7 +154,7 @@ KWS is the cleanest example of metric disagreement: ESP32-S3 is fastest at 106.4
 
 F401RE: 755.418 ms p50, 755.500 ms p99, 0.071360 Wh/1000, variance 0.00%, OK across 3/3 published A03 runs.
 
-Nano 33 BLE Sense Rev2: 1232.6125 ms p50, 1233.227 ms p99, 0.013698 Wh/1000, variance 0.01%, OK across 3/3 published A03 runs.
+Nano 33 BLE Sense Rev2: 1232.613 ms p50, 1233.227 ms p99, 0.013698 Wh/1000, variance 0.01%, OK across 3/3 published A03 runs.
 
 ESP32-S3: 551.062 ms p50, 551.080 ms p99, 0.067631 Wh/1000, variance 0.00%, OK across 3/3 published A03 runs.
 
@@ -215,7 +215,7 @@ Three patterns are worth carrying out of the Tier 1 matrix and into your own wor
 
 The first takeaway is the one that changes how you read a model card: model size is not SRAM size. The AD model looks like the scary one because its `.tflite` file is 276,976 bytes, but the static budget check shows all nine MCU cells fit once model bytes are treated as Flash-resident constant data. SRAM pressure comes from the tensor arena, stack, heap, and runtime state. The evidence is the T2.5 budget matrix and the Phase 5 inventory: IC/F401RE uses 74,884 bytes (73.13 KiB, 1 KiB = 1024 bytes) estimated SRAM against a 98,304-byte SRAM limit, leaving 23,420 bytes (22.87 KiB) margin. When evaluating a TinyML model for an MCU, check arena bytes before you panic over weight bytes, and read the linker report before changing models. The caveat is real: this is a static-graph TFLM finding. If your runtime copies weights into RAM, uses dynamic shapes, or keeps extra input buffers alive, redo the accounting.
 
-The second takeaway is the one that decides product tradeoffs: latency and energy are related, but they are not the same ranking. A target can finish an inference faster and still burn more energy per 1000 inferences if idle power, peripheral load, or runtime overhead changes the shape of the run. The evidence comes from reading the hardware curve beside the Wh comparison chart, especially KWS, where ESP32-S3 is fastest at 106.496 ms while Nano 33 is lowest energy at 0.002367 Wh/1000, and IC, where Nano 33 uses about 4.9× less Wh/1000 than ESP32-S3 while being slower. When the device is battery-constrained, optimize Wh per 1000 inferences first and latency second, then verify the result under realistic deployment duty cycle. When the device is interaction-constrained, reverse the order. The caveat is scope: if two boards are close on both metrics, the cleaner engineering choice may be the board with better tooling, supply, or sensor integration.
+The second takeaway is the one that decides product tradeoffs: latency and energy are related, but they are not the same ranking. A target can finish an inference faster and still burn more energy per 1000 inferences if idle power, peripheral load, or runtime overhead changes the shape of the run. The evidence comes from reading the hardware curve beside the Wh comparison chart, especially KWS, where ESP32-S3 is fastest at 106.496 ms while Nano 33 is lowest energy at 0.002367 Wh/1000, and IC, where the Nano 33 uses about one fifth the energy of the ESP32-S3 while being slower. When the device is battery-constrained, optimize Wh per 1000 inferences first and latency second, then verify the result under realistic deployment duty cycle. When the device is interaction-constrained, reverse the order. The caveat is scope: if two boards are close on both metrics, the cleaner engineering choice may be the board with better tooling, supply, or sensor integration.
 
 The third takeaway is methodological: measurement conditions are part of the result. A benchmark number without sample count, variance, telemetry coverage, and ambient context is not wrong, but it is incomplete. The useful output is not "KWS took X microseconds." The useful output is "KWS on Nano 33 took 224.222 ms p50 with 0.053 ms run-to-run stddev (0.02%), under the recorded power and environmental conditions." When you publish TinyML results, report the run conditions. When you read them, look for those fields before comparing devices. The caveat is practical: early prototyping does not need a full telemetry rig. But once a number is used to make a board choice, a battery claim, or a customer-facing promise, the conditions belong in the report.
 
