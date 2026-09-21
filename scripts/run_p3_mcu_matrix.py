@@ -1192,9 +1192,6 @@ def _finish_run(
         boundary_state = (run.extra or {}).get("boundary_state") if isinstance(run.extra, dict) else None
         boundary = boundary_state.get("power_boundary") if isinstance(boundary_state, dict) else None
         _require_power_boundary(boundary)
-        ambient = _ambient_summary(session, run_id)
-        extra = dict(run.extra or {})
-        extra["ambient"] = ambient
         session.execute(
             update(Run)
             .where(Run.run_id == run_id)
@@ -1202,55 +1199,9 @@ def _finish_run(
                 finished_at=dt.datetime.now(dt.UTC),
                 status="completed",
                 measurement_count=len(results),
-                extra=extra,
             ),
         )
         session.commit()
-
-
-def _ambient_summary(session: Session, run_id: str) -> dict[str, Any]:
-    samples = session.scalars(
-        select(TelemetrySample)
-        .where(
-            TelemetrySample.run_id == run_id,
-            TelemetrySample.source == "bme280",
-            TelemetrySample.metric.in_(("temperature", "humidity")),
-        )
-        .order_by(TelemetrySample.metric, TelemetrySample.timestamp),
-    ).all()
-    by_metric: dict[str, list[TelemetrySample]] = {"temperature": [], "humidity": []}
-    for sample in samples:
-        by_metric[str(sample.metric)].append(sample)
-    missing = [metric for metric, values in by_metric.items() if len(values) < 2]
-    if missing:
-        raise RuntimeError(
-            "cannot complete run without BME280 ambient start/end values: "
-            + ", ".join(missing),
-        )
-    summary: dict[str, Any] = {}
-    for metric, values in by_metric.items():
-        summary_key = "temperature_c" if metric == "temperature" else "humidity_pct"
-        summary[summary_key] = {
-            "start": values[0].value,
-            "end": values[-1].value,
-            "minimum": min(sample.value for sample in values),
-            "maximum": max(sample.value for sample in values),
-            "start_at": values[0].timestamp.isoformat(),
-            "end_at": values[-1].timestamp.isoformat(),
-            "sample_count": len(values),
-        }
-    return summary
-
-
-def _recorded_ambient(
-    session_factory: sessionmaker[Session], run_id: str
-) -> dict[str, Any] | None:
-    with session_factory() as session:
-        run = session.get(Run, run_id)
-        if run is None or not isinstance(run.extra, dict):
-            return None
-        ambient = run.extra.get("ambient")
-        return ambient if isinstance(ambient, dict) else None
 
 
 def _mark_run_failed(session_factory: sessionmaker[Session], run_id: str, error: str) -> None:
@@ -1292,7 +1243,6 @@ def _cell_metrics(
         "accuracy_proxy": _accuracy_proxy(outputs, lineage),
         "wh_per_1000_inferences": wh_per_1000,
         "telemetry": telemetry,
-        "ambient": _recorded_ambient(session_factory, run_id),
     }
 
 
@@ -1468,7 +1418,6 @@ def _append_inventory(summary: dict[str, Any]) -> None:
             handle.write(f"- Wh/1000: {summary['wh_per_1000_inferences']}\n")
             handle.write(f"- telemetry: {summary['telemetry']}\n")
             handle.write(f"- accuracy_proxy: {summary['accuracy_proxy']}\n")
-            handle.write(f"- ambient: {summary.get('ambient')}\n")
         if "limiting_resource" in summary:
             handle.write(f"- limiting_resource: {summary['limiting_resource']}\n")
         handle.write(f"- footprint: {summary.get('footprint')}\n")

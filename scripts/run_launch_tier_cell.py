@@ -529,12 +529,6 @@ def _finish_run(
     session_factory: sessionmaker[Session], run_id: str, results: Sequence[Any]
 ) -> None:
     with session_factory() as session:
-        run = session.get(Run, run_id)
-        if run is None:
-            raise RuntimeError(f"cannot complete missing run {run_id}")
-        ambient = _ambient_summary(session, run_id)
-        extra = dict(run.extra or {})
-        extra["ambient"] = ambient
         session.execute(
             update(Run)
             .where(Run.run_id == run_id)
@@ -542,44 +536,9 @@ def _finish_run(
                 finished_at=dt.datetime.now(dt.UTC),
                 status="completed",
                 measurement_count=len(results),
-                extra=extra,
             ),
         )
         session.commit()
-
-
-def _ambient_summary(session: Session, run_id: str) -> dict[str, Any]:
-    samples = session.scalars(
-        select(TelemetrySample)
-        .where(
-            TelemetrySample.run_id == run_id,
-            TelemetrySample.source == "bme280",
-            TelemetrySample.metric.in_(("temperature", "humidity")),
-        )
-        .order_by(TelemetrySample.metric, TelemetrySample.timestamp)
-    ).all()
-    by_metric: dict[str, list[TelemetrySample]] = {"temperature": [], "humidity": []}
-    for sample in samples:
-        by_metric[str(sample.metric)].append(sample)
-    missing = [metric for metric, values in by_metric.items() if len(values) < 2]
-    if missing:
-        raise RuntimeError(
-            "cannot complete run without BME280 ambient start/end values: "
-            + ", ".join(missing),
-        )
-    summary: dict[str, Any] = {}
-    for metric, values in by_metric.items():
-        summary_key = "temperature_c" if metric == "temperature" else "humidity_pct"
-        summary[summary_key] = {
-            "start": values[0].value,
-            "end": values[-1].value,
-            "minimum": min(sample.value for sample in values),
-            "maximum": max(sample.value for sample in values),
-            "start_at": values[0].timestamp.isoformat(),
-            "end_at": values[-1].timestamp.isoformat(),
-            "sample_count": len(values),
-        }
-    return summary
 
 
 def _mark_failed(session_factory: sessionmaker[Session], run_id: str, error: str) -> None:
@@ -641,7 +600,6 @@ def _summary(
         "device_identity": (run.extra or {}).get("device_identity") if run else {},
         "telemetry_config": (run.extra or {}).get("telemetry_config") if run else {},
         "operator_observations": (run.extra or {}).get("operator_observations") if run else {},
-        "ambient": (run.extra or {}).get("ambient") if run else {},
         "firmware_footprint": _parse_footprint(build["output"]),
     }
 
