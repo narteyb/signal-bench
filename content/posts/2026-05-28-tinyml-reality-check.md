@@ -21,7 +21,7 @@ syndicate_to_medium: true
 syndicate_to_linkedin: true
 ---
 
-**Correction — 23 September 2026.** Energy figures and their comparisons have been corrected; measurement-boundary claims have been narrowed, and a selection-layer latency p99 has been recomputed from raw results. The energy error came from a mismatched result count; the p99 change uses a documented session-level calculation. The raw measurements did not change. [Corrections record](https://github.com/narteyb/signal-bench/blob/main/docs/corrections/2026-09-23-ananse-reports.md) lists the affected figures and claims.
+**Correction, 23 September 2026.** The energy figures in this post were wrong and have been corrected. Energy per inference was calculated by dividing the energy for a whole run by the number of inferences kept after slow outliers were filtered out, instead of by every inference in the run. The raw measurements have not changed. Some statements about what was measured have also been narrowed to what the evidence supports. One latency figure, the 99th percentile for keyword spotting on the F401RE, has also been recalculated from the raw results, from 158.987 ms to 158.985 ms. [The corrections record](https://github.com/narteyb/signal-bench/blob/main/docs/corrections/2026-09-23-ananse-reports.md) lists every figure that changed.
 
 ---
 
