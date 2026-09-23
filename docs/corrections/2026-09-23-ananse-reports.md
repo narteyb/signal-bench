@@ -2,7 +2,7 @@
 
 **23 September 2026.** This record accompanies corrections to the published TinyML Reports Parts I to III and their public data artifacts. Live posts and social posts are edited separately; this repository record does not imply that those surfaces have already been updated.
 
-The energy normalization bug paired a full measured-interval energy numerator with an inference count left after latency outlier trimming. Corrected energy uses every post-warmup result in the denominator. Original telemetry and latency measurements did not change. Reader-facing figures use the canonical three-session selection for each board/workload cell.
+The energy normalization bug paired a full measured-interval energy numerator with an inference count left after latency outlier trimming. Corrected energy uses every post-warmup result in the denominator. Original telemetry and latency measurements did not change. Reader-facing figures use the canonical three-session selection for each board/workload cell. Two ESP32-S3 energy figures rose slightly because they now use the same three sessions as the rest of the results, rather than four.
 
 Reproducible corrected data: [canonical cells](../../data/corrections/2026-09-23-canonical-cells.csv), [Part II comparison chart](../../data/corrections/2026-09-23-part2-figure1.csv), [Part III session scatter points](../../data/corrections/2026-09-23-latency-energy-session-scatter.csv), [cell medians](../../data/corrections/2026-09-23-latency-energy-scatter.csv), and [coin-cell equivalents](../../data/corrections/2026-09-23-coin-cell.csv). The underlying run records are in `data/p3_mcu_matrix.db`.
 
