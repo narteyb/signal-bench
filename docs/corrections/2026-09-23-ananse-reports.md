@@ -4,7 +4,7 @@
 
 The energy normalization bug paired a full measured-interval energy numerator with an inference count left after latency outlier trimming. Corrected energy uses every post-warmup result in the denominator. Original telemetry and latency measurements did not change. Reader-facing figures use the canonical three-session selection for each board/workload cell.
 
-Reproducible corrected data: [canonical cells](../../data/corrections/2026-09-23-canonical-cells.csv), [Part II comparison chart](../../data/corrections/2026-09-23-part2-figure1.csv), [latency versus energy scatter](../../data/corrections/2026-09-23-latency-energy-scatter.csv), and [coin-cell equivalents](../../data/corrections/2026-09-23-coin-cell.csv). The underlying run records are in `data/p3_mcu_matrix.db`.
+Reproducible corrected data: [canonical cells](../../data/corrections/2026-09-23-canonical-cells.csv), [Part II comparison chart](../../data/corrections/2026-09-23-part2-figure1.csv), [Part III session scatter points](../../data/corrections/2026-09-23-latency-energy-session-scatter.csv), [cell medians](../../data/corrections/2026-09-23-latency-energy-scatter.csv), and [coin-cell equivalents](../../data/corrections/2026-09-23-coin-cell.csv). The underlying run records are in `data/p3_mcu_matrix.db`.
 
 A selection-layer latency p99 is also corrected. For each selected session, take the linear-interpolated 99th percentile of device-reported inference durations after its IQR latency filter; then take the median of the three session p99s. KWS/F401RE changes from **158.98698 ms to 158.985 ms**. The other eight cell p99s match this definition. [The raw-row recomputation and session IDs](../../content/signal-reports/2026-09-23-corrections-p99.csv) are retained with this record.
 
