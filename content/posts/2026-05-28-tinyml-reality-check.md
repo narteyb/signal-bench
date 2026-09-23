@@ -87,7 +87,7 @@ The table reports each cell as p50 latency and p50 Wh/1000 from the canonical A0
 - IC: F401RE 0.071360 Wh/1000; Nano 33 0.013698 Wh/1000; ESP32-S3 0.067631 Wh/1000.
 - AD: F401RE 0.001295 Wh/1000; Nano 33 0.000189 Wh/1000; ESP32-S3 0.001438 Wh/1000.
 
-The published headline set uses 27 boundary-consistent A03 runs. The raw DB still carries diagnostic and quarantined rows: F401RE/IC baseline energy from 2026-05-25 is excluded for a pre-discipline power boundary, F401RE KWS/AD May 25 low-boundary rows and May 29 unrecorded-topology rows are excluded from the published repeat sets, and Nano33 session-3 anomaly rows are excluded for energy only. Those rows remain visible in the matrix YAML provenance.
+The selected headline set contains 27 A03 runs; many historical sessions lack a recorded or recoverable power boundary. The raw DB still carries diagnostic and quarantined rows: F401RE/IC baseline energy from 2026-05-25 is excluded for a pre-discipline power boundary, F401RE KWS/AD May 25 low-boundary rows and May 29 unrecorded-topology rows are excluded from the published repeat sets, and Nano33 session-3 anomaly rows are excluded for energy only. Those rows remain visible in the matrix YAML provenance.
 
 The headline metric is Wh/1000 inferences: how much energy the board consumed
 to perform 1000 model inferences. Latency answers "how fast?" Energy answers
@@ -114,12 +114,7 @@ production module can plausibly move the board-level number by tens to low
 hundreds of milliwatts depending on regulators, USB-UART, LEDs, and radio state.
 The external-baseline note is archived at `results/a04_external_baseline.md`.
 
-MLPerf Tiny's NUCLEO-L4R5ZI energy result is an EnergyRunner/ULPMark
-measurement over timestamped inference windows on the isolated DUT energy
-path. It is not directly comparable to the Post 1 devkit-level rail measurement
-without a power-boundary caveat: the Post 1 numbers include USB controller,
-voltage regulators, and other devkit overhead excluded from the MLPerf Tiny
-submission. This likely accounts for most of the observed difference.
+MLPerf Tiny's NUCLEO-L4R5ZI energy result uses a documented device-under-test power hookup and timestamped inference windows. A direct comparison with the selected Post 1 figures requires the exact power paths and workload conditions for both datasets; many historical Post 1 boundaries were not recorded. The contribution of any power-path difference cannot be quantified from these records.
 
 ## 5. The Data
 
@@ -142,31 +137,31 @@ Nano 33 is the lowest-energy target on KWS (0.002367 Wh/1000), IC (0.013698 Wh/1
 
 ### 5.3 KWS Narrative
 
-F401RE: 158.9 ms p50, 158.987 ms p99, 0.021382 Wh/1000, energy CV 0.99%, OK across 3/3 boundary-consistent published A03 runs spanning three distinct days.
+F401RE: 158.9 ms p50, 0.021382 Wh/1000, across 3 selected A03 runs. Historical boundary completeness is limited.
 
-Nano 33 BLE Sense Rev2: 224.2 ms p50, 224.236 ms p99, 0.002367 Wh/1000, variance 0.02%, OK across 3/3 published A03 runs.
+Nano 33 BLE Sense Rev2: 224.2 ms p50, 0.002367 Wh/1000, across 3 selected A03 runs.
 
-ESP32-S3: 106.5 ms p50, 106.518 ms p99, 0.013221 Wh/1000, variance 0.01%, OK across 3/3 published A03 runs.
+ESP32-S3: 106.5 ms p50, 0.013221 Wh/1000, across 3 selected A03 runs.
 
-KWS is the cleanest example of metric disagreement: ESP32-S3 is fastest at 106.5 ms, but Nano 33 is lowest energy at 0.002367 Wh/1000. The fresh F401RE KWS documented-boundary sessions are stable across the three-day rerun, with 0.99% energy CV.
+KWS is the cleanest example of metric disagreement: ESP32-S3 is fastest at 106.5 ms, but Nano 33 is lowest energy at 0.002367 Wh/1000. The selected F401RE KWS runs span three days; their historical boundary record is incomplete.
 
 ### 5.4 IC Narrative
 
-F401RE: 755.4 ms p50, 755.500 ms p99, 0.071360 Wh/1000, variance 0.00%, OK across 3/3 published A03 runs.
+F401RE: 755.4 ms p50, 0.071360 Wh/1000, across 3 selected A03 runs.
 
-Nano 33 BLE Sense Rev2: 1232.6 ms p50, 1233.227 ms p99, 0.013698 Wh/1000, variance 0.01%, OK across 3/3 published A03 runs.
+Nano 33 BLE Sense Rev2: 1232.6 ms p50, 0.013698 Wh/1000, across 3 selected A03 runs.
 
-ESP32-S3: 551.1 ms p50, 551.080 ms p99, 0.067631 Wh/1000, variance 0.00%, OK across 3/3 published A03 runs.
+ESP32-S3: 551.1 ms p50, 0.067631 Wh/1000, across 3 selected A03 runs.
 
 IC/F401RE is the tightest SRAM case but still fits. The inventory records 74,884 bytes (73.13 KiB, 1 KiB = 1024 bytes) estimated SRAM against the 98,304-byte F401RE SRAM limit, leaving 23,420 bytes (22.87 KiB) margin; the May 25 baseline is energy-quarantined only, not evidence that IC failed or was out of scope.
 
 ### 5.5 AD Narrative
 
-F401RE: 8.1 ms p50, 8.181 ms p99, 0.001295 Wh/1000, energy CV 1.03%, OK across 3/3 boundary-consistent published A03 runs spanning three distinct days.
+F401RE: 8.1 ms p50, 0.001295 Wh/1000, across 3 selected A03 runs.
 
-Nano 33 BLE Sense Rev2: 12.4 ms p50, 12.448 ms p99, 0.000189 Wh/1000, variance 0.08%, OK across 3/3 published A03 runs.
+Nano 33 BLE Sense Rev2: 12.4 ms p50, 0.000189 Wh/1000, across 3 selected A03 runs.
 
-ESP32-S3: 11.7 ms p50, 11.727 ms p99, 0.001438 Wh/1000, variance 0.00%, OK across 3/3 published A03 runs.
+ESP32-S3: 11.7 ms p50, 0.001438 Wh/1000, across 3 selected A03 runs.
 
 AD is the file-size trap: the model file is large for this tier, but the runtime arena is small enough that all three MCU targets fit once weights are treated as Flash-resident data instead of SRAM-resident working memory.
 
