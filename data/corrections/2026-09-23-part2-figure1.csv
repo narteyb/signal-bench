@@ -1,0 +1,16 @@
+chart,workload,board,measure,corrected_value,unit,n_sessions,meter,basis
+Part II Figure 1 energy multiples grid,AD,esp32s3,median_energy,1.4381879511469657,"mWh/1,000",3,INA219,v33 canonical corrected selected sessions
+Part II Figure 1 energy multiples grid,AD,f401re,median_energy,1.2954467852312104,"mWh/1,000",3,INA219,v33 canonical corrected selected sessions
+Part II Figure 1 energy multiples grid,AD,nano33,median_energy,0.18891270552967557,"mWh/1,000",3,INA219,v33 canonical corrected selected sessions
+Part II Figure 1 energy multiples grid,IC,esp32s3,median_energy,67.63141712022572,"mWh/1,000",3,INA219,v33 canonical corrected selected sessions
+Part II Figure 1 energy multiples grid,IC,f401re,median_energy,71.36006152927118,"mWh/1,000",3,INA219,v33 canonical corrected selected sessions
+Part II Figure 1 energy multiples grid,IC,nano33,median_energy,13.69833535575047,"mWh/1,000",3,INA219,v33 canonical corrected selected sessions
+Part II Figure 1 energy multiples grid,KWS,esp32s3,median_energy,13.221435833756132,"mWh/1,000",3,INA219,v33 canonical corrected selected sessions
+Part II Figure 1 energy multiples grid,KWS,f401re,median_energy,21.38173289191419,"mWh/1,000",3,INA219,v33 canonical corrected selected sessions
+Part II Figure 1 energy multiples grid,KWS,nano33,median_energy,2.3665543725718723,"mWh/1,000",3,INA219,v33 canonical corrected selected sessions
+Part II Figure 1 energy multiples grid,KWS,f401re/nano33,energy_ratio_to_Nano,9.03496371759987,ratio,3:3,INA219,v33 canonical corrected selected session medians
+Part II Figure 1 energy multiples grid,KWS,esp32s3/nano33,energy_ratio_to_Nano,5.5867872663274705,ratio,3:3,INA219,v33 canonical corrected selected session medians
+Part II Figure 1 energy multiples grid,IC,f401re/nano33,energy_ratio_to_Nano,5.209396592799481,ratio,3:3,INA219,v33 canonical corrected selected session medians
+Part II Figure 1 energy multiples grid,IC,esp32s3/nano33,energy_ratio_to_Nano,4.937199693525863,ratio,3:3,INA219,v33 canonical corrected selected session medians
+Part II Figure 1 energy multiples grid,AD,f401re/nano33,energy_ratio_to_Nano,6.8573830521299355,ratio,3:3,INA219,v33 canonical corrected selected session medians
+Part II Figure 1 energy multiples grid,AD,esp32s3/nano33,energy_ratio_to_Nano,7.6129763062498,ratio,3:3,INA219,v33 canonical corrected selected session medians

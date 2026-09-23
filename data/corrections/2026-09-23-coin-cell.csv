@@ -1,0 +1,10 @@
+workload,board,published_display_count,corrected_calculated_count_exact,corrected_display_count_rounded,mWh_per_1000_corrected,capacity_mWh,basis
+AD,esp32s3,469000,469340.603,469000,1.438187951,675,"derived from fixed-code median energy; compute-only energy equivalent, not battery life"
+AD,f401re,521000,521055.753,521000,1.295446785,675,"derived from fixed-code median energy; compute-only energy equivalent, not battery life"
+AD,nano33,3600000,3573078.880,3600000,0.188912706,675,"derived from fixed-code median energy; compute-only energy equivalent, not battery life"
+IC,esp32s3,9800,9980.569,10000,67.631417120,675,"derived from fixed-code median energy; compute-only energy equivalent, not battery life"
+IC,f401re,9400,9459.073,9500,71.360061529,675,"derived from fixed-code median energy; compute-only energy equivalent, not battery life"
+IC,nano33,48000,49276.060,49000,13.698335356,675,"derived from fixed-code median energy; compute-only energy equivalent, not battery life"
+KWS,esp32s3,50000,51053.457,51000,13.221435834,675,"derived from fixed-code median energy; compute-only energy equivalent, not battery life"
+KWS,f401re,32000,31569.003,32000,21.381732892,675,"derived from fixed-code median energy; compute-only energy equivalent, not battery life"
+KWS,nano33,253000,285224.801,285000,2.366554373,675,"derived from fixed-code median energy; compute-only energy equivalent, not battery life"

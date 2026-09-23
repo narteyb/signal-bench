@@ -301,7 +301,7 @@ variance_illustration:
       latency_ms:
         mean: 158.926498
         p50: 158.926
-        p99: 158.98698
+        p99: 158.985
         stddev_across_runs: 0.002291
         variance_pct: 0.0014
         min_observed: 158.868

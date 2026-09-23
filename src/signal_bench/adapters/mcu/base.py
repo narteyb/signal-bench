@@ -22,6 +22,7 @@ from signal_bench.adapters.mcu.frames import (
     ErrFrame,
     Frame,
     FrameParser,
+    MetadataFrame,
     ResultFrame,
     RunFrame,
 )
@@ -110,6 +111,28 @@ class MCUAdapterBase(Adapter):
             error_type=WarmupError,
             messages=("MCU warmup timed out", "MCU warmup failed"),
         )
+
+    async def read_firmware_metadata(self: Self) -> dict[str, object]:
+        """Query the prepared firmware before telemetry starts.
+
+        A missing or malformed response is an error, so a session cannot be
+        recorded with an assumed firmware identity.
+        """
+        if self._reader is None or self._writer is None:
+            msg = "MCU must be prepared before META query"
+            raise PrepareError(msg)
+        self._writer.write(b"META\n")
+        await self._writer.drain()
+        frame = await self._with_timeout(
+            self._read_frame(timeout_s=self.config.timeouts.prepare_s),
+            timeout_s=self.config.timeouts.prepare_s,
+            error_type=PrepareError,
+            messages=("MCU META query timed out", "MCU META query failed"),
+        )
+        if not isinstance(frame, MetadataFrame):
+            msg = f"expected META response, got {type(frame).__name__}"
+            raise PrepareError(msg)
+        return frame.values
 
     async def measure(
         self: Self,
@@ -292,12 +315,12 @@ class MCUAdapterBase(Adapter):
             msg = "MCU serial write failed"
             raise MeasureError(msg) from error
 
-    async def _read_frame(self: Self) -> Frame:
+    async def _read_frame(self: Self, *, timeout_s: float | None = None) -> Frame:
         reader = self._require_reader()
         try:
             line = await asyncio.wait_for(
                 reader.readline(),
-                timeout=self.config.timeouts.measure_per_iteration_s,
+                timeout=timeout_s or self.config.timeouts.measure_per_iteration_s,
             )
         except TimeoutError as error:
             msg = "MCU serial read timed out"
@@ -312,7 +335,7 @@ class MCUAdapterBase(Adapter):
 
         try:
             return self._parser.parse(line.decode("ascii"))
-        except (UnicodeDecodeError, ValueError) as error:
+        except (UnicodeDecodeError, ValueError, TypeError) as error:
             msg = "MCU serial frame parse failed"
             raise MeasureError(msg) from error
 

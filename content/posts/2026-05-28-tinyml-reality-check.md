@@ -21,17 +21,9 @@ syndicate_to_medium: true
 syndicate_to_linkedin: true
 ---
 
-**Correction — 21 September 2026**
+**Correction — 23 September 2026.** Energy figures and their comparisons have been corrected; measurement-boundary claims have been narrowed, and a selection-layer latency p99 has been recomputed from raw results. The energy error came from a mismatched result count; the p99 change uses a documented session-level calculation. The raw measurements did not change. [Corrections record](https://github.com/narteyb/signal-bench/blob/main/docs/corrections/2026-09-23-ananse-reports.md) lists the affected figures and claims.
 
-An error in how energy was normalised has been corrected and the figures in this post updated.
-
-Energy per 1,000 inferences was divided by the number of results remaining after outlier trimming, rather than by all measured results. Where trimming removed a result, the reported energy was too high — by up to 15.5% on an individual session.
-
-The measurements were not affected. The raw telemetry was correct throughout; the error was in the reporting path. It has been fixed in the signal-bench repository, with a test that prevents it recurring.
-
-**What changed:** absolute energy figures, and the energy ratios between boards. The Nano 33 BLE Sense's advantage now reads 4.9× to 9.0× rather than 4.8× to 8.0×.
-
-**What did not:** latency figures, latency rankings, accuracy, and the finding that the Nano used the least energy on all three workloads.
+---
 
 ## 1. Hook
 
@@ -137,31 +129,33 @@ Nano 33 is the lowest-energy target on KWS (0.002367 Wh/1000), IC (0.013698 Wh/1
 
 ### 5.3 KWS Narrative
 
-F401RE: 158.9 ms p50, 0.021382 Wh/1000, across 3 selected A03 runs. Historical boundary completeness is limited.
+Each p99 below is the median of the selected sessions' p99 inference latencies. Within a session, p99 uses linear interpolation over device-reported results retained by the latency IQR rule; the source rows and session IDs are recorded in the [corrections record](../../docs/corrections/2026-09-23-ananse-reports.md).
 
-Nano 33 BLE Sense Rev2: 224.2 ms p50, 0.002367 Wh/1000, across 3 selected A03 runs.
+F401RE: 158.9 ms p50, 158.985 ms p99, 0.021382 Wh/1000, across 3 selected A03 runs. Historical boundary completeness is limited.
 
-ESP32-S3: 106.5 ms p50, 0.013221 Wh/1000, across 3 selected A03 runs.
+Nano 33 BLE Sense Rev2: 224.2 ms p50, 224.236 ms p99, 0.002367 Wh/1000, across 3 selected A03 runs.
+
+ESP32-S3: 106.5 ms p50, 106.518 ms p99, 0.013221 Wh/1000, across 3 selected A03 runs.
 
 KWS is the cleanest example of metric disagreement: ESP32-S3 is fastest at 106.5 ms, but Nano 33 is lowest energy at 0.002367 Wh/1000. The selected F401RE KWS runs span three days; their historical boundary record is incomplete.
 
 ### 5.4 IC Narrative
 
-F401RE: 755.4 ms p50, 0.071360 Wh/1000, across 3 selected A03 runs.
+F401RE: 755.4 ms p50, 755.500 ms p99, 0.071360 Wh/1000, across 3 selected A03 runs.
 
-Nano 33 BLE Sense Rev2: 1232.6 ms p50, 0.013698 Wh/1000, across 3 selected A03 runs.
+Nano 33 BLE Sense Rev2: 1232.6 ms p50, 1233.227 ms p99, 0.013698 Wh/1000, across 3 selected A03 runs.
 
-ESP32-S3: 551.1 ms p50, 0.067631 Wh/1000, across 3 selected A03 runs.
+ESP32-S3: 551.1 ms p50, 551.080 ms p99, 0.067631 Wh/1000, across 3 selected A03 runs.
 
 IC/F401RE is the tightest SRAM case but still fits. The inventory records 74,884 bytes (73.13 KiB, 1 KiB = 1024 bytes) estimated SRAM against the 98,304-byte F401RE SRAM limit, leaving 23,420 bytes (22.87 KiB) margin; the May 25 baseline is energy-quarantined only, not evidence that IC failed or was out of scope.
 
 ### 5.5 AD Narrative
 
-F401RE: 8.1 ms p50, 0.001295 Wh/1000, across 3 selected A03 runs.
+F401RE: 8.1 ms p50, 8.181 ms p99, 0.001295 Wh/1000, across 3 selected A03 runs.
 
-Nano 33 BLE Sense Rev2: 12.4 ms p50, 0.000189 Wh/1000, across 3 selected A03 runs.
+Nano 33 BLE Sense Rev2: 12.4 ms p50, 12.448 ms p99, 0.000189 Wh/1000, across 3 selected A03 runs.
 
-ESP32-S3: 11.7 ms p50, 0.001438 Wh/1000, across 3 selected A03 runs.
+ESP32-S3: 11.7 ms p50, 11.727 ms p99, 0.001438 Wh/1000, across 3 selected A03 runs.
 
 AD is the file-size trap: the model file is large for this tier, but the runtime arena is small enough that all three MCU targets fit once weights are treated as Flash-resident data instead of SRAM-resident working memory.
 

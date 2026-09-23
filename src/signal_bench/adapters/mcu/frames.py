@@ -130,6 +130,27 @@ class ErrFrame(Frame):
         return f"{self.tag} {self.code} {self.message}\n"
 
 
+@dataclass(frozen=True, slots=True)
+class MetadataFrame(Frame):
+    """Device-reported build and runtime state, queried before measurement."""
+
+    tag: ClassVar[str] = "META"
+    values: dict[str, Any]
+
+    @classmethod
+    def parse_payload(cls: type[MetadataFrame], payload: str) -> MetadataFrame:
+        """Parse the JSON object carried by a firmware META response."""
+        values = json.loads(payload)
+        if not isinstance(values, dict):
+            msg = "META payload must be a JSON object"
+            raise TypeError(msg)
+        return cls(values=values)
+
+    def serialize(self: Self) -> str:
+        """Serialize this metadata frame."""
+        return f"{self.tag} {json.dumps(self.values, separators=(',', ':'))}\n"
+
+
 class FrameParser:
     """Parse newline-delimited MCU protocol frames into dataclasses."""
 
@@ -138,6 +159,7 @@ class FrameParser:
         ResultFrame.tag: ResultFrame,
         DoneFrame.tag: DoneFrame,
         ErrFrame.tag: ErrFrame,
+        MetadataFrame.tag: MetadataFrame,
     }
 
     def parse(self: Self, line: str) -> Frame:

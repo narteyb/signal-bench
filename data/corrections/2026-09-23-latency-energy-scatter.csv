@@ -1,0 +1,10 @@
+workload,board,n_energy_sessions,latency_ms_median,energy_Wh_per_1000,meter,latency_source,basis
+AD,esp32s3,3,11.723,0.0014381879511469657,INA219,device-reported inference time,v33 canonical corrected sessions
+AD,f401re,3,8.136,0.0012954467852312104,INA219,device-reported inference time,v33 canonical corrected sessions
+AD,nano33,3,12.421,0.00018891270552967557,INA219,device-reported inference time,v33 canonical corrected sessions
+IC,esp32s3,3,551.062,0.06763141712022572,INA219,device-reported inference time,v33 canonical corrected sessions
+IC,f401re,3,755.418,0.07136006152927117,INA219,device-reported inference time,v33 canonical corrected sessions
+IC,nano33,3,1232.6125,0.01369833535575047,INA219,device-reported inference time,v33 canonical corrected sessions
+KWS,esp32s3,3,106.496,0.013221435833756132,INA219,device-reported inference time,v33 canonical corrected sessions
+KWS,f401re,3,158.926,0.02138173289191419,INA219,device-reported inference time,v33 canonical corrected sessions
+KWS,nano33,3,224.222,0.002366554372571872,INA219,device-reported inference time,v33 canonical corrected sessions

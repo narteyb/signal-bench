@@ -114,7 +114,9 @@ def test_telemetry_test_csv_output_is_structured(tmp_path: Path) -> None:
     )
 
     assert result.exit_code == 0, result.output
-    lines = [line for line in result.output.splitlines() if line.startswith(("run_id,", "019"))]
+    output_lines = result.output.splitlines()
+    header_index = output_lines.index("run_id,source,samples,rows,rate_hz,status")
+    lines = output_lines[header_index:]
     assert lines[0] == "run_id,source,samples,rows,rate_hz,status"
     assert any("mock_ina219_main" in line for line in lines)
     assert any("mock_bme280_lab" in line for line in lines)

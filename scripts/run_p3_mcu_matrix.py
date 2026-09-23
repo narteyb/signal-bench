@@ -18,6 +18,7 @@ import json
 import math
 import os
 import re
+import secrets
 import shutil
 import statistics
 import subprocess
@@ -42,6 +43,7 @@ from signal_bench.ids import new_id
 from signal_bench.schema import Failure, Result, Run, Target, Task, TelemetrySample
 from signal_bench.tasks import get_task
 from signal_bench.telemetry.orchestrator import TelemetryOrchestrator
+from signal_bench.telemetry.session_contract import SessionContractError, make_session_contract
 from signal_bench.telemetry.sources.bme280 import Bme280Config, Bme280Source
 from signal_bench.telemetry.sources.fnirsi import FnirsiSource, FnirsiSourceConfig
 from signal_bench.telemetry.sources.ina219 import Ina219Config, Ina219Source
@@ -153,6 +155,29 @@ lib_deps =
     ),
 }
 
+# Loaded by the runner, never typed for an individual session. These are rig
+# declarations, not proof that a cable or jumper still occupies that path.
+METERED_PATHS = {
+    "f401re": {
+        "rail": "E5V via the 5 V positive high-side shunt",
+        "components_inside": ["F401RE development board", "ST-LINK USB interface"],
+        "source": "n3 rig configuration",
+        "physically_verified_by_instrument": False,
+    },
+    "nano33": {
+        "rail": "VIN via the 5 V positive high-side shunt",
+        "components_inside": ["Nano 33 BLE Sense Rev2 development board", "native USB interface"],
+        "source": "n3 rig configuration",
+        "physically_verified_by_instrument": False,
+    },
+    "esp32s3": {
+        "rail": "5V pin via the 5 V positive high-side shunt",
+        "components_inside": ["ESP32-S3 development board", "USB interface"],
+        "source": "n3 rig configuration",
+        "physically_verified_by_instrument": False,
+    },
+}
+
 
 CPP_TEMPLATE = r"""
 #include <Arduino.h>
@@ -165,6 +190,16 @@ CPP_TEMPLATE = r"""
 
 #include "input_data.h"
 #include "model_data.h"
+#include "session_metadata.h"
+
+#if defined(SIGNAL_BENCH_TARGET_NANO33)
+#include <nrf.h>
+#endif
+
+#if defined(ESP32)
+#include <esp_wifi.h>
+#include <esp_bt.h>
+#endif
 
 #ifndef SIGNAL_BENCH_VERSION
 #define SIGNAL_BENCH_VERSION "unknown"
@@ -311,6 +346,45 @@ static void emit_err(const char *code, const char *message) {
 static void emit_done(int iterations) {
   SIGNAL_BENCH_SERIAL.print("DONE ");
   SIGNAL_BENCH_SERIAL.println(iterations);
+}
+
+static void emit_metadata() {
+  bool wifi_initialized = false;
+  bool bluetooth_initialized = false;
+#if defined(ESP32)
+  wifi_mode_t wifi_mode;
+  wifi_initialized = esp_wifi_get_mode(&wifi_mode) != ESP_ERR_WIFI_NOT_INIT;
+  bluetooth_initialized = esp_bt_controller_get_status() != ESP_BT_CONTROLLER_STATUS_IDLE;
+#endif
+  SIGNAL_BENCH_SERIAL.print("META {\"build_id\":\"");
+  SIGNAL_BENCH_SERIAL.print(SIGNAL_BENCH_BUILD_ID);
+  SIGNAL_BENCH_SERIAL.print("\",\"source_commit\":\"");
+  SIGNAL_BENCH_SERIAL.print(SIGNAL_BENCH_SOURCE_COMMIT);
+  SIGNAL_BENCH_SERIAL.print("\",\"wifi_initialized\":");
+  SIGNAL_BENCH_SERIAL.print(wifi_initialized ? "true" : "false");
+  SIGNAL_BENCH_SERIAL.print(",\"bluetooth_initialized\":");
+  SIGNAL_BENCH_SERIAL.print(bluetooth_initialized ? "true" : "false");
+#if defined(ESP32)
+  SIGNAL_BENCH_SERIAL.print(",\"radio_basis\":\"runtime_controller_query\"");
+#else
+  SIGNAL_BENCH_SERIAL.print(",\"radio_basis\":\"audited_application_and_framework_default\"");
+#endif
+  SIGNAL_BENCH_SERIAL.print(",\"sleep_calls_during_inference\":");
+  SIGNAL_BENCH_SERIAL.print(SIGNAL_BENCH_SLEEP_CALLS_DURING_INFERENCE);
+  SIGNAL_BENCH_SERIAL.print(",\"loop_pacing_ms\":");
+  SIGNAL_BENCH_SERIAL.print(SIGNAL_BENCH_LOOP_PACING_MS);
+  SIGNAL_BENCH_SERIAL.print(",\"regulator_mode\":");
+#if defined(SIGNAL_BENCH_TARGET_NANO33) && !defined(NRF_POWER)
+#error Nano DC/DC register is unavailable; session regulator mode cannot be recorded
+#endif
+#if defined(SIGNAL_BENCH_TARGET_NANO33)
+  SIGNAL_BENCH_SERIAL.print("{\"nrf_dcdc_enabled\":");
+  SIGNAL_BENCH_SERIAL.print(NRF_POWER->DCDCEN ? "true" : "false");
+  SIGNAL_BENCH_SERIAL.print("}");
+#else
+  SIGNAL_BENCH_SERIAL.print("{\"firmware_controlled\":false}");
+#endif
+  SIGNAL_BENCH_SERIAL.println("}");
 }
 
 static int argmax_int8(const int8_t *values, int count) {
@@ -509,6 +583,10 @@ void loop() {
     return;
   }
   String line = SIGNAL_BENCH_SERIAL.readStringUntil('\n');
+  if (line == "META") {
+    emit_metadata();
+    return;
+  }
   char task_id[24] = {0};
   int iterations = 0;
   int sample_index = 0;
@@ -743,16 +821,27 @@ async def _run_cell(
     telemetry = TelemetryOrchestrator(session_factory)
     adapter = _adapter_for_cell(target_config, project_dir, flash=False)
     results = []
+    telemetry_started = False
     try:
         await adapter.prepare(run_id)
+        firmware_metadata = await adapter.read_firmware_metadata()
+        _record_session_contract(
+            session_factory,
+            run_id,
+            build=build,
+            firmware=firmware_metadata,
+            target_name=target_name,
+        )
         await telemetry.start_run(run_id, _telemetry_sources(args))
+        telemetry_started = True
         _mark_run_measurement_started(session_factory, run_id)
         results.extend([result async for result in adapter.measure(task_spec, iterations)])
-    except (MeasureError, PrepareError) as exc:
+    except (MeasureError, PrepareError, SessionContractError) as exc:
         _mark_run_failed(session_factory, run_id, str(exc))
         raise
     finally:
-        telemetry_state = await telemetry.stop_run()
+        if telemetry_started:
+            telemetry_state = await telemetry.stop_run()
         await adapter.teardown()
 
     _write_results(session_factory, run_id, results)
@@ -787,7 +876,64 @@ def _stage_firmware(target: TargetConfig, task_name: str, *, sample_count: int) 
     (src_dir / "model_data.cc").write_text(_model_source(task_name), encoding="utf-8")
     (src_dir / "model_data.h").write_text(_model_header(), encoding="utf-8")
     (src_dir / "input_data.h").write_text(_input_header(task_name, sample_count), encoding="utf-8")
+    source_commit = subprocess.run(
+        ["git", "rev-parse", "HEAD"],
+        cwd=ROOT,
+        check=True,
+        capture_output=True,
+        text=True,
+    ).stdout.strip()
+    digest = hashlib.sha256()
+    for path in sorted([project_dir / "platformio.ini", *src_dir.glob("*")]):
+        digest.update(path.relative_to(project_dir).as_posix().encode())
+        digest.update(path.read_bytes())
+    digest.update(source_commit.encode())
+    source_tree_sha256 = digest.hexdigest()
+    # A fresh nonce binds the flashed image to this staging/build attempt even
+    # when the source tree is identical to an earlier firmware image.
+    build_id = hashlib.sha256(source_tree_sha256.encode() + secrets.token_bytes(16)).hexdigest()
+    behavior = _audit_firmware_behavior(CPP_TEMPLATE)
+    (src_dir / "session_metadata.h").write_text(
+        f'#pragma once\n#define SIGNAL_BENCH_BUILD_ID "{build_id}"\n'
+        f'#define SIGNAL_BENCH_SOURCE_COMMIT "{source_commit}"\n'
+        f"#define SIGNAL_BENCH_SLEEP_CALLS_DURING_INFERENCE {behavior['sleep_calls_during_inference']}\n"
+        f"#define SIGNAL_BENCH_LOOP_PACING_MS {behavior['loop_pacing_ms']}\n"
+        + ("#define SIGNAL_BENCH_TARGET_NANO33 1\n" if target.name == "nano33" else ""),
+        encoding="utf-8",
+    )
+    (project_dir / "session-build.json").write_text(
+        json.dumps(
+            {
+                "build_id": build_id,
+                "source_commit": source_commit,
+                "source_tree_sha256": source_tree_sha256,
+            },
+            sort_keys=True,
+        ),
+        encoding="utf-8",
+    )
     return project_dir
+
+
+def _audit_firmware_behavior(source: str) -> dict[str, int]:
+    """Extract the generated RUN loop's sleep and literal pacing calls."""
+    radio_initializers = (
+        r"\b(?:esp_wifi_init|esp_bt_controller_init|nimble_port_init|esp_bluedroid_init|"
+        r"WiFi\.begin|BLE\.begin)\s*\("
+    )
+    if re.search(radio_initializers, source):
+        raise ValueError("radio initialization requires new runtime META instrumentation")
+    body = source.split("static void run_task(", 1)[1].split("static void run_eval(", 1)[0]
+    sleep_calls = len(
+        re.findall(
+            r"\b(?:sleep|delay|vTaskDelay|esp_light_sleep_start|HAL_PWR_EnterSLEEPMode|__WFI)\s*\(",
+            body,
+        )
+    )
+    delays = [int(value) for value in re.findall(r"\bdelay\s*\(\s*(\d+)\s*\)", body)]
+    if sleep_calls and len(delays) != sleep_calls:
+        raise ValueError("RUN loop has sleep/pacing calls that require explicit telemetry support")
+    return {"sleep_calls_during_inference": sleep_calls, "loop_pacing_ms": sum(delays)}
 
 
 def _model_header() -> str:
@@ -917,10 +1063,18 @@ def _build_firmware(project_dir: Path, env: str) -> dict[str, Any]:
         check=False,
     )
     output = process.stdout
+    build_path = project_dir / ".pio" / "build" / env
+    image = next(
+        (p for p in (build_path / "firmware.bin", build_path / "firmware.elf") if p.exists()), None
+    )
+    staged = json.loads((project_dir / "session-build.json").read_text(encoding="utf-8"))
     return {
         "ok": process.returncode == 0,
         "output": output,
         "footprint": _parse_footprint(project_dir, env, output),
+        "firmware_sha256": hashlib.sha256(image.read_bytes()).hexdigest() if image else None,
+        "platformio_env": env,
+        **staged,
     }
 
 
@@ -1065,6 +1219,16 @@ def _create_run(
         "footprint": build["footprint"],
         "tflm_library": "Chirale_TensorFLowLite 2.0.0",
         "adapter": "CommandMCUAdapter",
+        "firmware_build": {
+            key: build.get(key)
+            for key in (
+                "build_id",
+                "source_commit",
+                "source_tree_sha256",
+                "firmware_sha256",
+                "platformio_env",
+            )
+        },
     }
     if session_label:
         extra["session_label"] = session_label
@@ -1087,6 +1251,7 @@ def _create_run(
                 corpus_tag="N3",
                 warmup_count=0,
                 measurement_count=iterations,
+                git_sha=build["source_commit"],
                 signal_bench_version=__version__,
                 runtime_name="TFLM",
                 runtime_version="Chirale_TensorFLowLite-2.0.0",
@@ -1097,6 +1262,27 @@ def _create_run(
                 telemetry_partial=False,
             ),
         )
+        session.commit()
+
+
+def _record_session_contract(
+    session_factory: sessionmaker[Session],
+    run_id: str,
+    *,
+    build: dict[str, Any],
+    firmware: dict[str, Any],
+    target_name: str,
+) -> None:
+    contract = make_session_contract(
+        build=build,
+        firmware=firmware,
+        boundary=METERED_PATHS[target_name],
+    )
+    with session_factory() as session:
+        run = session.get(Run, run_id)
+        if run is None:
+            raise SessionContractError(f"run missing while recording contract: {run_id}")
+        run.extra = {**(run.extra or {}), "session_contract": contract}
         session.commit()
 
 
