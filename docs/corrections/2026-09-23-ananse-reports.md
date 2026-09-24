@@ -210,6 +210,7 @@ The occurrence table above also covers report data and chart artifacts. This tab
 
 | Surface | Old wording or figure | Corrected wording or figure | New-value source |
 |---|---|---|---|
+| Agoo and Medium Part II | The instruments agreed within six percent. | The instruments agreed within 7.4 percent. | data/report1-statistics/sessions.csv (maximum absolute difference across 15 paired INA219/FNB58 sessions, 7.4295%, rounded to one decimal) |
 | Agoo Part I | On the two tasks where I ran the full on-device accuracy evaluation, it matched the other boards exactly, score for score. | The retained full evaluations agree on all 4,890 keyword-spotting class predictions and report the same 0.850 anomaly-detection AUROC on all three boards; individual anomaly scores differ slightly. | data/full-eval/a01/*/predictions.csv |
 | Agoo Part I | The gap led me to verify the measurement using a second, independent power path. | In this campaign the Nano 33 BLE Sense Rev2 drew about 38 mW running keyword spotting back to back. | v41/correction-review.html; v41/extra-changes.json |
 | Agoo Part I | On keyword spotting, the Nano 33 reaches an estimated 253,000 inferences, compared with 50,000 for the ESP32-S3 and 32,000 for the F401RE. | On keyword spotting, the Nano 33 reaches an estimated 285,000 energy-equivalent inferences, compared with 51,000 for the ESP32-S3 and 32,000 for the F401RE. | data/corrections/2026-09-23-canonical-cells.csv (raw: data/p3_mcu_matrix.db) |
