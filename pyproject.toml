@@ -59,6 +59,10 @@ experiments = [
   "httpx>=0.27",
   "modal>=1.4",
 ]
+statistics = [
+  "scipy>=1.15",
+  "statsmodels>=0.14",
+]
 kws-prep = [
   # TensorFlow is heavy (~600MB) but used only for KWS dataset prep — kept out of
   # the `dev` extras so day-to-day signal-bench installs stay light. Pinning TF

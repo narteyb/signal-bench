@@ -213,3 +213,5 @@ That is the through-line from the manifesto to the matrix. The data does not nee
 ## 8. What's Next
 
 Further reports are planned.
+
+The session-level intervals behind these board comparisons are in [Report No. 1, Part IV: The Statistics](https://agoo-ai.com/posts/the-ananse-reports/tinyml-reality-check-part-iv).
