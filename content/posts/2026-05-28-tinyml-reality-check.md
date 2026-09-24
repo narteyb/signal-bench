@@ -21,7 +21,7 @@ syndicate_to_medium: true
 syndicate_to_linkedin: true
 ---
 
-**Correction, 23 September 2026.** The energy figures in this post were wrong and have been corrected. Energy per inference was calculated by dividing the energy for a whole run by the number of inferences kept after slow outliers were filtered out, instead of by every inference in the run. The raw measurements have not changed. Some statements about what was measured have also been narrowed to what the evidence supports. One latency figure, the 99th percentile for keyword spotting on the F401RE, has also been recalculated from the raw results, from 158.987 ms to 158.985 ms. [The corrections record](https://github.com/narteyb/signal-bench/blob/main/docs/corrections/2026-09-23-ananse-reports.md) lists every figure that changed.
+**Correction, 23 September 2026.** The energy figures in this post were wrong and have been corrected. Energy per inference was calculated by dividing the energy for a whole run by the number of inferences kept after slow outliers were filtered out, instead of by every inference in the run. The raw measurements have not changed. Two ESP32-S3 energy figures rose slightly because they now use the same three sessions as the rest of the results, rather than four. Some statements about what was measured have also been narrowed to what the evidence supports. One latency figure, the 99th percentile for keyword spotting on the F401RE, has also been recalculated from the raw results, from 158.987 ms to 158.985 ms. [The corrections record](https://github.com/narteyb/signal-bench/blob/main/docs/corrections/2026-09-23-ananse-reports.md) lists every figure that changed.
 
 ---
 
